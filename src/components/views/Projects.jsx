@@ -25,23 +25,34 @@ export default function Projects() {
                         {
                             title: "E-commerce Platform",
                             desc: "A fully functional e-commerce website with product listings, cart functionality, and payment integration.",
-                            tech: ["Vue.js", "Vuex", "Bootstrap", "Firebase"],
-                            img: "/images/css3.svg"
+                            tech: ["Vue.js", "Laravel", "Bootstrap", "MySQL"],
+                            img: "/images/projects/image2.png",
+                            demo_link: "https://usr.kassar.publicvm.com/",
+                            code_link: "#"
                         },
                         {
-                            title: "Task Management App",
-                            desc: "A collaborative task management application with real-time updates and team functionality.",
-                            tech: ["Vue.js", "Laravel", "Tailwind CSS", "MySQL"]
+                            title: "Online Shop",
+                            desc: "An e-commerce website that use with restful api with real-time updates and team functionality.",
+                            tech: ["JavaScript", "Bootstrap", "API", "MySQL"],
+                            img: "/images/projects/image1.png",
+                            demo_link: "http://antstudents.com/WenScholarshipBatch1/js/g4/index.html",
+                            code_link: "#"
                         },
                         {
-                            title: "Portfolio Website",
-                            desc: "A responsive portfolio website showcasing projects and skills for a creative professional.",
-                            tech: ["Vue.js", "GSAP", "Sass", "Netlify"]
+                            title: "Express Bus and Logistics",
+                            desc: "A responsive logistics website showcasing transportation and rent bus for a trip or buy an product.",
+                            tech: ["Bootstrap", "HTML", "CSS"],
+                            img: "/images/projects/image3.png",
+                            demo_link: "http://antstudents.com/WebScholarshipS2/Group-13/ProjectCSS_CSC_Express/index.html",
+                            code_link: "#"
                         },
                         {
-                            title: "Blog Platform",
-                            desc: "A content management system for bloggers with markdown support and social sharing.",
-                            tech: ["Vue.js", "Node.js", "Express", "MongoDB"]
+                            title: "Logistics",
+                            desc: "A mini project that build use html and css to completed.",
+                            tech: ["HTML", "CSS"],
+                            img: "/images/projects/image4.png",
+                            demo_link: "http://antstudents.com/WebScholarship/Group-2/ProjectHTML/index.html",
+                            code_link: "#"
                         }
                     ].map((project, index) => {
                         const animation = animations[index % animations.length];
@@ -60,8 +71,8 @@ export default function Projects() {
                                 <div className="relative h-48 bg-[#171717]">
                                     <img src={project.img} alt={project.title} className="absolute inset-0 w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 flex items-center justify-center gap-4 transition-opacity">
-                                        <button className="px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-gray-900 transition-colors cursor-pointer">Demo</button>
-                                        <button className="px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-gray-900 transition-colors cursor-pointer">Code</button>
+                                        <a href={project.demo_link} target='_blank' className="px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-gray-900 transition-colors cursor-pointer">Demo</a>
+                                        <a href={project.code_link} target='_blank' className="px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-gray-900 transition-colors cursor-pointer">Code</a>
                                     </div>
                                 </div>
                                 <div className="p-6">

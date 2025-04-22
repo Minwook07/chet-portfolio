@@ -26,8 +26,10 @@ export default function Navbar() {
         <nav className="fixed top-0 left-0 w-full bg-opacity-95 z-50 shadow-md" style={{ backgroundColor: '#121212' }}>
             <div className="container mx-auto py-4 px-6 flex justify-between items-center">
                 <a href="#home" className="flex items-center gap-2">
-                    <div className="bg-orange-500 text-gray-900 w-10 h-10 flex items-center justify-center rounded-lg font-bold text-xl">C</div>
-                    <span className="font-bold text-xl">Chet</span>
+                    <div className="w-50 h-10 flex items-center rounded-lg font-bold text-xl">
+                        <img src="/images/logo/chet_nobg.svg" alt="" />
+                    </div>
+                    {/* <span className="font-bold text-xl">Chet</span> */}
                 </a>
                 <ul className={`md:flex items-center gap-6 ${open ? 'flex flex-col absolute top-full left-0 w-full bg-gray-900 py-4 md:static md:flex-row md:bg-transparent' : 'hidden'}`}>
                     {sections.map(item => (

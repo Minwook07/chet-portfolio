@@ -6,7 +6,7 @@ export default function Contact() {
         <section id="contact" className="py-20" style={{ backgroundColor: '#121212' }}>
             <div className="container mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center mb-16 flex items-center justify-center">
-                    <span className="mr-2 text-2xl"><MdOutlineContactSupport color='orange' fontSize={35}/></span> Contact
+                    <span className="mr-2 text-2xl"><MdOutlineContactSupport color='orange' fontSize={35} /></span> Contact
                 </h2>
                 <div className="grid md:grid-cols-2 gap-10">
                     <div>
@@ -50,7 +50,7 @@ export default function Contact() {
                                 </div>
                                 <span>
                                     <a
-                                        href="https://www.google.com/maps?q=13.4105,103.8667"
+                                        href="https://maps.app.goo.gl/EfTTUYva6FZCFT1PA"
                                         target="_blank"
                                         className="text-white-400 hover:underline hover:text-orange-500 transition-colors duration-200">
                                         Phnom Penh, Cambodia
@@ -72,9 +72,15 @@ export default function Contact() {
                                     <circle cx="4" cy="4" r="2"></circle>
                                 </svg>
                             </a>
-                            <a href="#" className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors">
-                                <RiTelegram2Line fontSize={23}/>
+                            <a
+                                href="https://t.me/min7wook_lee"
+                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <RiTelegram2Line fontSize={23} />
                             </a>
+
                             <a href="#" className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>

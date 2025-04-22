@@ -56,22 +56,22 @@ export default function EducationalTimeline() {
             skills: ["PHP", "Laravel", "Vue", "JavaScript", "C++"],
             icon: <GiTrophy fontSize={25} />
         },
-        {
-            id: 5,
-            year: "2024",
-            title: "University Freshman",
-            description: "Computer Science major. Deepened React knowledge through coursework and projects. Built portfolio site with React.",
-            skills: ["React Hooks", "Context API", "CSS-in-JS"],
-            icon: <HiAcademicCap fontSize={25} />
-        },
-        {
-            id: 6,
-            year: "2025",
-            title: "University Sophomore",
-            description: "Internship at local tech startup. Contributed to production React application. Learned state management and advanced patterns.",
-            skills: ["Redux", "TypeScript", "Unit Testing"],
-            icon: "⚛️"
-        }
+        // {
+        //     id: 5,
+        //     year: "2024",
+        //     title: "University Freshman",
+        //     description: "Computer Science major. Deepened React knowledge through coursework and projects. Built portfolio site with React.",
+        //     skills: ["React Hooks", "Context API", "CSS-in-JS"],
+        //     icon: <HiAcademicCap fontSize={25} />
+        // },
+        // {
+        //     id: 6,
+        //     year: "2025",
+        //     title: "University Sophomore",
+        //     description: "Internship at local tech startup. Contributed to production React application. Learned state management and advanced patterns.",
+        //     skills: ["Redux", "TypeScript", "Unit Testing"],
+        //     icon: "⚛️"
+        // }
     ];
 
     const handleMouseEnter = (id) => {

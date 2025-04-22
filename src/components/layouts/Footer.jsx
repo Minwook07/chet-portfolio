@@ -13,10 +13,10 @@ export default function Footer() {
                     </div>
                     <div>
                         <div className="flex justify-center mb-4">
-                            <a href="#" className="mx-3 hover:text-orange-500">About</a>
-                            <a href="#" className="mx-3 hover:text-orange-500">Skills</a>
-                            <a href="#" className="mx-3 hover:text-orange-500">Projects</a>
-                            <a href="#" className="mx-3 hover:text-orange-500">Contact</a>
+                            <a href="#about" className="mx-3 hover:text-orange-500">About</a>
+                            <a href="#skills" className="mx-3 hover:text-orange-500">Skills</a>
+                            <a href="#projects" className="mx-3 hover:text-orange-500">Projects</a>
+                            <a href="#contacts" className="mx-3 hover:text-orange-500">Contact</a>
                         </div>
                         <p className="text-gray-400 text-sm text-center">© 2025 MITH Chet. All rights reserved.</p>
                     </div>

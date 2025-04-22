@@ -10,7 +10,7 @@ export default function Hero() {
                         </h1>
                         <p className="text-xl opacity-90 mb-6">I'm a Full-stack web developer</p>
                         <p className="text-lg italic opacity-80 mb-8">"I'm not here just to code — I'm here to grow together."</p>
-                        <a href="#" className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-full font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                        <a href="/pdf/Mith Chet-CV.pdf" className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-full font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
                             <span className="mr-2">↓</span> Download CV
                         </a>
                     </div>

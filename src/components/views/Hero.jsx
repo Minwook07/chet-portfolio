@@ -8,7 +8,8 @@ export default function Hero() {
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">
                             Hello, I'm <span className="text-orange-500">Chet MITH.</span>
                         </h1>
-                        <p className="text-xl opacity-90 mb-6">I'm a Full-stack web developer</p>
+                        <p className="text-xl opacity-90 mb-6">Full-Stack Web Developer | Computer Science Major</p>
+                        <p className="text-lg opacity-80 mb-6">I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies.Whether it’s designing responsive user interfaces or building scalable APIs, I strive to craft web experiences that are not only functional but meaningful. I believe in continuous learning, collaboration, and building solutions that make an impact.</p>
                         <p className="text-lg italic opacity-80 mb-8">"I'm not here just to code — I'm here to grow together."</p>
                         <a href="/pdf/Mith Chet-CV.pdf" className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-full font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
                             <span className="mr-2">↓</span> Download CV

@@ -30,14 +30,22 @@ export default function Projects() {
                             demo_link: "https://usr.kassar.publicvm.com/",
                             code_link: "#"
                         },
-                        // {
-                        //     title: "Yummy",
-                        //     desc: "An e-commerce website that use with restful api with real-time updates and team functionality.",
-                        //     tech: ["JavaScript", "Bootstrap", "API", "MySQL"],
-                        //     img: "/images/projects/image1.png",
-                        //     demo_link: "http://antstudents.com/WenScholarshipBatch1/js/g4/index.html",
-                        //     code_link: "https://github.com/Minwook07/yummy_assignment_web.git"
-                        // },
+                        {
+                            title: "Study Home",
+                            desc: "A mini project that build use html and css to completed.",
+                            tech: ["Tailwind", "HTML", "CSS", "JavaScript"],
+                            img: "/images/projects/image6.png",
+                            demo_link: "https://reanwithus.netlify.app/",
+                            code_link: "https://github.com/Minwook07/assignment_web.git"
+                        },
+                        {
+                            title: "Yummy",
+                            desc: "An e-commerce website that use with restful api with real-time updates and team functionality.",
+                            tech: ["JavaScript", "Bootstrap", "API", "MySQL"],
+                            img: "/images/projects/image7.png",
+                            demo_link: "http://antstudents.com/WenScholarshipBatch1/js/g4/index.html",
+                            code_link: "https://github.com/Minwook07/yummy_assignment_web.git"
+                        },
                         {
                             title: "Online Shop",
                             desc: "An e-commerce website that use with restful api with real-time updates and team functionality.",
@@ -55,14 +63,6 @@ export default function Projects() {
                             code_link: "https://github.com/Minwook07/Assignment-Group2-Bootstrap.git"
                         },
                         {
-                            title: "Logistics",
-                            desc: "A mini project that build use html and css to completed.",
-                            tech: ["HTML", "CSS"],
-                            img: "/images/projects/image4.png",
-                            demo_link: "http://antstudents.com/WebScholarship/Group-2/ProjectHTML/index.html",
-                            code_link: "https://github.com/Minwook07/Mini-Project-CSC-Express-Raw.git"
-                        },
-                        {
                             title: "Movies",
                             desc: "A mini project that build use html and css to completed.",
                             tech: ["Vue.js", "Bootstrap", "JavaScript"],
@@ -71,12 +71,12 @@ export default function Projects() {
                             code_link: "https://github.com/Minwook07/vue.js-movies_website.git"
                         },
                         {
-                            title: "Study Home",
+                            title: "Logistics",
                             desc: "A mini project that build use html and css to completed.",
-                            tech: ["Tailwind", "HTML", "CSS", "JavaScript"],
-                            img: "/images/projects/image6.png",
-                            demo_link: "https://reanwithus.netlify.app/",
-                            code_link: "https://github.com/Minwook07/assignment_web.git"
+                            tech: ["HTML", "CSS"],
+                            img: "/images/projects/image4.png",
+                            demo_link: "http://antstudents.com/WebScholarship/Group-2/ProjectHTML/index.html",
+                            code_link: "https://github.com/Minwook07/Mini-Project-CSC-Express-Raw.git"
                         },
                     ].map((project, index) => {
                         const animation = animations[index % animations.length];

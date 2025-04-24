@@ -4,22 +4,22 @@ import { BsTools } from 'react-icons/bs';
 // import { SiTailwindcss, SiCsharp, SiDotnet, SiPhp, SiMysql, SiFigma, SiAdobephotoshop } from 'react-icons/si';
 
 const skills = [
-  { name: 'Vue.js', img: '/images/vue.svg' },
-  { name: 'Laravel', img: '/images/laravel.svg' },
-  { name: 'HTML5', img: '/images/html5.svg' },
-  { name: 'CSS3', img: '/images/css3.svg' },
-  { name: 'JavaScript', img: '/images/javascript.svg' },
-  { name: 'Bootstrap', img: '/images/bootstrap.svg' },
-  { name: 'Tailwind', img: '/images/tailwind.svg' },
-  { name: 'React', img: '/images/react.svg' },
-  { name: 'C#', img: '/images/csharp.svg' },
-  // { name: '.NET', img: '/images/dotnet.svg' },
-  { name: 'PHP', img: '/images/php.svg' },
-  { name: 'MySQL', img: '/images/mysql.svg' },
-  { name: 'Figma', img: '/images/figma.svg' },
-  { name: 'Photoshop', img: '/images/photoshop.svg' },
-  { name: 'Git', img: '/images/git.svg' },
-  // { name: 'VS Code', img: '/images/vscode.svg' },
+  { name: 'Vue.js', img: '/images/skills/vue.svg' },
+  { name: 'Laravel', img: '/images/skills/laravel.svg' },
+  { name: 'HTML5', img: '/images/skills/html5.svg' },
+  { name: 'CSS3', img: '/images/skills/css3.svg' },
+  { name: 'JavaScript', img: '/images/skills/javascript.svg' },
+  { name: 'Bootstrap', img: '/images/skills/bootstrap.svg' },
+  { name: 'Tailwind', img: '/images/skills/tailwind.svg' },
+  { name: 'React', img: '/images/skills/react.svg' },
+  { name: 'C#', img: '/images/skills/csharp.svg' },
+  // { name: '.NET', img: '/images/skills/dotnet.svg' },
+  { name: 'PHP', img: '/images/skills/php.svg' },
+  { name: 'MySQL', img: '/images/skills/mysql.svg' },
+  { name: 'Figma', img: '/images/skills/figma.svg' },
+  { name: 'Photoshop', img: '/images/skills/photoshop.svg' },
+  { name: 'Git', img: '/images/skills/git.svg' },
+  // { name: 'VS Code', img: '/images/skills/vscode.svg' },
 ];
 export default function Skills() {
   return (

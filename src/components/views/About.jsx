@@ -92,14 +92,14 @@ export default function EducationalTimeline() {
             <div className="min-h-screen p-3 md:p-6 font-sans">
                 <div className="max-w-4xl mx-auto p-4 md:p-6 relative">
                     {/* <div className="absolute inset-0 bg-blue-500 opacity-5 rounded-xl blur-xl"></div> */}
-                    <div className="absolute inset-0 opacity-5 rounded-xl blur-xl"></div>
+                    <div className="absolute inset-0 opacity-5 rounded-xl blur-xl z-0"></div>
                     <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center text-gray-100">
                         <span className="mr-2 text-2xl"><MdOutlineTimeline color='orange' fontSize={35} /></span> Educational Journey Timeline
                     </h2>
 
                     <div className="relative">
                         {/* Main timeline line - hidden on small screens, visible on md and up */}
-                        <div className={`${isMobile ? 'hidden' : 'absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full'}`}></div>
+                        <div className={`${isMobile ? 'hidden' : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full z-10'}`}></div>
 
                         {/* Vertical line for mobile */}
                         <div className={`${isMobile ? 'absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full' : 'hidden'}`}></div>

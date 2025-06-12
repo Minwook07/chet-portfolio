@@ -1,7 +1,6 @@
 import React from 'react';
 import { BsTools } from 'react-icons/bs';
-// import { FaVuejs, FaLaravel, FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact } from 'react-icons/fa';
-// import { SiTailwindcss, SiCsharp, SiDotnet, SiPhp, SiMysql, SiFigma, SiAdobephotoshop } from 'react-icons/si';
+import { useTranslation } from 'react-i18next';
 
 const skills = [
   { name: 'Vue.js', img: '/images/skills/vue.svg' },
@@ -22,12 +21,13 @@ const skills = [
   // { name: 'VS Code', img: '/images/skills/vscode.svg' },
 ];
 export default function Skills() {
+  const { t } = useTranslation();
   return (
     <section id="skills" style={{ backgroundColor: '#121212' }}>
       <div className="container mx-auto px-6">
         <div className="bg-opacity-10 p-8 rounded-xl mb-10" style={{ backgroundColor: '#1E1E1E' }}>
           <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center text-gray-100">
-            <span className="mr-2 text-2xl"><BsTools color='orange' fontSize={35}/></span> Skills
+            <span className="mr-2 text-2xl"><BsTools color='orange' fontSize={35}/></span> {t('skills.title')}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
             {skills.map((skill, idx) => (

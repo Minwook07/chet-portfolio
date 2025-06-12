@@ -9,7 +9,7 @@ import Footer from './components/layouts/Footer';
 import GlobalStyles from './components/views/GlobalStyles'
 export default function App() {
   return (
-    <div className="text-gray-100 min-h-screen font-sans overflow-x-hidden" style={{ backgroundColor: '#121212' }}>
+    <div className="text-gray-100 min-h-screen overflow-x-hidden" style={{ backgroundColor: '#121212', fontFamily: 'Kantumruy Pro' }}>
       <Navbar />
       <Hero />
       <Skills />

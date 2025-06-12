@@ -4,9 +4,11 @@ import { MdOutlineContactSupport } from 'react-icons/md';
 import { RiTelegram2Line } from 'react-icons/ri';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
     const form = useRef();
+    const { t } = useTranslation();
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -53,15 +55,15 @@ export default function Contact() {
                     <span className="mr-2 text-2xl">
                         <MdOutlineContactSupport color="orange" fontSize={35} />
                     </span>
-                    Contact
+                    {t('contact.title')}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-10">
                     {/* Contact Info Section */}
                     <div>
                         <div className="mb-10">
-                            <h3 className="text-2xl font-semibold text-orange-500 mb-4">Let's Connect</h3>
+                            <h3 className="text-2xl font-semibold text-orange-500 mb-4">{t('contact.sub_title')}</h3>
                             <p className="text-gray-300 mb-8">
-                                Fill out the form or reach out through the provided contact details.
+                                {t('contact.text_info')}
                             </p>
                             <div className="flex items-center mb-4">
                                 <div className="text-orange-500 mr-4">
@@ -110,7 +112,7 @@ export default function Contact() {
                                         href="tel:+855978272965"
                                         className="text-white-400 hover:underline hover:text-orange-500 transition-colors duration-200"
                                     >
-                                        097 82 72 965
+                                        {t('contact.phone_number')}
                                     </a>
                                 </span>
                             </div>
@@ -137,7 +139,7 @@ export default function Contact() {
                                         target="_blank"
                                         className="text-white-400 hover:underline hover:text-orange-500 transition-colors duration-200"
                                     >
-                                        Phnom Penh, Cambodia
+                                        {t('contact.address_town')}
                                     </a>
                                 </span>
                             </div>
@@ -222,17 +224,17 @@ export default function Contact() {
                             className="border bg-[#1E1E1E] border-[#1E1E1E] rounded-xl p-8"
                         >
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">Name</label>
+                                <label className="block text-sm font-medium mb-2">{t('contact.form_info.name')}</label>
                                 <input
                                     type="text"
                                     className="w-full p-3 bg-[#171717] border border-[#171717] rounded-lg focus:outline-none focus:border-orange-500"
-                                    placeholder="Your name"
+                                    placeholder={t('contact.form_info.place_holder.place_holder_name')}
                                     name="user_name"
                                     required
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">Email</label>
+                                <label className="block text-sm font-medium mb-2">{t('contact.form_info.email')}</label>
                                 <input
                                     type="email"
                                     className="w-full p-3 bg-[#171717] border border-[#171717] rounded-lg focus:outline-none focus:border-orange-500"
@@ -242,21 +244,21 @@ export default function Contact() {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">Subject</label>
+                                <label className="block text-sm font-medium mb-2">{t('contact.form_info.subject')}</label>
                                 <input
                                     type="text"
                                     className="w-full p-3 bg-[#171717] border border-[#171717] rounded-lg focus:outline-none focus:border-orange-500"
-                                    placeholder="Subject"
+                                    placeholder={t('contact.form_info.subject')}
                                     name="subject"
                                     required
                                 />
                             </div>
                             <div className="mb-6">
-                                <label className="block text-sm font-medium mb-2">Message</label>
+                                <label className="block text-sm font-medium mb-2">{t('contact.form_info.message')}</label>
                                 <textarea
                                     name="message"
                                     className="w-full p-3 bg-[#171717] border border-[#171717] rounded-lg focus:outline-none focus:border-orange-500 h-32 resize-none"
-                                    placeholder="Your message here..."
+                                    placeholder={t('contact.form_info.place_holder.place_holder_message')}
                                     required
                                 ></textarea>
                             </div>
@@ -264,7 +266,7 @@ export default function Contact() {
                                 type="submit"
                                 className="w-full py-3 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors cursor-pointer"
                             >
-                                Send Message
+                                {t('contact.form_info.btn_submit')}
                             </button>
                         </form>
                     </div>

@@ -1,5 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 export default function Footer() {
+    const { t } = useTranslation();
     return (
         <footer className="bg-[#1e1e1e] py-10">
             <div className="container mx-auto px-6">
@@ -13,10 +16,10 @@ export default function Footer() {
                     </div>
                     <div>
                         <div className="flex justify-center mb-4">
-                            <a href="#about" className="mx-3 hover:text-orange-500">About</a>
-                            <a href="#skills" className="mx-3 hover:text-orange-500">Skills</a>
-                            <a href="#projects" className="mx-3 hover:text-orange-500">Projects</a>
-                            <a href="#contacts" className="mx-3 hover:text-orange-500">Contact</a>
+                            <a href="#about" className="mx-3 hover:text-orange-500">{t('menu.about')}</a>
+                            <a href="#skills" className="mx-3 hover:text-orange-500">{t('menu.skills')}</a>
+                            <a href="#projects" className="mx-3 hover:text-orange-500">{t('menu.projects')}</a>
+                            <a href="#contacts" className="mx-3 hover:text-orange-500">{t('menu.contact')}</a>
                         </div>
                         <p className="text-gray-400 text-sm text-center">© 2025 MITH Chet. All rights reserved.</p>
                     </div>

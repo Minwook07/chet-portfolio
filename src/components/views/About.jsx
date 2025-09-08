@@ -73,10 +73,10 @@ export default function EducationalTimeline() {
 
                     <div className="relative">
                         {/* Main timeline line - hidden on small screens, visible on md and up */}
-                        <div className={`${isMobile ? 'hidden' : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full z-10'}`}></div>
+                        <div className={`${isMobile ? 'hidden' : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-orange-400 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full z-10'}`}></div>
 
                         {/* Vertical line for mobile */}
-                        <div className={`${isMobile ? 'absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full' : 'hidden'}`}></div>
+                        <div className={`${isMobile ? 'absolute left-4 top-0 bottom-0 w-1 bg-orange-400 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full' : 'hidden'}`}></div>
 
                         {/* Timeline items */}
                         <div className="flex flex-col">
@@ -101,7 +101,7 @@ export default function EducationalTimeline() {
                                         {/* Year bubble */}
                                         <div
                                             className={`absolute top-0 w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white font-bold z-10 
-                                        ${activeId === item.id ? 'bg-orange-500 scale-110' : 'bg-gradient-to-br from-amber-400 to-orange-500'} 
+                                        ${activeId === item.id ? 'bg-orange-500 scale-110' : 'bg-orange-400 bg-gradient-to-br from-amber-400 to-orange-500'} 
                                         shadow-lg shadow-orange-500/20 transition-all duration-300 text-sm md:text-base`}
                                             style={{
                                                 left: isMobile ? '-4px' : null,
@@ -122,7 +122,7 @@ export default function EducationalTimeline() {
                                             ${activeId === item.id ? 'border-orange-500' : 'hover:border-amber-400'} 
                                             cursor-pointer w-full`}
                                         >
-                                            <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-gradient-to-r from-amber-400 to-orange-500 text-xs px-2 py-0.5 md:py-1 rounded-full text-black font-bold">
+                                            <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-orange-400 bg-gradient-to-r from-amber-400 to-orange-500 text-xs px-2 py-0.5 md:py-1 rounded-full text-black font-bold">
                                                 {year}
                                             </div>
 
@@ -143,7 +143,7 @@ export default function EducationalTimeline() {
 
                                         {/* Connecting line to timeline */}
                                         <div
-                                            className={`absolute top-4 h-0.5 bg-gradient-to-r from-amber-400 to-orange-500
+                                            className={`absolute top-4 h-0.5 bg-orange-400 bg-gradient-to-r from-amber-400 to-orange-500
                                             ${isMobile
                                                     ? 'left-0 w-10'
                                                     : index % 2 === 0

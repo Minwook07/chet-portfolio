@@ -19,9 +19,9 @@ export default function Hero() {
                         </a>
                     </div>
                     <div className="md:w-5/12 flex justify-center">
-                        <div className="w-64 h-64 relative rounded-full border-4 border-orange-500 overflow-hidden shadow-xl animate-float">
+                        <div className="w-60 h-75 relative rounded-2xl border-4 border-orange-500 overflow-hidden shadow-xl animate-float">                            
                             <div className="w-full h-full bg-gray-400 flex items-center justify-center text-gray-600">
-                                <img src="images/DSC03886.jpg" alt={t('hero.imageAlt')} />
+                                <img src="images/DSC03885.JPG" alt={t('hero.imageAlt')} />
                             </div>
                         </div>
                     </div>

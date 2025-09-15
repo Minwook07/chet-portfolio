@@ -12,6 +12,35 @@ export default function Hero() {
                             {t('hero.greeting')} <span className="text-orange-500">{t('hero.name')}</span>
                         </h1>
                         <p className="text-xl opacity-90 mb-6">{t('hero.title')}</p>
+                        <p className="text-xxl mb-6 flex items-center text-orange-500">
+                            {/* Modern Animated Dot */}
+                            <div className="relative w-4 h-4 mr-3 text-orange-500 transform">
+                                {/* Thin Outline Ring */}
+                                <svg
+                                    className="absolute inset-0 w-full h-full slow-pulse"
+                                    viewBox="0 0 12 12"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="1"
+                                    strokeLinecap="round"
+                                >
+                                    <circle cx="6" cy="6" r="5" />
+                                </svg>
+
+                                {/* Solid Fill Dot */}
+                                <svg
+                                    className="absolute inset-0 w-full h-full slow-pulse"
+                                    viewBox="0 0 12 12"
+                                    fill="currentColor"
+                                    style={{ animationDelay: '0.3s' }} // Slight delay for staggered effect
+                                >
+                                    <circle cx="6" cy="6" r="3" />
+                                </svg>
+                            </div>
+
+                            {t('hero.sub_title')}
+                        </p>
+
                         <p className="text-lg opacity-80 mb-6">{t('hero.description')}</p>
                         <p className="text-lg italic opacity-80 mb-8">{t('hero.quote')}</p>
                         <a href="/pdf/Mith Chet-CV.pdf" className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-full font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
@@ -19,7 +48,7 @@ export default function Hero() {
                         </a>
                     </div>
                     <div className="md:w-5/12 flex justify-center">
-                        <div className="w-60 h-75 relative rounded-2xl border-4 border-orange-500 overflow-hidden shadow-xl animate-float">                            
+                        <div className="w-60 h-75 relative rounded-2xl border-4 border-orange-500 overflow-hidden shadow-xl animate-float">
                             <div className="w-full h-full bg-gray-400 flex items-center justify-center text-gray-600">
                                 <img src="images/DSC03885.JPG" alt={t('hero.imageAlt')} />
                             </div>

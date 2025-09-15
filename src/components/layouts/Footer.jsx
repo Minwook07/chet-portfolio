@@ -21,7 +21,7 @@ export default function Footer() {
                             <a href="#projects" className="mx-3 hover:text-orange-500">{t('menu.projects')}</a>
                             <a href="#contacts" className="mx-3 hover:text-orange-500">{t('menu.contact')}</a>
                         </div>
-                        <p className="text-gray-400 text-sm text-center">© 2025 MITH Chet. All rights reserved.</p>
+                        <p className="text-gray-400 text-sm text-center">© 2025 - {new Date().getFullYear()} MITH Chet. All rights reserved.</p>
                     </div>
                 </div>
             </div>

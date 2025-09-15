@@ -121,7 +121,7 @@ export default function Navbar() {
                     <li className="relative" ref={dropdownRef}>
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
-                            className="flex items-center gap-2 py-2 px-3 rounded hover:bg-gray-700 transition-colors"
+                            className="flex items-center cursor-pointer gap-2 py-2 px-3 rounded hover:bg-gray-700 transition-colors"
                         >
                             <span>
                                 <img src={languages[language].flag} alt="flag" className="w-5 h-5 rounded-full" />
@@ -140,7 +140,7 @@ export default function Navbar() {
                                     <li key={langKey}>
                                         <button
                                             onClick={() => handleLanguageChange(langKey)}
-                                            className="flex items-center gap-3 w-full px-4 py-2 text-sm text-white hover:bg-gray-700 text-left" // Added text-left
+                                            className="flex items-center cursor-pointer gap-3 w-full px-4 py-2 text-sm text-white hover:bg-gray-700 text-left" // Added text-left
                                         >
                                             {/* <span>{languages[langKey].flag}</span> */}
                                             <img src={languages[langKey].flag} alt={`${languages[langKey].name} flag`} className="h-5 w-5 rounded-full" />

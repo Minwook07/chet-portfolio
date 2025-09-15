@@ -10,6 +10,7 @@
     "greeting": "Hello, I'm",
     "name": "Chet MITH.",
     "title": "Full-Stack Web Developer | Computer Science Major",
+    "sub_title": "Internship in Laravel Web Development at ANT",
     "description": "I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies. Whether it's designing responsive user interfaces or building scalable APIs, I strive to craft web experiences that are not only functional but meaningful. I believe in continuous learning, collaboration, and building solutions that make an impact.",
     "quote": "I'm not here just to code — I'm here to grow together.",
     "downloadCV": "Download CV",
@@ -49,7 +50,8 @@
     "button": {
       "btn_demo": "Demo",
       "btn_code": "Code",
-      "btn_see_more": "See More Projects"
+      "btn_see_more": "See More Projects",
+      "btn_show_less": "Show Less"
     }
   },
   "about": {

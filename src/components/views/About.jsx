@@ -96,7 +96,7 @@ export default function EnhancedEducationalTimeline() {
             <div className="max-w-5xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl mb-6">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500 bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl mb-6">
                         <span className="text-3xl">📚</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -108,8 +108,8 @@ export default function EnhancedEducationalTimeline() {
                 <div className="relative">
                     {/* Timeline line */}
                     <div className={`${isMobile
-                        ? 'absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 via-amber-500 to-orange-500'
-                        : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 via-amber-500 to-orange-500'}`}>
+                        ? 'absolute left-8 top-0 bottom-0 w-0.5 bg-orange-500 bg-gradient-to-b from-orange-500 via-amber-500 to-orange-500'
+                        : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-orange-500 bg-gradient-to-b from-orange-500 via-amber-500 to-orange-500'}`}>
                     </div>
 
                     {/* Timeline items */}
@@ -130,7 +130,7 @@ export default function EnhancedEducationalTimeline() {
                                     : 'left-1/2 transform -translate-x-1/2 top-6'} 
                                     w-12 h-12 rounded-full border-4 border-slate-800 flex items-center justify-center z-10 transition-all duration-300 
                                     ${hoveredId === item.id || activeId === item.id
-                                        ? 'bg-gradient-to-r from-orange-500 to-amber-500 scale-110 shadow-lg shadow-orange-500/30'
+                                        ? 'bg-orange-500 bg-gradient-to-r from-orange-500 to-amber-500 scale-110 shadow-lg shadow-orange-500/30'
                                         : 'bg-slate-700 hover:bg-slate-600'}`}
                                     onMouseEnter={() => setHoveredId(item.id)}
                                     onMouseLeave={() => setHoveredId(null)}
@@ -224,7 +224,7 @@ export default function EnhancedEducationalTimeline() {
                                     </div>
 
                                     {/* Connecting line */}
-                                    <div className={`absolute top-8 w-8 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500 ${isMobile
+                                    <div className={`absolute top-8 w-8 h-0.5 bg-orange-500 bg-gradient-to-r from-orange-500 to-amber-500 ${isMobile
                                         ? '-left-8'
                                         : index % 2 === 0
                                             ? '-right-8'

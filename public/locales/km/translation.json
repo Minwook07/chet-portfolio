@@ -17,7 +17,10 @@
     "imageAlt": "រូបភាពទម្រង់ មិត ចិត"
   },
   "skills": {
-    "title": "ជំនាញរបស់ខ្ញុំ"
+    "title": "ជំនាញរបស់ខ្ញុំ",
+    "technology": "បច្ចេកវិទ្យា",
+    "experience": "ឆ្នាំនៃបទពិសោធន៍",
+    "learning": "ការសិក្សា"
   },
   "projects": {
     "title": "គម្រោងនានា",
@@ -58,54 +61,96 @@
     "title": "ប្រវត្តិការសិក្សា",
     "items": {
       "high_school": {
-        "id": 1,
-        "year": "ធ្នូ-២០២០",
         "title": "វិទ្យាល័យហ៊ុនសែនខ្នារ",
+        "institution": "Central High School",
+        "location": "ត្បួងឃ្មុំ",
+        "startDate": "2014-01",
+        "endDate": "2020-12",
+        "status": "បានបញ្ចប់",
         "description": "ខ្ញុំបានបញ្ចប់ការសិក្សាថ្នាក់វិទ្យាល័យដោយជ្រើសរើសផ្នែកវិទ្យាសាស្ត្រ និងទទួលបានសញ្ញាបត្របាក់ឌុប។",
         "skills": [
           "គណិតវិទ្យា",
           "រូបវិទ្យា",
           "គីមីវិទ្យា",
-          "ជីវវិទ្យា"
+          "ជីវវិទ្យា",
+          "វិទ្យាសាស្ត្រ"
+        ],
+        "grade": "3.8 GPA",
+        "achievements": [
+          "Honor Roll",
+          "Science Fair Winner",
+          "Student Council"
         ]
       },
       "university": {
-        "id": 2,
-        "year": "ឧសភា ២០២៤",
-        "title": "សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ",
+        "title": "បរិញ្ញាបត្រផ្នែកវិទ្យាសាស្ត្រកុំព្យួទ័រ",
+        "institution": "សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ",
+        "location": "ទួលគោក ភ្នំពេញ",
+        "startDate": "2021-04",
+        "endDate": "2024-05",
+        "status": "បានបញ្ចប់",
         "description": "បានបញ្ចប់ការសិក្សាថ្នាក់បរិញ្ញាបត្រផ្នែកវិទ្យាសាស្ត្រកុំព្យូទ័រ ដែលរួមមានជំនាញផ្នែកអភិវឌ្ឍន៍កម្មវិធី វេបសាយ និងសរសេរកូដកម្មវិធី។",
         "skills": [
-          "Web Front-end",
-          "Web Back-end",
-          "ការសរសេរកម្មវិធី"
+          "Programming",
+          "Data Structures",
+          "Algorithms",
+          "Machine Learning",
+          "Web Development"
+        ],
+        "grade": "Current: 3.7 GPA",
+        "achievements": [
+          "Dean's List",
+          "Programming Competition Winner"
         ]
       },
       "short_course": {
-        "id": 3,
-        "year": "២០២៤-២០២៥",
-        "title": "មជ្ឈមណ្ឌលសហប្រតិបត្តិការកម្ពុជា-កូរ៉េ (CKCC)",
+        "title": "3D Modeling",
+        "institution": "មជ្ឈមណ្ឌលសហប្រតិបត្តិការកម្ពុជា-កូរ៉េ (CKCC)",
+        "location": "ទួលគោក ភ្នំពេញ",
+        "startDate": "2025-01",
+        "endDate": "2025-05",
+        "status": "បានបញ្ចប់",
         "description": "បានបញ្ចប់ការប្រកបការងារជាInternshipផ្នែកModeling និងចូលរួមសិក្សាជាភាសាកូរ៉េ។ បានទទួលបទពិសោធន៍ជាក់ស្តែងក្នុងការរចនាឌីជីថល និងយល់ដឹងអំពីវប្បធម៌ការងារជនកូរ៉េ។",
         "skills": [
           "Fusion 360",
-          "ម៉ូដែល 3D",
+          "ហាត់ការងារ",
           "ភាសាកូរ៉េ"
+        ],
+        "grade": "វិញ្ញាបនបត្របញ្ជាក់ការហាត់ការងារ",
+        "achievements": [
+          "Best Teamwork"
         ]
       },
       "training_center": {
-        "id": 4,
-        "year": "មេសា ២០២៥",
-        "title": "មជ្ឈមណ្ឌលបណ្តុះបណ្តាលបច្ចេកវិទ្យា ANT",
+        "title": "Full Stack Development Bootcamp",
+        "institution": "មជ្ឈមណ្ឌលបណ្តុះបណ្តាលបច្ចេកវិទ្យា ANT",
+        "location": "ទួលគោក ភ្នំពេញ",
+        "startDate": "2024-01",
+        "endDate": "2025-04",
+        "status": "បានបញ្ចប់",
         "description": "បានអភិវឌ្ឍកម្មវិធីវេបសាយដោយប្រើ Laravel ជាផ្នែកមួយនៃអាហារូបករណ៍ជំនួយដោយក្រសួងប្រៃសណីយ៍និងទូរគមនាគមន៍។ អភិវឌ្ឍជំនាញលើការរួមបញ្ចូលផ្នែកBackend និងបង្កើត API។",
         "skills": [
           "PHP",
           "Laravel",
-          "Vue",
-          "JavaScript",
-          "C++",
+          "Vue.js",
           "UX/UI",
+          "Node.js",
+          "JavaSccript",
+          "C++",
+          "HTML",
+          "CSS",
           "Bootstrap"
+        ],
+        "grade": "វិញ្ញាបនបត្របញ្ជាក់ការបញ្ចប់វគ្គសិក្សា",
+        "achievements": [
+          "Industry Certification",
+          "Cloud Architecture"
         ]
       }
+    },
+    "button": {
+      "btn_show_more": "ច្រើនទៀត",
+      "btn_show_less": "បង្ហាញតិច"
     }
   },
   "contact": {

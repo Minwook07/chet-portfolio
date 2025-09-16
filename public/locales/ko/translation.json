@@ -17,7 +17,10 @@
         "imageAlt": "Chet MITH 프로필 사진"
     },
     "skills": {
-        "title": "기술"
+        "title": "기술",
+        "technology": "과학 기술",
+        "experience": "년쯤",
+        "learning": "공부해요"
     },
     "projects": {
         "title": "프로젝트",

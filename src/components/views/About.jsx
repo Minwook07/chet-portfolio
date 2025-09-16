@@ -3,15 +3,14 @@ import { FaUserGraduate } from 'react-icons/fa6';
 import { GiTrophy } from 'react-icons/gi';
 import { HiAcademicCap } from 'react-icons/hi';
 import { HiRocketLaunch } from 'react-icons/hi2';
-import { MdOutlineTimeline } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 
-export default function EducationalTimeline() {
+export default function EnhancedEducationalTimeline() {
+    const { t } = useTranslation();
     const [activeId, setActiveId] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
-    const { t } = useTranslation();
+    const [hoveredId, setHoveredId] = useState(null);
 
-    // Check viewport size on mount and resize
     useEffect(() => {
         const checkIfMobile = () => {
             setIsMobile(window.innerWidth < 768);
@@ -19,144 +18,224 @@ export default function EducationalTimeline() {
 
         checkIfMobile();
         window.addEventListener('resize', checkIfMobile);
-
-        return () => {
-            window.removeEventListener('resize', checkIfMobile);
-        };
+        return () => window.removeEventListener('resize', checkIfMobile);
     }, []);
 
-    const timelineData = [
-        {
-            key: "high_school",
-            id: 1,
-            icon: <HiAcademicCap fontSize={25} />
-        },
-        {
-            key: "university",
-            id: 2,
-            icon: <FaUserGraduate fontSize={25} />
-        },
-        {
-            key: "short_course",
-            id: 3,
-            icon: <HiRocketLaunch fontSize={25} />
-        },
-        {
-            key: "training_center",
-            id: 4,
-            icon: <GiTrophy fontSize={25} />
-        },
+    const baseTimeline = [
+        { id: 1, key: "high_school", icon: <HiAcademicCap fontSize={18} />, keyStatusKey: "completed" },
+        { id: 2, key: "university", icon: <FaUserGraduate fontSize={18} />, keyStatusKey: "completed" },
+        { id: 3, key: "short_course", icon: <HiRocketLaunch fontSize={18} />, keyStatusKey: "completed" },
+        { id: 4, key: "training_center", icon: <GiTrophy fontSize={18} />, keyStatusKey: "completed" }
     ];
 
-    const handleMouseEnter = (id) => {
-        setActiveId(id);
+    const timelineData = baseTimeline.map(item => ({
+        ...item,
+        title: t(`about.items.${item.key}.title`),
+        institution: t(`about.items.${item.key}.institution`),
+        location: t(`about.items.${item.key}.location`),
+        startDate: t(`about.items.${item.key}.startDate`),
+        endDate: t(`about.items.${item.key}.endDate`),
+        statusKey: item.keyStatusKey, // <-- Keep original key (completed, in-progress, planned)
+        statusText: t(`about.items.${item.key}.status`),
+        description: t(`about.items.${item.key}.description`),
+        skills: t(`about.items.${item.key}.skills`, { returnObjects: true }),
+        grade: t(`about.items.${item.key}.grade`),
+        achievements: t(`about.items.${item.key}.achievements`, { returnObjects: true }),
+    }));
+
+    const getStatusColor = (statusKey) => {
+        switch (statusKey) {
+            case 'completed':
+                return 'text-green-400 bg-green-400/10 border-green-400/20';
+            case 'in-progress':
+                return 'text-blue-400 bg-blue-400/10 border-blue-400/20';
+            case 'planned':
+                return 'text-gray-400 bg-gray-400/10 border-gray-400/20';
+            default:
+                return 'text-gray-400 bg-gray-400/10 border-gray-400/20';
+        }
     };
 
-    const handleMouseLeave = () => {
-        setActiveId(null);
+    const getStatusIcon = (statusKey) => {
+        switch (statusKey) {
+            case 'completed':
+                return '✅';
+            case 'in-progress':
+                return '⏳';
+            case 'planned':
+                return '📅';
+            default:
+                return '📅';
+        }
     };
 
-    const handleClick = (id) => {
-        setActiveId(id === activeId ? null : id);
+    const formatDate = (dateString) => {
+        if (!dateString) return '';
+        const [year, month] = dateString.split('-');
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return `${monthNames[parseInt(month) - 1]} ${year}`;
+    };
+
+    const getDuration = (startDate, endDate) => {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        const diffTime = Math.abs(end - start);
+        const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30));
+        const years = Math.floor(diffMonths / 12);
+        const months = diffMonths % 12;
+
+        if (years > 0) {
+            return months > 0 ? `${years}y ${months}m` : `${years}y`;
+        }
+        return `${months}m`;
     };
 
     return (
-        <section id='about'>
-            {/* <div className="bg-gradient-to-br from-gray-900 to-black min-h-screen p-3 md:p-6 font-sans"> */}
-            <div className="min-h-screen p-3 md:p-6">
-                <div className="max-w-4xl mx-auto p-4 md:p-6 relative">
-                    {/* <div className="absolute inset-0 bg-blue-500 opacity-5 rounded-xl blur-xl"></div> */}
-                    <div className="absolute inset-0 opacity-5 rounded-xl blur-xl z-0"></div>
-                    <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center text-gray-100">
-                        <span className="mr-2 text-2xl"><MdOutlineTimeline color='orange' fontSize={35} /></span> {t('about.title')}
-                    </h2>
+        <div className="min-h-screen p-4 md:p-8">
+            <div className="max-w-5xl mx-auto">
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl mb-6">
+                        <span className="text-3xl">📚</span>
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                        {t('about.title')}
+                    </h1>
+                </div>
 
-                    <div className="relative">
-                        {/* Main timeline line - hidden on small screens, visible on md and up */}
-                        <div className={`${isMobile ? 'hidden' : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-orange-400 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full z-10'}`}></div>
+                {/* Timeline */}
+                <div className="relative">
+                    {/* Timeline line */}
+                    <div className={`${isMobile
+                        ? 'absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 via-amber-500 to-orange-500'
+                        : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 via-amber-500 to-orange-500'}`}>
+                    </div>
 
-                        {/* Vertical line for mobile */}
-                        <div className={`${isMobile ? 'absolute left-4 top-0 bottom-0 w-1 bg-orange-400 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full' : 'hidden'}`}></div>
-
-                        {/* Timeline items */}
-                        <div className="flex flex-col">
-                            {timelineData.map((item, index) => {
-                                const year = t(`about.items.${item.key}.year`);
-                                const title = t(`about.items.${item.key}.title`);
-                                const description = t(`about.items.${item.key}.description`);
-                                const skills = t(`about.items.${item.key}.skills`, { returnObjects: true });
-                                return (
-                                    <div
-                                        key={item.id}
-                                        className={`relative mb-8 md:mb-16 ${isMobile
-                                            ? 'self-start pl-10 pr-2'
-                                            : index % 2 === 0
-                                                ? 'self-start pr-12 text-right md:w-1/2'
-                                                : 'self-end pl-12 md:w-1/2'
-                                            }`}
-                                        onMouseEnter={() => handleMouseEnter(item.id)}
-                                        onMouseLeave={handleMouseLeave}
-                                        onClick={() => handleClick(item.id)}
-                                    >
-                                        {/* Year bubble */}
-                                        <div
-                                            className={`absolute top-0 w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white font-bold z-10 
-                                        ${activeId === item.id ? 'bg-orange-500 scale-110' : 'bg-orange-400 bg-gradient-to-br from-amber-400 to-orange-500'} 
-                                        shadow-lg shadow-orange-500/20 transition-all duration-300 text-sm md:text-base`}
-                                            style={{
-                                                left: isMobile ? '-4px' : null,
-                                                [isMobile ? 'left' : index % 2 === 0 ? 'right' : 'left']: isMobile ? '-4px' : '-6px',
-                                                transform: isMobile ? 'translateX(0)' : 'translateX(50%)'
-                                            }}
-                                        >
-                                            {item.icon}
-                                        </div>
-
-                                        {/* Content box */}
-                                        <div
-                                            className={`p-4 md:p-6 rounded-xl transition-all duration-300 transform backdrop-blur-sm
-                                             ${activeId === item.id
-                                                    ? 'bg-gray-900/70 md:scale-105 shadow-xl shadow-orange-500/10'
-                                                    : 'bg-gray-800/50'} 
-                                            hover:bg-gray-900/70 hover:shadow-xl border border-gray-700 
-                                            ${activeId === item.id ? 'border-orange-500' : 'hover:border-amber-400'} 
-                                            cursor-pointer w-full`}
-                                        >
-                                            <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-orange-400 bg-gradient-to-r from-amber-400 to-orange-500 text-xs px-2 py-0.5 md:py-1 rounded-full text-black font-bold">
-                                                {year}
-                                            </div>
-
-                                            <h3 className="text-lg md:text-xl font-semibold text-white mb-1 md:mb-2 pr-16">{title}</h3>
-                                            <p className="text-sm md:text-base text-gray-300 mb-3 md:mb-4 mt-1 md:mt-2">{description}</p>
-
-                                            <div className="flex flex-wrap gap-1.5 md:gap-2">
-                                                {skills.map((skill, i) => (
-                                                    <span
-                                                        key={i}
-                                                        className="bg-gray-700/80 text-gray-200 hover:bg-orange-500 hover:text-white text-xs px-2 md:px-3 py-0.5 md:py-1 rounded-full transition-colors duration-300"
-                                                    >
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        {/* Connecting line to timeline */}
-                                        <div
-                                            className={`absolute top-4 h-0.5 bg-orange-400 bg-gradient-to-r from-amber-400 to-orange-500
-                                            ${isMobile
-                                                    ? 'left-0 w-10'
-                                                    : index % 2 === 0
-                                                        ? 'right-0 w-6'
-                                                        : 'left-0 w-6'}`}
-                                        ></div>
+                    {/* Timeline items */}
+                    <div className="space-y-12">
+                        {timelineData.map((item, index) => (
+                            <div
+                                key={item.id}
+                                className={`relative ${isMobile
+                                    ? 'ml-16'
+                                    : index % 2 === 0
+                                        ? 'flex'
+                                        : 'flex flex-row-reverse text-right'
+                                    } group`}
+                            >
+                                {/* Timeline node */}
+                                <div className={`absolute ${isMobile
+                                    ? '-left-20 top-6'
+                                    : 'left-1/2 transform -translate-x-1/2 top-6'} 
+                                    w-12 h-12 rounded-full border-4 border-slate-800 flex items-center justify-center z-10 transition-all duration-300 
+                                    ${hoveredId === item.id || activeId === item.id
+                                        ? 'bg-gradient-to-r from-orange-500 to-amber-500 scale-110 shadow-lg shadow-orange-500/30'
+                                        : 'bg-slate-700 hover:bg-slate-600'}`}
+                                    onMouseEnter={() => setHoveredId(item.id)}
+                                    onMouseLeave={() => setHoveredId(null)}
+                                    onClick={() => setActiveId(activeId === item.id ? null : item.id)}
+                                >
+                                    <div className="text-white">
+                                        {item.icon}
                                     </div>
-                                )
-                            })}
-                        </div>
+                                </div>
+
+                                {/* Content card */}
+                                <div className={`${isMobile ? 'w-full' : 'w-5/12'} relative`}>
+                                    <div className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 transition-all duration-300
+                                        ${hoveredId === item.id || activeId === item.id
+                                            ? 'bg-slate-800/80 border-orange-500/30 shadow-xl shadow-orange-500/10 transform scale-[1.02]'
+                                            : 'hover:bg-slate-800/70 hover:border-slate-600/50'}`}>
+
+                                        {/* Status badge */}
+                                        <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-medium mb-4 ${getStatusColor(item.statusKey)}`}>
+                                            {getStatusIcon(item.statusKey)}
+                                            <span className="capitalize">{item.statusText}</span>
+                                        </div>
+
+                                        {/* Header */}
+                                        <div className="mb-4">
+                                            <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                                            <div className="text-slate-400 mb-1">{item.institution}</div>
+                                            <div className="flex items-center gap-4 text-sm text-slate-400">
+                                                <div className="flex items-center gap-1">
+                                                    <span>📍</span>
+                                                    <span>{item.location}</span>
+                                                </div>
+                                                <div className="flex items-center gap-1">
+                                                    <span>📅</span>
+                                                    <span>{formatDate(item.startDate)} - {formatDate(item.endDate)}</span>
+                                                </div>
+                                                <div className="flex items-center gap-1">
+                                                    <span>⏱️</span>
+                                                    <span>{getDuration(item.startDate, item.endDate)}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Description */}
+                                        <p className="text-slate-300 mb-4 leading-relaxed">{item.description}</p>
+
+                                        {/* Grade/Result */}
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <span className="text-amber-400">🏅</span>
+                                            <span className="text-amber-400 font-medium">{item.grade}</span>
+                                        </div>
+
+                                        {/* Expandable content */}
+                                        <div className={`transition-all duration-300 overflow-hidden ${activeId === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                            {/* Achievements */}
+                                            <div className="mb-4">
+                                                <h4 className="text-white font-semibold mb-2">Key Achievements</h4>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {item.achievements.map((achievement, i) => (
+                                                        <span key={i} className="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm">
+                                                            {achievement}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Skills */}
+                                            <div>
+                                                <h4 className="text-white font-semibold mb-2">Skills Acquired</h4>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {item.skills.map((skill, i) => (
+                                                        <span key={i} className="bg-slate-700/80 text-slate-300 hover:bg-orange-500/20 hover:text-orange-300 px-3 py-1.5 rounded-lg text-sm transition-colors duration-200">
+                                                            {skill}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Expand indicator */}
+                                        <div className="flex justify-center mt-4 pt-4 border-t border-slate-700/50">
+                                            <button
+                                                className="text-slate-400 hover:text-orange-400 transition-colors text-sm cursor-pointer"
+                                                onClick={() => setActiveId(activeId === item.id ? null : item.id)}
+                                            >
+                                                {activeId === item.id
+                                                    ? t('about.button.btn_show_less')
+                                                    : t('about.button.btn_show_more')}
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Connecting line */}
+                                    <div className={`absolute top-8 w-8 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500 ${isMobile
+                                        ? '-left-8'
+                                        : index % 2 === 0
+                                            ? '-right-8'
+                                            : '-left-8'}`}>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }

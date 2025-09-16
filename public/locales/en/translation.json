@@ -17,7 +17,10 @@
     "imageAlt": "Chet MITH Profile Picture"
   },
   "skills": {
-    "title": "Skills"
+    "title": "Skills",
+    "technology": "Technologies",
+    "experience": "Years Experience",
+    "learning": "Learning"
   },
   "projects": {
     "title": "Projects",
@@ -43,7 +46,7 @@
       "logistics": {
         "desc": "A mini project that build use html and css to completed."
       },
-      "portfolio":{
+      "portfolio": {
         "desc": "A personal portfolio website built using React.js and Tailwind CSS, featuring multilingual support with language switching between Khmer, English, and Korean."
       }
     },
@@ -58,59 +61,102 @@
     "title": "Educational Journey Timeline",
     "items": {
       "high_school": {
-        "year": "Apr-2025",
         "title": "Hun Sen Khnar High School",
-        "description": "I completed my high school education with a major in Science, earning my Baccalaureate II.",
+        "institution": "Central High School",
+        "location": "TboungKhmum",
+        "startDate": "2014-01",
+        "endDate": "2020-12",
+        "status": "completed",
+        "description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities.",
         "skills": [
-          "Math",
+          "Mathematics",
           "Physics",
           "Chemistry",
+          "Computer Science",
           "Biology"
+        ],
+        "grade": "3.8 GPA",
+        "achievements": [
+          "Honor Roll",
+          "Science Fair Winner",
+          "Student Council"
         ]
       },
       "university": {
-        "id": 2,
-        "year": "May-2024",
-        "title": "Royal University of Phnom Penh",
-        "description": "Graduated with a Bachelor's in Computer Science, where I developed strong skills in software engineering, web development, and data structures.",
+        "title": "Bachelor of Computer Science",
+        "institution": "Royal University of Phnom Penh",
+        "location": "Tuol Kork, PP",
+        "startDate": "2021-04",
+        "endDate": "2024-05",
+        "status": "completed",
+        "description": "Pursuing comprehensive computer science education with specialization in software engineering and AI.",
         "skills": [
-          "Web Front-end",
-          "Web Back-end",
-          "Programming"
+          "Programming",
+          "Data Structures",
+          "Algorithms",
+          "Machine Learning",
+          "Web Development"
+        ],
+        "grade": "Current: 3.7 GPA",
+        "achievements": [
+          "Dean's List",
+          "Programming Competition Winner"
         ]
       },
       "short_course": {
-        "id": 3,
-        "year": "2024-2025",
-        "title": "CKCC - Cambodia-Korea Cooperation Center",
+        "title": "3D Modeling",
+        "institution": "CKCC - Cambodia-Korea Cooperation Center",
+        "location": "Tuol Kork, PP",
+        "startDate": "2025-01",
+        "endDate": "2025-05",
+        "status": "completed",
         "description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture.",
         "skills": [
           "Fusion 360",
-          "3D Modeling",
+          "Internship",
           "Korean Language"
+        ],
+        "grade": "Certificate of Completion",
+        "achievements": [
+          "Best Teamwork"
         ]
       },
       "training_center": {
-        "id": 4,
-        "year": "Apr-2025",
-        "title": "ANT Technology Training Center",
+        "title": "Full Stack Development Bootcamp",
+        "institution": "ANT Technology Training Center",
+        "location": "Tuol Kork, PP",
+        "startDate": "2024-01",
+        "endDate": "2025-04",
+        "status": "completed",
         "description": "Developed a full-stack web application using Laravel as part of a scholarship package supported by the Ministry of Post and Telecommunications. This opportunity strengthened my skills in web development and backend integration.",
         "skills": [
           "PHP",
           "Laravel",
-          "Vue",
-          "JavaScript",
-          "C++",
+          "Vue.js",
           "UX/UI",
+          "Node.js",
+          "JavaSccript",
+          "C++",
+          "HTML",
+          "CSS",
           "Bootstrap"
+        ],
+        "grade": "Certified",
+        "achievements": [
+          "Industry Certification",
+          "Cloud Architecture"
         ]
       }
+    },
+    "button": {
+      "btn_show_more": "Show more",
+      "btn_show_less": "Show less"
     }
   },
   "contact": {
     "title": "Contact",
     "sub_title": "Let's Connect",
-    "text_info": "Fill out the form or reach out through the provided contact details.",    
+    "text_info": "Fill out the form or reach out through the provided contact details.",
     "phone_number": "097 82 72 965",
     "address_town": "Phnom Penh, Cambodia",
     "form_info": {

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaUserGraduate } from 'react-icons/fa6';
 import { GiTrophy } from 'react-icons/gi';
-import { HiAcademicCap } from 'react-icons/hi';
 import { HiRocketLaunch } from 'react-icons/hi2';
-import { useTranslation } from 'react-i18next';
+import { HiAcademicCap, HiCheckCircle, HiClock, HiCalendar, HiLocationMarker } from "react-icons/hi";
 
 export default function EnhancedEducationalTimeline() {
     const { t } = useTranslation();
@@ -58,14 +58,14 @@ export default function EnhancedEducationalTimeline() {
 
     const getStatusIcon = (statusKey) => {
         switch (statusKey) {
-            case 'completed':
-                return '✅';
-            case 'in-progress':
-                return '⏳';
-            case 'planned':
-                return '📅';
+            case "completed":
+                return <HiCheckCircle fontSize={18} className="text-green-500" />;
+            case "in-progress":
+                return <HiClock fontSize={18} className="text-yellow-500" />;
+            case "planned":
+                return <HiCalendar fontSize={18} className="text-blue-500" />;
             default:
-                return '📅';
+                return <HiAcademicCap fontSize={18} className="text-gray-400" />;
         }
     };
 
@@ -160,15 +160,17 @@ export default function EnhancedEducationalTimeline() {
                                             <div className="text-slate-400 mb-1">{item.institution}</div>
                                             <div className="flex items-center gap-4 text-sm text-slate-400">
                                                 <div className="flex items-center gap-1">
-                                                    <span>📍</span>
+                                                    <HiLocationMarker className="text-red-500" fontSize={18} />
                                                     <span>{item.location}</span>
                                                 </div>
+
                                                 <div className="flex items-center gap-1">
-                                                    <span>📅</span>
+                                                    <HiCalendar className="text-blue-500" fontSize={18} />
                                                     <span>{formatDate(item.startDate)} - {formatDate(item.endDate)}</span>
                                                 </div>
+
                                                 <div className="flex items-center gap-1">
-                                                    <span>⏱️</span>
+                                                    <HiClock className="text-yellow-500" fontSize={18} />
                                                     <span>{getDuration(item.startDate, item.endDate)}</span>
                                                 </div>
                                             </div>

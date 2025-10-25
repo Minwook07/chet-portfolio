@@ -6,17 +6,6 @@ export default function Projects() {
     const { t } = useTranslation();
     const [visibleCount, setVisibleCount] = useState(6)
 
-    const animations = [
-        'fade-up',
-        'fade-down',
-        'fade-left',
-        'fade-right',
-        'zoom-in',
-        'zoom-out',
-        'flip-left',
-        'flip-right'
-    ];
-
     const projects = [
         {
             title: "Kassar",
@@ -95,18 +84,11 @@ export default function Projects() {
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {displayedProjects.map((project, index) => {
-                        const animation = animations[index % animations.length];
-                        const delay = 100 * index;
                         const desc = t(`projects.items.${project.key}.desc`);
 
                         return (
                             <div
                                 key={index}
-                                data-aos={animation}
-                                data-aos-offset="200"
-                                data-aos-delay={delay}
-                                data-aos-duration="500"
-                                data-aos-easing="ease-in-out"
                                 className="bg-[#1e1e1e] border border-[#1e1e1e] rounded-xl overflow-hidden transition-all hover:shadow-xl"
                             >
                                 <div className="relative h-48 bg-[#171717]">
@@ -130,7 +112,6 @@ export default function Projects() {
                     })}
                 </div>
 
-                {/* 👇 Conditional Button */}
                 <div className="text-center mt-12">
                     {visibleCount === 6 ? (
                         <button

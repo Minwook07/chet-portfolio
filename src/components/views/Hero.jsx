@@ -9,12 +9,12 @@ export default function Hero() {
                 <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-7/12 text-center md:text-left mb-10 md:mb-0">
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                            {t('hero.greeting')} <span className="text-orange-500">{t('hero.name')}</span>
+                            {t('hero.greeting')} <span className="text-[#7e22ce]">{t('hero.name')}</span>
                         </h1>
                         <p className="text-xl opacity-90 mb-6">{t('hero.title')}</p>
-                        <p className="text-xxl mb-6 flex items-center text-orange-500">
+                        <p className="text-xxl mb-6 flex items-center text-[#7e22ce]">
                             {/* Modern Animated Dot */}
-                            <div className="relative w-4 h-4 mr-3 text-orange-500 transform">
+                            <div className="relative w-4 h-4 mr-3 text-[#7e22ce] transform">
                                 {/* Thin Outline Ring */}
                                 <svg
                                     className="absolute inset-0 w-full h-full slow-pulse"
@@ -43,12 +43,12 @@ export default function Hero() {
 
                         <p className="text-lg opacity-80 mb-6">{t('hero.description')}</p>
                         <p className="text-lg italic opacity-80 mb-8">{t('hero.quote')}</p>
-                        <a href="/pdf/Mith Chet-CV.pdf" className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-full font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                        <a href="/pdf/Mith Chet-CV.pdf" className="inline-flex items-center bg-[#7e22ce] hover:bg-[#db2777] text-white py-3 px-6 rounded-full font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
                             <span className="mr-2">↓</span> {t('hero.downloadCV')}
                         </a>
                     </div>
                     <div className="md:w-5/12 flex justify-center">
-                        <div className="w-60 h-75 relative rounded-2xl border-4 border-orange-500 overflow-hidden shadow-xl animate-float">
+                        <div className="w-60 h-75 relative rounded-2xl border-4 border-[#7e22ce] overflow-hidden shadow-xl animate-float">
                             <div className="w-full h-full bg-gray-400 flex items-center justify-center text-gray-600">
                                 <img src="images/DSC03885.JPG" alt={t('hero.imageAlt')} />
                             </div>

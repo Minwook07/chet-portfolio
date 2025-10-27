@@ -35,7 +35,7 @@ export default function EnhancedEducationalTimeline() {
         location: t(`about.items.${item.key}.location`),
         startDate: t(`about.items.${item.key}.startDate`),
         endDate: t(`about.items.${item.key}.endDate`),
-        statusKey: item.keyStatusKey, // <-- Keep original key (completed, in-progress, planned)
+        statusKey: item.keyStatusKey,
         statusText: t(`about.items.${item.key}.status`),
         description: t(`about.items.${item.key}.description`),
         skills: t(`about.items.${item.key}.skills`, { returnObjects: true }),
@@ -61,7 +61,7 @@ export default function EnhancedEducationalTimeline() {
             case "completed":
                 return <HiCheckCircle fontSize={18} className="text-green-500" />;
             case "in-progress":
-                return <HiClock fontSize={18} className="text-yellow-500" />;
+                return <HiClock fontSize={18} className="text-[#db2777]" />;
             case "planned":
                 return <HiCalendar fontSize={18} className="text-blue-500" />;
             default:
@@ -96,7 +96,7 @@ export default function EnhancedEducationalTimeline() {
             <div className="max-w-5xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500 bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl mb-6">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-[#7e22ce] bg-gradient-to-r from-[#7e22ce] to-[#db2777] rounded-2xl mb-6">
                         <span className="text-3xl">📚</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -108,8 +108,8 @@ export default function EnhancedEducationalTimeline() {
                 <div className="relative">
                     {/* Timeline line */}
                     <div className={`${isMobile
-                        ? 'absolute left-8 top-0 bottom-0 w-0.5 bg-orange-500 bg-gradient-to-b from-orange-500 via-amber-500 to-orange-500'
-                        : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-orange-500 bg-gradient-to-b from-orange-500 via-amber-500 to-orange-500'}`}>
+                        ? 'absolute left-8 top-0 bottom-0 w-0.5 bg-[#7e22ce] bg-gradient-to-b from-[#7e22ce] via-[#db2777] to-[#7e22ce]'
+                        : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-[#7e22ce] bg-gradient-to-b from-[#7e22ce] via-[#db2777] to-[#7e22ce]'}`}>
                     </div>
 
                     {/* Timeline items */}
@@ -130,7 +130,7 @@ export default function EnhancedEducationalTimeline() {
                                     : 'left-1/2 transform -translate-x-1/2 top-6'} 
                                     w-12 h-12 rounded-full border-4 border-slate-800 flex items-center justify-center z-10 transition-all duration-300 
                                     ${hoveredId === item.id || activeId === item.id
-                                        ? 'bg-orange-500 bg-gradient-to-r from-orange-500 to-amber-500 scale-110 shadow-lg shadow-orange-500/30'
+                                        ? 'bg-[#7e22ce] bg-gradient-to-r from-[#7e22ce] to-[#db2777] scale-110 shadow-lg shadow-[#7e22ce]/30'
                                         : 'bg-slate-700 hover:bg-slate-600'}`}
                                     onMouseEnter={() => setHoveredId(item.id)}
                                     onMouseLeave={() => setHoveredId(null)}
@@ -145,7 +145,7 @@ export default function EnhancedEducationalTimeline() {
                                 <div className={`${isMobile ? 'w-full' : 'w-5/12'} relative`}>
                                     <div className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 transition-all duration-300
                                         ${hoveredId === item.id || activeId === item.id
-                                            ? 'bg-slate-800/80 border-orange-500/30 shadow-xl shadow-orange-500/10 transform scale-[1.02]'
+                                            ? 'bg-slate-800/80 border-[#7e22ce]/30 shadow-xl shadow-[#7e22ce]/10 transform scale-[1.02]'
                                             : 'hover:bg-slate-800/70 hover:border-slate-600/50'}`}>
 
                                         {/* Status badge */}
@@ -170,7 +170,7 @@ export default function EnhancedEducationalTimeline() {
                                                 </div>
 
                                                 <div className="flex items-center gap-1">
-                                                    <HiClock className="text-yellow-500" fontSize={18} />
+                                                    <HiClock className="text-[#db2777]" fontSize={18} />
                                                     <span>{getDuration(item.startDate, item.endDate)}</span>
                                                 </div>
                                             </div>
@@ -181,8 +181,8 @@ export default function EnhancedEducationalTimeline() {
 
                                         {/* Grade/Result */}
                                         <div className="flex items-center gap-2 mb-4">
-                                            <span className="text-amber-400">🏅</span>
-                                            <span className="text-amber-400 font-medium">{item.grade}</span>
+                                            <span className="text-[#db2777]">🏅</span>
+                                            <span className="text-[#db2777] font-medium">{item.grade}</span>
                                         </div>
 
                                         {/* Expandable content */}
@@ -204,7 +204,7 @@ export default function EnhancedEducationalTimeline() {
                                                 <h4 className="text-white font-semibold mb-2">Skills Acquired</h4>
                                                 <div className="flex flex-wrap gap-2">
                                                     {item.skills.map((skill, i) => (
-                                                        <span key={i} className="bg-slate-700/80 text-slate-300 hover:bg-orange-500/20 hover:text-orange-300 px-3 py-1.5 rounded-lg text-sm transition-colors duration-200">
+                                                        <span key={i} className="bg-slate-700/80 text-slate-300 hover:bg-[#7e22ce]/20 hover:text-[#db2777] px-3 py-1.5 rounded-lg text-sm transition-colors duration-200">
                                                             {skill}
                                                         </span>
                                                     ))}
@@ -215,7 +215,7 @@ export default function EnhancedEducationalTimeline() {
                                         {/* Expand indicator */}
                                         <div className="flex justify-center mt-4 pt-4 border-t border-slate-700/50">
                                             <button
-                                                className="text-slate-400 hover:text-orange-400 transition-colors text-sm cursor-pointer"
+                                                className="text-slate-400 hover:text-[#db2777] transition-colors text-sm cursor-pointer"
                                                 onClick={() => setActiveId(activeId === item.id ? null : item.id)}
                                             >
                                                 {activeId === item.id
@@ -226,7 +226,7 @@ export default function EnhancedEducationalTimeline() {
                                     </div>
 
                                     {/* Connecting line */}
-                                    <div className={`absolute top-8 w-8 h-0.5 bg-orange-500 bg-gradient-to-r from-orange-500 to-amber-500 ${isMobile
+                                    <div className={`absolute top-8 w-8 h-0.5 bg-[#7e22ce] bg-gradient-to-r from-[#7e22ce] to-[#db2777] ${isMobile
                                         ? '-left-8'
                                         : index % 2 === 0
                                             ? '-right-8'

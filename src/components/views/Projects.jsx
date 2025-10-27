@@ -79,7 +79,7 @@ export default function Projects() {
         <section id="projects" className="py-20">
             <div className="container mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center mb-16 flex items-center justify-center">
-                    <span className="mr-2 text-2xl"><GoFileDirectory color='orange' fontSize={35} /></span> {t('projects.title')}
+                    <span className="mr-2 text-2xl"><GoFileDirectory color='#7e22ce' fontSize={35} /></span> {t('projects.title')}
                 </h2>
 
                 <div className="grid md:grid-cols-3 gap-8">
@@ -99,7 +99,7 @@ export default function Projects() {
                                     </div>
                                 </div>
                                 <div className="p-6">
-                                    <h3 className="text-xl font-semibold text-orange-500 mb-2">{project.title}</h3>
+                                    <h3 className="text-xl font-semibold text-[#7e22ce] mb-2">{project.title}</h3>
                                     <p className="text-gray-300 mb-4">{desc}</p>
                                     <div className="flex flex-wrap gap-2">
                                         {project.tech.map((tech, i) => (
@@ -116,14 +116,14 @@ export default function Projects() {
                     {visibleCount === 6 ? (
                         <button
                             onClick={() => setVisibleCount(8)} // Show all
-                            className="px-6 py-3 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white transition-colors cursor-pointer"
+                            className="px-6 py-3 border border-[#7e22ce] text-[#7e22ce] rounded-lg hover:bg-[#7e22ce] hover:text-white transition-colors cursor-pointer"
                         >
                             {t('projects.button.btn_see_more')}
                         </button>
                     ) : (
                         <button
                             onClick={() => setVisibleCount(6)} // Show less
-                            className="px-6 py-3 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white transition-colors cursor-pointer"
+                            className="px-6 py-3 border border-[#7e22ce] text-[#7e22ce] rounded-lg hover:bg-[#7e22ce] hover:text-white transition-colors cursor-pointer"
                         >
                             {t('projects.button.btn_show_less')}
                         </button>

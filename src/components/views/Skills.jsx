@@ -37,7 +37,7 @@ export default function Skills() {
         <div className="bg-opacity-10 p-8 rounded-xl mb-10" style={{ backgroundColor: "#1E1E1E" }}>
           <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center text-gray-100">
             <span className="mr-2 text-2xl">
-              <BsTools color="orange" fontSize={35} />
+              <BsTools color="#7e22ce" fontSize={35} />
             </span>{" "}
             {t("skills.title")}
           </h2>

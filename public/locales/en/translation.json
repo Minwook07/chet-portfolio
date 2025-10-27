@@ -1,174 +1,174 @@
 {
-  "menu": {
-    "home": "Home",
-    "skills": "Skills",
-    "projects": "Projects",
-    "about": "About",
-    "contact": "Contact"
-  },
-  "hero": {
-    "greeting": "Hello, I'm",
-    "name": "Chet MITH.",
-    "title": "Full-Stack Web Developer | Computer Science Major",
-    "sub_title": "Internship in Laravel",
-    "description": "I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies. Whether it's designing responsive user interfaces or building scalable APIs, I strive to craft web experiences that are not only functional but meaningful. I believe in continuous learning, collaboration, and building solutions that make an impact.",
-    "quote": "I'm not here just to code — I'm here to grow together.",
-    "downloadCV": "Download CV",
-    "imageAlt": "Chet MITH Profile Picture"
-  },
-  "skills": {
-    "title": "Skills",
-    "technology": "Technologies",
-    "experience": "Years Experience",
-    "learning": "Learning"
-  },
-  "projects": {
-    "title": "Projects",
-    "items": {
-      "ecommerce": {
-        "desc": "A fully functional e-commerce website with product listings, cart functionality, and payment integration."
-      },
-      "study_home": {
-        "desc": "A mini project that build use html and css to completed."
-      },
-      "yummy": {
-        "desc": "An e-commerce website that use with restful api with real-time updates and team functionality."
-      },
-      "online_shop": {
-        "desc": "An e-commerce website that use with restful api with real-time updates and team functionality."
-      },
-      "express_bus": {
-        "desc": "A responsive logistics website showcasing transportation and rent bus for a trip or buy an product."
-      },
-      "movies": {
-        "desc": "A mini project that build use html and css to completed."
-      },
-      "logistics": {
-        "desc": "A mini project that build use html and css to completed."
-      },
-      "portfolio": {
-        "desc": "A personal portfolio website built using React.js and Tailwind CSS, featuring multilingual support with language switching between Khmer, English, and Korean."
-      }
-    },
-    "button": {
-      "btn_demo": "Demo",
-      "btn_code": "Code",
-      "btn_see_more": "See More Projects",
-      "btn_show_less": "Show Less"
-    }
-  },
-  "about": {
-    "title": "Educational Journey Timeline",
-    "items": {
-      "high_school": {
-        "title": "Hun Sen Khnar High School",
-        "institution": "Central High School",
-        "location": "TboungKhmum",
-        "startDate": "2014-01",
-        "endDate": "2020-12",
-        "status": "completed",
-        "description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities.",
-        "skills": [
-          "Mathematics",
-          "Physics",
-          "Chemistry",
-          "Computer Science",
-          "Biology"
-        ],
-        "grade": "3.8 GPA",
-        "achievements": [
-          "Honor Roll",
-          "Science Fair Winner",
-          "Student Council"
-        ]
-      },
-      "university": {
-        "title": "Bachelor of Computer Science",
-        "institution": "Royal University of Phnom Penh",
-        "location": "Tuol Kork, PP",
-        "startDate": "2021-04",
-        "endDate": "2024-05",
-        "status": "completed",
-        "description": "Pursuing comprehensive computer science education with specialization in software engineering and AI.",
-        "skills": [
-          "Programming",
-          "Data Structures",
-          "Algorithms",
-          "Machine Learning",
-          "Web Development"
-        ],
-        "grade": "Current: 3.7 GPA",
-        "achievements": [
-          "Dean's List",
-          "Programming Competition Winner"
-        ]
-      },
-      "short_course": {
-        "title": "3D Modeling",
-        "institution": "CKCC - Cambodia-Korea Cooperation Center",
-        "location": "Tuol Kork, PP",
-        "startDate": "2025-01",
-        "endDate": "2025-05",
-        "status": "completed",
-        "description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture.",
-        "skills": [
-          "Fusion 360",
-          "Internship",
-          "Korean Language"
-        ],
-        "grade": "Certificate of Completion",
-        "achievements": [
-          "Best Teamwork"
-        ]
-      },
-      "training_center": {
-        "title": "Full Stack Development Bootcamp",
-        "institution": "ANT Technology Training Center",
-        "location": "Tuol Kork, PP",
-        "startDate": "2024-01",
-        "endDate": "2025-04",
-        "status": "completed",
-        "description": "Developed a full-stack web application using Laravel as part of a scholarship package supported by the Ministry of Post and Telecommunications. This opportunity strengthened my skills in web development and backend integration.",
-        "skills": [
-          "PHP",
-          "Laravel",
-          "Vue.js",
-          "UX/UI",
-          "Node.js",
-          "JavaSccript",
-          "C++",
-          "HTML",
-          "CSS",
-          "Bootstrap"
-        ],
-        "grade": "Certified",
-        "achievements": [
-          "Industry Certification",
-          "Cloud Architecture"
-        ]
-      }
-    },
-    "button": {
-      "btn_show_more": "Show more",
-      "btn_show_less": "Show less"
-    }
-  },
-  "contact": {
-    "title": "Contact",
-    "sub_title": "Let's Connect",
-    "text_info": "Fill out the form or reach out through the provided contact details.",
-    "phone_number": "097 82 72 965",
-    "address_town": "Phnom Penh, Cambodia",
-    "form_info": {
-      "name": "Name",
-      "email": "Email",
-      "subject": "Subject",
-      "message": "Message",
-      "btn_submit": "Send Message",
-      "place_holder": {
-        "place_holder_name": "Your name",
-        "place_holder_message": "Your message here..."
-      }
-    }
-  }
+	"menu": {
+		"home": "Home",
+		"skills": "Skills",
+		"projects": "Projects",
+		"about": "About",
+		"contact": "Contact"
+	},
+	"hero": {
+		"greeting": "Hello, I'm",
+		"name": "Chet MITH.",
+		"title": "Full-Stack Web Developer | Computer Science Major",
+		"sub_title": "Internship in Laravel",
+		"description": "I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies. Whether it's designing responsive user interfaces or building scalable APIs, I strive to craft web experiences that are not only functional but meaningful. I believe in continuous learning, collaboration, and building solutions that make an impact.",
+		"quote": "I'm not here just to code — I'm here to grow together.",
+		"downloadCV": "Download CV",
+		"imageAlt": "Chet MITH Profile Picture"
+	},
+	"skills": {
+		"title": "Skills",
+		"technology": "Technologies",
+		"experience": "Years Experience",
+		"learning": "Learning"
+	},
+	"projects": {
+		"title": "Projects",
+		"items": {
+			"ecommerce": {
+				"desc": "A fully functional e-commerce website with product listings, cart functionality, and payment integration."
+			},
+			"study_home": {
+				"desc": "A mini project that build use html and css to completed."
+			},
+			"yummy": {
+				"desc": "An e-commerce website that use with restful api with real-time updates and team functionality."
+			},
+			"online_shop": {
+				"desc": "An e-commerce website that use with restful api with real-time updates and team functionality."
+			},
+			"express_bus": {
+				"desc": "A responsive logistics website showcasing transportation and rent bus for a trip or buy an product."
+			},
+			"movies": {
+				"desc": "A mini project that build use html and css to completed."
+			},
+			"logistics": {
+				"desc": "A mini project that build use html and css to completed."
+			},
+			"portfolio": {
+				"desc": "A personal portfolio website built using React.js and Tailwind CSS, featuring multilingual support with language switching between Khmer, English, and Korean."
+			}
+		},
+		"button": {
+			"btn_demo": "Demo",
+			"btn_code": "Code",
+			"btn_see_more": "See More Projects",
+			"btn_show_less": "Show Less"
+		}
+	},
+	"about": {
+		"title": "Educational Journey Timeline",
+		"items": {
+			"high_school": {
+				"title": "Hun Sen Khnar High School",
+				"institution": "Central High School",
+				"location": "TboungKhmum",
+				"startDate": "2014-01",
+				"endDate": "2020-12",
+				"status": "completed",
+				"description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities.",
+				"skills": [
+					"Mathematics",
+					"Physics",
+					"Chemistry",
+					"Computer Science",
+					"Biology"
+				],
+				"grade": "",
+				"achievements": [
+					"Honor Roll",
+					"Science Fair Winner",
+					"Student Council"
+				]
+			},
+			"university": {
+				"title": "Bachelor of Computer Science",
+				"institution": "Royal University of Phnom Penh",
+				"location": "Tuol Kork, PP",
+				"startDate": "2021-04",
+				"endDate": "2024-05",
+				"status": "completed",
+				"description": "Pursuing comprehensive computer science education with specialization in software engineering and AI.",
+				"skills": [
+					"Programming",
+					"Data Structures",
+					"Algorithms",
+					"Machine Learning",
+					"Web Development"
+				],
+				"grade": "Current: 3.7 GPA",
+				"achievements": [
+					"Dean's List",
+					"Programming Competition Winner"
+				]
+			},
+			"short_course": {
+				"title": "3D Modeling",
+				"institution": "CKCC - Cambodia-Korea Cooperation Center",
+				"location": "Tuol Kork, PP",
+				"startDate": "2025-01",
+				"endDate": "2025-05",
+				"status": "completed",
+				"description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture.",
+				"skills": [
+					"Fusion 360",
+					"Internship",
+					"Korean Language"
+				],
+				"grade": "Certificate of Completion",
+				"achievements": [
+					"Best Teamwork"
+				]
+			},
+			"training_center": {
+				"title": "Full Stack Development Bootcamp",
+				"institution": "ANT Technology Training Center",
+				"location": "Tuol Kork, PP",
+				"startDate": "2024-01",
+				"endDate": "2025-04",
+				"status": "completed",
+				"description": "Developed a full-stack web application using Laravel as part of a scholarship package supported by the Ministry of Post and Telecommunications. This opportunity strengthened my skills in web development and backend integration.",
+				"skills": [
+					"PHP",
+					"Laravel",
+					"Vue.js",
+					"UX/UI",
+					"Node.js",
+					"JavaSccript",
+					"C++",
+					"HTML",
+					"CSS",
+					"Bootstrap"
+				],
+				"grade": "Certified",
+				"achievements": [
+					"Industry Certification",
+					"Cloud Architecture"
+				]
+			}
+		},
+		"button": {
+			"btn_show_more": "Show more",
+			"btn_show_less": "Show less"
+		}
+	},
+	"contact": {
+		"title": "Contact",
+		"sub_title": "Let's Connect",
+		"text_info": "Fill out the form or reach out through the provided contact details.",
+		"phone_number": "097 82 72 965",
+		"address_town": "Phnom Penh, Cambodia",
+		"form_info": {
+			"name": "Name",
+			"email": "Email",
+			"subject": "Subject",
+			"message": "Message",
+			"btn_submit": "Send Message",
+			"place_holder": {
+				"place_holder_name": "Your name",
+				"place_holder_message": "Your message here..."
+			}
+		}
+	}
 }

@@ -110,7 +110,7 @@ export default function Navbar() {
                         <li key={item}>
                             <a
                                 href={`#${item}`}
-                                className={`relative py-2 block md:inline-block font-medium transition-colors ${active === item ? 'text-orange-500 after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-orange-500' : 'hover:text-orange-500'}`}
+                                className={`relative py-2 block md:inline-block font-medium transition-colors ${active === item ? 'text-[#7e22ce] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#7e22ce]' : 'hover:text-[#7e22ce]'}`}
                                 onClick={() => setOpen(false)}
                             >
                                 {t(`menu.${item}`)}

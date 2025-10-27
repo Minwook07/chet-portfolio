@@ -9,17 +9,17 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-6 md:mb-0">
                         <div className="flex items-center justify-center md:justify-start mb-3">
-                            <div className="bg-orange-500 text-gray-900 w-10 h-10 flex items-center justify-center rounded-lg font-bold text-xl mr-2">C</div>
+                            <div className="bg-[#7e22ce] text-gray-900 w-10 h-10 flex items-center justify-center rounded-lg font-bold text-xl mr-2">C</div>
                             <span className="font-bold text-xl">MITH Chet</span>
                         </div>
                         <p className="text-gray-400 text-center md:text-left">Full Stack Web Developer</p>
                     </div>
                     <div>
                         <div className="flex justify-center mb-4">
-                            <a href="#about" className="mx-3 hover:text-orange-500">{t('menu.about')}</a>
-                            <a href="#skills" className="mx-3 hover:text-orange-500">{t('menu.skills')}</a>
-                            <a href="#projects" className="mx-3 hover:text-orange-500">{t('menu.projects')}</a>
-                            <a href="#contacts" className="mx-3 hover:text-orange-500">{t('menu.contact')}</a>
+                            <a href="#about" className="mx-3 hover:text-[#7e22ce]">{t('menu.about')}</a>
+                            <a href="#skills" className="mx-3 hover:text-[#7e22ce]">{t('menu.skills')}</a>
+                            <a href="#projects" className="mx-3 hover:text-[#7e22ce]">{t('menu.projects')}</a>
+                            <a href="#contacts" className="mx-3 hover:text-[#7e22ce]">{t('menu.contact')}</a>
                         </div>
                         <p className="text-gray-400 text-sm text-center">© 2025 - {new Date().getFullYear()} MITH Chet. All rights reserved.</p>
                     </div>

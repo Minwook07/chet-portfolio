@@ -10,7 +10,7 @@
 		"greeting": "Hello, I'm",
 		"name": "Chet MITH.",
 		"title": "Full-Stack Web Developer | Computer Science Major",
-		"sub_title": "Internship in Laravel",
+		"sub_title": "Back-end developer with Laravel",
 		"description": "I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies. Whether it's designing responsive user interfaces or building scalable APIs, I strive to craft web experiences that are not only functional but meaningful. I believe in continuous learning, collaboration, and building solutions that make an impact.",
 		"quote": "I'm not here just to code — I'm here to grow together.",
 		"downloadCV": "Download CV",
@@ -61,8 +61,8 @@
 		"title": "Educational Journey Timeline",
 		"items": {
 			"high_school": {
-				"title": "Hun Sen Khnar High School",
-				"institution": "Central High School",
+				"title": "BaccII",
+				"institution": "Hun Sen Khnar High School",
 				"location": "TboungKhmum",
 				"startDate": "2014-01",
 				"endDate": "2020-12",
@@ -143,8 +143,7 @@
 				],
 				"grade": "Certified",
 				"achievements": [
-					"Industry Certification",
-					"Cloud Architecture"
+					"Best Presentation Laravel"
 				]
 			}
 		},

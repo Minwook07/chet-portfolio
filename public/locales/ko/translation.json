@@ -59,6 +59,8 @@
     },
     "about": {
         "title": "교육 여정 타임라인",
+        "title_skill": "습득한 기술",
+        "title_achievement": "주요 성과",
         "items": {
             "high_school": {
                 "title": "훈센 크나르 고등학교",

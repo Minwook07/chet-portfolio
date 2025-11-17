@@ -59,6 +59,8 @@
 	},
 	"about": {
 		"title": "Educational Journey Timeline",
+		"title_skill": "Skills Acquired",
+		"title_achievement": "Key Achievements",
 		"items": {
 			"high_school": {
 				"title": "BaccII",

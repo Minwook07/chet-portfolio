@@ -28,20 +28,31 @@ export default function EnhancedEducationalTimeline() {
         { id: 4, key: "training_center", icon: <GiTrophy fontSize={18} />, keyStatusKey: "completed" }
     ];
 
-    const timelineData = baseTimeline.map(item => ({
-        ...item,
-        title: t(`about.items.${item.key}.title`),
-        institution: t(`about.items.${item.key}.institution`),
-        location: t(`about.items.${item.key}.location`),
-        startDate: t(`about.items.${item.key}.startDate`),
-        endDate: t(`about.items.${item.key}.endDate`),
-        statusKey: item.keyStatusKey,
-        statusText: t(`about.items.${item.key}.status`),
-        description: t(`about.items.${item.key}.description`),
-        skills: t(`about.items.${item.key}.skills`, { returnObjects: true }),
-        grade: t(`about.items.${item.key}.grade`),
-        achievements: t(`about.items.${item.key}.achievements`, { returnObjects: true }),
-    }));
+    const DEFAULTS = {
+        title_skill: t('about.title_skill', { defaultValue: "Skills Acquired" }),
+        title_achievement: t('about.title_achievement', { defaultValue: "Key Achievements" }),
+    };
+
+    const timelineData = baseTimeline.map(item => {
+        const data = t(`about.items.${item.key}`, { returnObjects: true });
+
+        return {
+            ...item,
+            title: data.title,
+            institution: data.institution,
+            location: data.location,
+            startDate: data.startDate,
+            endDate: data.endDate,
+            statusKey: item.keyStatusKey,
+            statusText: data.status,
+            description: data.description,
+            skills: data.skills || [],
+            grade: data.grade || '',
+            achievements: data.achievements || [],
+            title_skill: data.title_skill || DEFAULTS.title_skill,
+            title_achievement: data.title_achievement || DEFAULTS.title_achievement,
+        };
+    });
 
     const getStatusColor = (statusKey) => {
         switch (statusKey) {
@@ -189,7 +200,7 @@ export default function EnhancedEducationalTimeline() {
                                         <div className={`transition-all duration-300 overflow-hidden ${activeId === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                                             {/* Achievements */}
                                             <div className="mb-4">
-                                                <h4 className="text-white font-semibold mb-2">Key Achievements</h4>
+                                                <h4 className="text-white font-semibold mb-2">{item.title_achievement}</h4>
                                                 <div className="flex flex-wrap gap-2">
                                                     {item.achievements.map((achievement, i) => (
                                                         <span key={i} className="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm">
@@ -201,7 +212,7 @@ export default function EnhancedEducationalTimeline() {
 
                                             {/* Skills */}
                                             <div>
-                                                <h4 className="text-white font-semibold mb-2">Skills Acquired</h4>
+                                                <h4 className="text-white font-semibold mb-2">{item.title_skill}</h4>
                                                 <div className="flex flex-wrap gap-2">
                                                     {item.skills.map((skill, i) => (
                                                         <span key={i} className="bg-slate-700/80 text-slate-300 hover:bg-[#7e22ce]/20 hover:text-[#db2777] px-3 py-1.5 rounded-lg text-sm transition-colors duration-200">

@@ -59,6 +59,8 @@
 	},
 	"about": {
 		"title": "ប្រវត្តិការសិក្សា",
+		"title_skill": "ជំនាញដែលទទួលបាន",
+		"title_achievement": "សមិទ្ធផល",
 		"items": {
 			"high_school": {
 				"title": "សញ្ញាបត្របាក់ឌុប",

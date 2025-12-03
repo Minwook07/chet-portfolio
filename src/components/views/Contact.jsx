@@ -65,7 +65,7 @@ export default function Contact() {
                             <p className="text-gray-300 mb-8">
                                 {t('contact.text_info')}
                             </p>
-                            
+
                             <div className="flex items-center mb-4">
                                 <div className="text-[#7e22ce] mr-4">
                                     <svg
@@ -117,7 +117,7 @@ export default function Contact() {
                             <a
                                 href="https://www.linkedin.com/in/mith-chet-ab56b5295/"
                                 target="_blank"
-                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] transition-colors"
+                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#0A66C2] transition-colors"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -139,13 +139,13 @@ export default function Contact() {
                                 href="https://t.me/min7wook_lee"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] transition-colors"
+                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#0088cc] transition-colors"
                             >
                                 <RiTelegram2Line fontSize={23} />
                             </a>
                             <a
                                 href="#"
-                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] transition-colors"
+                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-gradient-to-r from-pink-500 via-yellow-400 to-purple-500 transition-colors"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

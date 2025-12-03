@@ -28,16 +28,12 @@ export default function EnhancedEducationalTimeline() {
         { id: 4, key: "training_center", icon: <GiTrophy fontSize={18} />, keyStatusKey: "completed" }
     ];
 
-    const DEFAULTS = {
-        title_skill: t('about.title_skill', { defaultValue: "Skills Acquired" }),
-        title_achievement: t('about.title_achievement', { defaultValue: "Key Achievements" }),
-    };
-
     const timelineData = baseTimeline.map(item => {
         const data = t(`about.items.${item.key}`, { returnObjects: true });
 
         return {
             ...item,
+            batch: data.batch,
             title: data.title,
             institution: data.institution,
             location: data.location,
@@ -46,11 +42,6 @@ export default function EnhancedEducationalTimeline() {
             statusKey: item.keyStatusKey,
             statusText: data.status,
             description: data.description,
-            skills: data.skills || [],
-            grade: data.grade || '',
-            achievements: data.achievements || [],
-            title_skill: data.title_skill || DEFAULTS.title_skill,
-            title_achievement: data.title_achievement || DEFAULTS.title_achievement,
         };
     });
 
@@ -88,24 +79,9 @@ export default function EnhancedEducationalTimeline() {
         return `${monthNames[parseInt(month) - 1]} ${year}`;
     };
 
-    const getDuration = (startDate, endDate) => {
-        const start = new Date(startDate);
-        const end = new Date(endDate);
-        const diffTime = Math.abs(end - start);
-        const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30));
-        const years = Math.floor(diffMonths / 12);
-        const months = diffMonths % 12;
-
-        if (years > 0) {
-            return months > 0 ? `${years}y ${months}m` : `${years}y`;
-        }
-        return `${months}m`;
-    };
-
     return (
         <div className="min-h-screen p-4 md:p-8">
             <div className="max-w-5xl mx-auto">
-                {/* Header */}
                 <div className="text-center mb-16">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-[#7e22ce] bg-gradient-to-r from-[#7e22ce] to-[#db2777] rounded-2xl mb-6">
                         <span className="text-3xl">📚</span>
@@ -115,15 +91,12 @@ export default function EnhancedEducationalTimeline() {
                     </h1>
                 </div>
 
-                {/* Timeline */}
                 <div className="relative">
-                    {/* Timeline line */}
                     <div className={`${isMobile
                         ? 'absolute left-8 top-0 bottom-0 w-0.5 bg-[#7e22ce] bg-gradient-to-b from-[#7e22ce] via-[#db2777] to-[#7e22ce]'
                         : 'absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-[#7e22ce] bg-gradient-to-b from-[#7e22ce] via-[#db2777] to-[#7e22ce]'}`}>
                     </div>
 
-                    {/* Timeline items */}
                     <div className="space-y-12">
                         {timelineData.map((item, index) => (
                             <div
@@ -131,11 +104,10 @@ export default function EnhancedEducationalTimeline() {
                                 className={`relative ${isMobile
                                     ? 'ml-16'
                                     : index % 2 === 0
-                                        ? 'flex'
-                                        : 'flex flex-row-reverse text-right'
+                                        ? 'flex text-right'
+                                        : 'flex flex-row-reverse text-left'
                                     } group`}
                             >
-                                {/* Timeline node */}
                                 <div className={`absolute ${isMobile
                                     ? '-left-20 top-6'
                                     : 'left-1/2 transform -translate-x-1/2 top-6'} 
@@ -152,87 +124,41 @@ export default function EnhancedEducationalTimeline() {
                                     </div>
                                 </div>
 
-                                {/* Content card */}
                                 <div className={`${isMobile ? 'w-full' : 'w-5/12'} relative`}>
                                     <div className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 transition-all duration-300
                                         ${hoveredId === item.id || activeId === item.id
                                             ? 'bg-slate-800/80 border-[#7e22ce]/30 shadow-xl shadow-[#7e22ce]/10 transform scale-[1.02]'
                                             : 'hover:bg-slate-800/70 hover:border-slate-600/50'}`}>
 
-                                        {/* Status badge */}
                                         <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-medium mb-4 ${getStatusColor(item.statusKey)}`}>
                                             {getStatusIcon(item.statusKey)}
                                             <span className="capitalize">{item.statusText}</span>
                                         </div>
 
-                                        {/* Header */}
                                         <div className="mb-4">
-                                            <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                            <div className="text-slate-400 mb-1">{item.institution}</div>
-                                            <div className="flex items-center gap-4 text-sm text-slate-400">
-                                                <div className="flex items-center gap-1">
+                                            <div className="text-purple-400 font-semibold mb-1 text-sm">
+                                                {t('about.batch')} {item.batch}
+                                            </div>
+                                            <h3 className={`text-xl font-bold text-white mb-2 ${!isMobile && index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                                                {item.title}
+                                            </h3>
+                                            <div className={`text-slate-400 mb-1 ${!isMobile && index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                                                {item.institution}
+                                            </div>
+                                            <div className={`flex flex-col lg:flex-row lg:items-center gap-1 md:gap-4 text-sm text-slate-400
+                                                            ${!isMobile && index % 2 === 0 ? 'lg:flex-row-reverse lg:justify-start' : 'lg:justify-start'}`}>
+                                                <div className={`flex items-center gap-1 ${!isMobile && index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
                                                     <HiLocationMarker className="text-red-500" fontSize={18} />
                                                     <span>{item.location}</span>
                                                 </div>
-
-                                                <div className="flex items-center gap-1">
+                                                <div className={`flex items-center gap-1 ${!isMobile && index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
                                                     <HiCalendar className="text-blue-500" fontSize={18} />
                                                     <span>{formatDate(item.startDate)} - {formatDate(item.endDate)}</span>
                                                 </div>
-
-                                                <div className="flex items-center gap-1">
-                                                    <HiClock className="text-[#db2777]" fontSize={18} />
-                                                    <span>{getDuration(item.startDate, item.endDate)}</span>
-                                                </div>
                                             </div>
-                                        </div>
-
-                                        {/* Description */}
-                                        <p className="text-slate-300 mb-4 leading-relaxed">{item.description}</p>
-
-                                        {/* Grade/Result */}
-                                        <div className="flex items-center gap-2 mb-4">
-                                            <span className="text-[#db2777]">🏅</span>
-                                            <span className="text-[#db2777] font-medium">{item.grade}</span>
-                                        </div>
-
-                                        {/* Expandable content */}
-                                        <div className={`transition-all duration-300 overflow-hidden ${activeId === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                            {/* Achievements */}
-                                            <div className="mb-4">
-                                                <h4 className="text-white font-semibold mb-2">{item.title_achievement}</h4>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {item.achievements.map((achievement, i) => (
-                                                        <span key={i} className="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm">
-                                                            {achievement}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            {/* Skills */}
-                                            <div>
-                                                <h4 className="text-white font-semibold mb-2">{item.title_skill}</h4>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {item.skills.map((skill, i) => (
-                                                        <span key={i} className="bg-slate-700/80 text-slate-300 hover:bg-[#7e22ce]/20 hover:text-[#db2777] px-3 py-1.5 rounded-lg text-sm transition-colors duration-200">
-                                                            {skill}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Expand indicator */}
-                                        <div className="flex justify-center mt-4 pt-4 border-t border-slate-700/50">
-                                            <button
-                                                className="text-slate-400 hover:text-[#db2777] transition-colors text-sm cursor-pointer"
-                                                onClick={() => setActiveId(activeId === item.id ? null : item.id)}
-                                            >
-                                                {activeId === item.id
-                                                    ? t('about.button.btn_show_less')
-                                                    : t('about.button.btn_show_more')}
-                                            </button>
+                                            <p className={`text-slate-300 mb-4 leading-relaxed ${!isMobile && index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                                                {item.description}
+                                            </p>
                                         </div>
                                     </div>
 

@@ -10,7 +10,7 @@ const sections = ['home', 'skills', 'projects', 'about', 'contact'];
 const languages = {
     en: { name: 'English', flag: '/images/flags/uk.png' },
     km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.png' },
-    ko: { name: '한국어', flag: '/images/flags/kr.png' },
+    // ko: { name: '한국어', flag: '/images/flags/kr.png' },
 };
 
 i18next

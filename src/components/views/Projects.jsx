@@ -347,9 +347,6 @@ export default function Projects() {
                             {t('projects.title')}
                         </h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto rounded-full"></div>
-                        <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                            Explore my portfolio of web applications and projects
-                        </p>
                     </div>
 
                     {/* Projects Grid/Carousel */}
@@ -547,7 +544,7 @@ export default function Projects() {
                         <div className="text-center mt-16">
                             <button
                                 onClick={() => setVisibleCount(visibleCount === 6 ? 8 : 6)}
-                                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold overflow-hidden transition-all hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105"
+                                className="cursor-pointer group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold overflow-hidden transition-all hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105"
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     {visibleCount === 6

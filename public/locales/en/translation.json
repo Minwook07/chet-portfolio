@@ -11,8 +11,8 @@
 		"name": "Chet MITH.",
 		"title": "Full-Stack Web Developer | Computer Science Major",
 		"sub_title": "Back-end developer with Laravel",
-		"description": "I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies. Whether it's designing responsive user interfaces or building scalable APIs, I strive to craft web experiences that are not only functional but meaningful. I believe in continuous learning, collaboration, and building solutions that make an impact.",
-		"quote": "I'm not here just to code — I'm here to grow together.",
+		"description": "I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies.",
+		"quote": "I'm not here just to write code — I’m here to grow, step by step, alongside everyone around me.",
 		"downloadCV": "Download CV",
 		"imageAlt": "Chet MITH Profile Picture"
 	},
@@ -59,106 +59,54 @@
 	},
 	"about": {
 		"title": "Educational Journey Timeline",
-		"title_skill": "Skills Acquired",
-		"title_achievement": "Key Achievements",
+		"batch": "Batch",
 		"items": {
 			"high_school": {
+				"batch": "12",
 				"title": "BaccII",
 				"institution": "Hun Sen Khnar High School",
 				"location": "TboungKhmum",
 				"startDate": "2014-01",
 				"endDate": "2020-12",
 				"status": "completed",
-				"description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities.",
-				"skills": [
-					"Mathematics",
-					"Physics",
-					"Chemistry",
-					"Computer Science",
-					"Biology"
-				],
-				"grade": "",
-				"achievements": [
-					"Honor Roll",
-					"Science Fair Winner",
-					"Student Council"
-				]
+				"description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities."
 			},
 			"university": {
+				"batch": "24",
 				"title": "Bachelor of Computer Science",
 				"institution": "Royal University of Phnom Penh",
 				"location": "Tuol Kork, PP",
 				"startDate": "2021-04",
 				"endDate": "2024-05",
 				"status": "completed",
-				"description": "Pursuing comprehensive computer science education with specialization in software engineering and AI.",
-				"skills": [
-					"Programming",
-					"Data Structures",
-					"Algorithms",
-					"Machine Learning",
-					"Web Development"
-				],
-				"grade": "Current: 3.7 GPA",
-				"achievements": [
-					"Dean's List",
-					"Programming Competition Winner"
-				]
+				"description": "Pursuing comprehensive computer science education with specialization in software engineering and AI."
 			},
 			"short_course": {
+				"batch": "1",
 				"title": "3D Modeling",
 				"institution": "CKCC - Cambodia-Korea Cooperation Center",
 				"location": "Tuol Kork, PP",
 				"startDate": "2025-01",
 				"endDate": "2025-05",
 				"status": "completed",
-				"description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture.",
-				"skills": [
-					"Fusion 360",
-					"Internship",
-					"Korean Language"
-				],
-				"grade": "Certificate of Completion",
-				"achievements": [
-					"Best Teamwork"
-				]
+				"description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture."
 			},
 			"training_center": {
+				"batch": "1",
 				"title": "Full Stack Development Bootcamp",
 				"institution": "ANT Technology Training Center",
 				"location": "Tuol Kork, PP",
 				"startDate": "2024-01",
 				"endDate": "2025-04",
 				"status": "completed",
-				"description": "Developed a full-stack web application using Laravel as part of a scholarship package supported by the Ministry of Post and Telecommunications. This opportunity strengthened my skills in web development and backend integration.",
-				"skills": [
-					"PHP",
-					"Laravel",
-					"Vue.js",
-					"UX/UI",
-					"Node.js",
-					"JavaSccript",
-					"C++",
-					"HTML",
-					"CSS",
-					"Bootstrap"
-				],
-				"grade": "Certified",
-				"achievements": [
-					"Best Presentation Laravel"
-				]
+				"description": "Developed a full-stack web application using Laravel as part of a scholarship package supported by the Ministry of Post and Telecommunications. This opportunity strengthened my skills in web development and backend integration."
 			}
-		},
-		"button": {
-			"btn_show_more": "Show more",
-			"btn_show_less": "Show less"
 		}
 	},
 	"contact": {
 		"title": "Contact",
 		"sub_title": "Let's Connect",
 		"text_info": "Fill out the form or reach out through the provided contact details.",
-		"phone_number": "097 82 72 965",
 		"address_town": "Phnom Penh, Cambodia",
 		"form_info": {
 			"name": "Name",

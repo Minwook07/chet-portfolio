@@ -59,8 +59,10 @@
 	},
 	"about": {
 		"title": "Educational Journey Timeline",
+		"batch": "Batch",
 		"items": {
 			"high_school": {
+				"batch": "12",
 				"title": "BaccII",
 				"institution": "Hun Sen Khnar High School",
 				"location": "TboungKhmum",
@@ -70,6 +72,7 @@
 				"description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities."
 			},
 			"university": {
+				"batch": "24",
 				"title": "Bachelor of Computer Science",
 				"institution": "Royal University of Phnom Penh",
 				"location": "Tuol Kork, PP",
@@ -79,6 +82,7 @@
 				"description": "Pursuing comprehensive computer science education with specialization in software engineering and AI."
 			},
 			"short_course": {
+				"batch": "1",
 				"title": "3D Modeling",
 				"institution": "CKCC - Cambodia-Korea Cooperation Center",
 				"location": "Tuol Kork, PP",
@@ -88,6 +92,7 @@
 				"description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture."
 			},
 			"training_center": {
+				"batch": "1",
 				"title": "Full Stack Development Bootcamp",
 				"institution": "ANT Technology Training Center",
 				"location": "Tuol Kork, PP",

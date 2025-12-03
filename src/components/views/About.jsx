@@ -33,6 +33,7 @@ export default function EnhancedEducationalTimeline() {
 
         return {
             ...item,
+            batch: data.batch,
             title: data.title,
             institution: data.institution,
             location: data.location,
@@ -135,6 +136,9 @@ export default function EnhancedEducationalTimeline() {
                                         </div>
 
                                         <div className="mb-4">
+                                            <div className="text-purple-400 font-semibold mb-1 text-sm">
+                                                {t('about.batch')} {item.batch}
+                                            </div>
                                             <h3 className={`text-xl font-bold text-white mb-2 ${!isMobile && index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                                                 {item.title}
                                             </h3>

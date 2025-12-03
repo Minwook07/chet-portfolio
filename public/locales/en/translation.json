@@ -59,8 +59,6 @@
 	},
 	"about": {
 		"title": "Educational Journey Timeline",
-		"title_skill": "Skills Acquired",
-		"title_achievement": "Key Achievements",
 		"items": {
 			"high_school": {
 				"title": "BaccII",
@@ -69,20 +67,7 @@
 				"startDate": "2014-01",
 				"endDate": "2020-12",
 				"status": "completed",
-				"description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities.",
-				"skills": [
-					"Mathematics",
-					"Physics",
-					"Chemistry",
-					"Computer Science",
-					"Biology"
-				],
-				"grade": "",
-				"achievements": [
-					"Honor Roll",
-					"Science Fair Winner",
-					"Student Council"
-				]
+				"description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities."
 			},
 			"university": {
 				"title": "Bachelor of Computer Science",
@@ -91,19 +76,7 @@
 				"startDate": "2021-04",
 				"endDate": "2024-05",
 				"status": "completed",
-				"description": "Pursuing comprehensive computer science education with specialization in software engineering and AI.",
-				"skills": [
-					"Programming",
-					"Data Structures",
-					"Algorithms",
-					"Machine Learning",
-					"Web Development"
-				],
-				"grade": "Current: 3.7 GPA",
-				"achievements": [
-					"Dean's List",
-					"Programming Competition Winner"
-				]
+				"description": "Pursuing comprehensive computer science education with specialization in software engineering and AI."
 			},
 			"short_course": {
 				"title": "3D Modeling",
@@ -112,16 +85,7 @@
 				"startDate": "2025-01",
 				"endDate": "2025-05",
 				"status": "completed",
-				"description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture.",
-				"skills": [
-					"Fusion 360",
-					"Internship",
-					"Korean Language"
-				],
-				"grade": "Certificate of Completion",
-				"achievements": [
-					"Best Teamwork"
-				]
+				"description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture."
 			},
 			"training_center": {
 				"title": "Full Stack Development Bootcamp",
@@ -130,28 +94,8 @@
 				"startDate": "2024-01",
 				"endDate": "2025-04",
 				"status": "completed",
-				"description": "Developed a full-stack web application using Laravel as part of a scholarship package supported by the Ministry of Post and Telecommunications. This opportunity strengthened my skills in web development and backend integration.",
-				"skills": [
-					"PHP",
-					"Laravel",
-					"Vue.js",
-					"UX/UI",
-					"Node.js",
-					"JavaSccript",
-					"C++",
-					"HTML",
-					"CSS",
-					"Bootstrap"
-				],
-				"grade": "Certified",
-				"achievements": [
-					"Best Presentation Laravel"
-				]
+				"description": "Developed a full-stack web application using Laravel as part of a scholarship package supported by the Ministry of Post and Telecommunications. This opportunity strengthened my skills in web development and backend integration."
 			}
-		},
-		"button": {
-			"btn_show_more": "Show more",
-			"btn_show_less": "Show less"
 		}
 	},
 	"contact": {

@@ -28,11 +28,6 @@ export default function EnhancedEducationalTimeline() {
         { id: 4, key: "training_center", icon: <GiTrophy fontSize={18} />, keyStatusKey: "completed" }
     ];
 
-    const DEFAULTS = {
-        title_skill: t('about.title_skill', { defaultValue: "Skills Acquired" }),
-        title_achievement: t('about.title_achievement', { defaultValue: "Key Achievements" }),
-    };
-
     const timelineData = baseTimeline.map(item => {
         const data = t(`about.items.${item.key}`, { returnObjects: true });
 
@@ -46,11 +41,6 @@ export default function EnhancedEducationalTimeline() {
             statusKey: item.keyStatusKey,
             statusText: data.status,
             description: data.description,
-            skills: data.skills || [],
-            grade: data.grade || '',
-            achievements: data.achievements || [],
-            title_skill: data.title_skill || DEFAULTS.title_skill,
-            title_achievement: data.title_achievement || DEFAULTS.title_achievement,
         };
     });
 

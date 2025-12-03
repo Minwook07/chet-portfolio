@@ -21,11 +21,13 @@ const skills = [
 
 export default function Skills() {
     const { t } = useTranslation();
+    const totalSkills = skills.length
+    const finalSkill = totalSkills < 10 ? totalSkills : `${totalSkills}+`
 
     return (
         <section id="skills" style={{ backgroundColor: "#121212" }}>
             <div className="container mx-auto px-6">
-                <div className="bg-opacity-10 p-8 rounded-xl mb-10" style={{ backgroundColor: "#1E1E1E" }}>
+                <div className="bg-opacity-10 p-8 rounded-xl" style={{ backgroundColor: "#1E1E1E" }}>
                     <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center text-gray-100">
                         <span className="mr-2 text-2xl">
                             <BsTools color="#7e22ce" fontSize={35} />
@@ -52,19 +54,19 @@ export default function Skills() {
                     </div>
 
                 </div>
-                <div className="flex justify-center items-center mt-16 space-x-8">
+                <div className="flex justify-center items-center space-x-8 py-10">
                     <div className="text-center">
-                        <div className="text-3xl font-bold text-white mb-1">{skills.length}+</div>
+                        <div className="text-3xl font-bold text-purple-400 mb-1">{finalSkill}</div>
                         <div className="text-gray-400 text-sm">{t("skills.technology")}</div>
                     </div>
                     <div className="w-px h-12 bg-gray-600"></div>
                     <div className="text-center">
-                        <div className="text-3xl font-bold text-white mb-1">1+</div>
+                        <div className="text-3xl font-bold text-purple-500 mb-1">1+</div>
                         <div className="text-gray-400 text-sm">{t("skills.experience")}</div>
                     </div>
                     <div className="w-px h-12 bg-gray-600"></div>
                     <div className="text-center">
-                        <div className="text-3xl font-bold text-white mb-1">∞</div>
+                        <div className="text-3xl font-bold text-purple-300 mb-1">∞</div>
                         <div className="text-gray-400 text-sm">{t("skills.learning")}</div>
                     </div>
                 </div>

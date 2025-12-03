@@ -13,9 +13,7 @@ export default function Hero() {
                         </h1>
                         <p className="text-xl opacity-90 mb-6">{t('hero.title')}</p>
                         <p className="text-xxl mb-6 flex items-center text-[#7e22ce]">
-                            {/* Modern Animated Dot */}
                             <div className="relative w-4 h-4 mr-3 text-[#7e22ce] transform">
-                                {/* Thin Outline Ring */}
                                 <svg
                                     className="absolute inset-0 w-full h-full slow-pulse"
                                     viewBox="0 0 12 12"
@@ -27,12 +25,11 @@ export default function Hero() {
                                     <circle cx="6" cy="6" r="5" />
                                 </svg>
 
-                                {/* Solid Fill Dot */}
                                 <svg
                                     className="absolute inset-0 w-full h-full slow-pulse"
                                     viewBox="0 0 12 12"
                                     fill="currentColor"
-                                    style={{ animationDelay: '0.3s' }} // Slight delay for staggered effect
+                                    style={{ animationDelay: '0.3s' }} 
                                 >
                                     <circle cx="6" cy="6" r="3" />
                                 </svg>

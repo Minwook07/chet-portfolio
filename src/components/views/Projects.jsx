@@ -334,7 +334,7 @@ export default function Projects() {
                 }
             `}</style>
 
-            <section id="projects" className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
+            <section id="projects" className="py-20">
                 <div className="container mx-auto px-6">
                     {/* Section Header */}
                     <div className="text-center mb-16">

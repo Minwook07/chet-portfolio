@@ -4,12 +4,14 @@
     --bg-color: #ffffff;
     --text-color: #1a1a1a;
     --bg-color-primary: #fdc435;
+    --text-color-secondary: #000000;
 }
 
 .dark {
     --bg-color: #121212;
     --text-color: #ffffff;
     --bg-color-primary: #7e22ce;
+    --text-color-secondary: #ffffff;
 }
 
 body {
@@ -26,6 +28,10 @@ body {
 
     .text-primary {
         color: var(--bg-color-primary);
+    }
+
+    .text-secondary {
+        color: var(--text-color-secondary);
     }
 }
 

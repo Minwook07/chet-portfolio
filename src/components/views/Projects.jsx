@@ -339,14 +339,14 @@ export default function Projects() {
                     {/* Section Header */}
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center justify-center gap-3 mb-4">
-                            <div className="p-3 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl">
+                            <div className="p-3 bg-primary dark:bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl">
                                 <GoFileDirectory className="text-white" size={32} />
                             </div>
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold section-title mb-4">
                             {t('projects.title')}
                         </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto rounded-full"></div>
+                        <div className="w-24 h-1 bg-primary dark:bg-gradient-to-r from-purple-600 to-purple-400 mx-auto rounded-full"></div>
                     </div>
 
                     {/* Projects Grid/Carousel */}
@@ -367,7 +367,7 @@ export default function Projects() {
                                         }}
                                     >
                                         {/* Image Container */}
-                                        <div className="image-container relative h-52 bg-gradient-to-br from-gray-800 to-gray-900">
+                                        <div className="image-container relative h-52 bg-primary dark:bg-gradient-to-br from-gray-800 to-gray-900">
                                             <img
                                                 src={project.img}
                                                 alt={project.title}
@@ -401,11 +401,11 @@ export default function Projects() {
                                         </div>
 
                                         {/* Content */}
-                                        <div className="p-6 bg-gradient-to-br from-[#1e1e1e] to-[#2a2a2a]">
-                                            <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent mb-3">
+                                        <div className="p-6 bg-gray-300 dark:bg-gradient-to-br from-[#1e1e1e] to-[#2a2a2a]">
+                                            <h3 className="text-2xl font-bold bg-black dark:bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent mb-3">
                                                 {project.title}
                                             </h3>
-                                            <p className="text-gray-300 mb-4 line-clamp-2 leading-relaxed">
+                                            <p className="text-gray-800 dark:text-gray-300 mb-4 line-clamp-2 leading-relaxed">
                                                 {desc}
                                             </p>
 
@@ -414,7 +414,7 @@ export default function Projects() {
                                                 {project.tech.map((tech, i) => (
                                                     <span
                                                         key={i}
-                                                        className="tech-badge px-3 py-1.5 text-xs font-medium text-purple-300 rounded-lg transition-all hover:scale-105"
+                                                        className="tech-badge px-3 py-1.5 text-xs font-medium text-secondary dark:text-purple-300 rounded-lg transition-all hover:scale-105"
                                                     >
                                                         {tech}
                                                     </span>
@@ -544,7 +544,7 @@ export default function Projects() {
                         <div className="text-center mt-16">
                             <button
                                 onClick={() => setVisibleCount(visibleCount === 6 ? 8 : 6)}
-                                className="cursor-pointer group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold overflow-hidden transition-all hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105"
+                                className="cursor-pointer group relative px-8 py-4 bg-primary dark:bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-semibold overflow-hidden transition-all hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105"
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     {visibleCount === 6

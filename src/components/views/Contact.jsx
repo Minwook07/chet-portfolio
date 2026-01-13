@@ -48,12 +48,12 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-20" style={{ backgroundColor: '#121212' }}>
+        <section id="contact" className="py-20">
             <ToastContainer />
             <div className="container mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center mb-16 flex items-center justify-center">
                     <span className="mr-2 text-2xl">
-                        <MdOutlineContactSupport color="#7e22ce" fontSize={35} />
+                        <MdOutlineContactSupport fontSize={35} className='text-primary' />
                     </span>
                     {t('contact.title')}
                 </h2>
@@ -61,13 +61,13 @@ export default function Contact() {
                     {/* Contact Info Section */}
                     <div>
                         <div className="mb-10">
-                            <h3 className="text-2xl font-semibold text-[#7e22ce] mb-4">{t('contact.sub_title')}</h3>
-                            <p className="text-gray-300 mb-8">
+                            <h3 className="text-2xl font-semibold text-primary mb-4">{t('contact.sub_title')}</h3>
+                            <p className="text-gray-950 dark:text-gray-300 mb-8">
                                 {t('contact.text_info')}
                             </p>
 
                             <div className="flex items-center mb-4">
-                                <div className="text-[#7e22ce] mr-4">
+                                <div className="text-primary mr-4">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="20"
@@ -87,7 +87,7 @@ export default function Contact() {
                                     <a
                                         href="https://maps.app.goo.gl/EfTTUYva6FZCFT1PA"
                                         target="_blank"
-                                        className="text-white-400 hover:underline hover:text-[#7e22ce] transition-colors duration-200"
+                                        className="text-white-400 hover:underline text-primary transition-colors duration-200"
                                     >
                                         {t('contact.address_town')}
                                     </a>
@@ -171,50 +171,50 @@ export default function Contact() {
                         <form
                             ref={form}
                             onSubmit={sendEmail}
-                            className="border bg-[#1E1E1E] border-[#1E1E1E] rounded-xl p-8"
+                            className="border bg-[#f5f5f5] dark:bg-[#1E1E1E] border-[#e5e5e5] dark:border-[#1E1E1E] rounded-xl p-8"
                         >
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">{t('contact.form_info.name')}</label>
+                                <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-[#ffffff]">{t('contact.form_info.name')}</label>
                                 <input
                                     type="text"
-                                    className="w-full p-3 bg-[#171717] border border-[#171717] rounded-lg focus:outline-none focus:border-[#7e22ce]"
+                                    className="w-full p-3 bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
                                     placeholder={t('contact.form_info.place_holder.place_holder_name')}
                                     name="user_name"
                                     required
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">{t('contact.form_info.email')}</label>
+                                <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-[#ffffff]">{t('contact.form_info.email')}</label>
                                 <input
                                     type="email"
-                                    className="w-full p-3 bg-[#171717] border border-[#171717] rounded-lg focus:outline-none focus:border-[#7e22ce]"
+                                    className="w-full p-3 bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
                                     placeholder="your.email@example.com"
                                     name="user_email"
                                     required
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">{t('contact.form_info.subject')}</label>
+                                <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-[#ffffff]">{t('contact.form_info.subject')}</label>
                                 <input
                                     type="text"
-                                    className="w-full p-3 bg-[#171717] border border-[#171717] rounded-lg focus:outline-none focus:border-[#7e22ce]"
+                                    className="w-full p-3 bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
                                     placeholder={t('contact.form_info.subject')}
                                     name="subject"
                                     required
                                 />
                             </div>
                             <div className="mb-6">
-                                <label className="block text-sm font-medium mb-2">{t('contact.form_info.message')}</label>
+                                <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-[#ffffff]">{t('contact.form_info.message')}</label>
                                 <textarea
                                     name="message"
-                                    className="w-full p-3 bg-[#171717] border border-[#171717] rounded-lg focus:outline-none focus:border-[#7e22ce] h-32 resize-none"
+                                    className="w-full p-3 bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce] h-32 resize-none"
                                     placeholder={t('contact.form_info.place_holder.place_holder_message')}
                                     required
                                 ></textarea>
                             </div>
                             <button
                                 type="submit"
-                                className="w-full py-3 bg-[#7e22ce] text-white rounded-lg font-medium hover:bg-[#db2777] transition-colors cursor-pointer"
+                                className="w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-[#db2777] transition-colors cursor-pointer"
                             >
                                 {t('contact.form_info.btn_submit')}
                             </button>

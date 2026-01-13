@@ -21,43 +21,43 @@
 } */
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
 
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
 }
 
 .card {
-  padding: 2em;
+    padding: 2em;
 }
 
 .read-the-docs {
-  color: #888;
+    color: #888;
 }
 
 @keyframes slowPulse {
 
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
 
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
 }
 
 .slow-pulse {
-  animation: slowPulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: slowPulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

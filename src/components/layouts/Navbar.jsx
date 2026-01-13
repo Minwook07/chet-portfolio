@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import i18next from 'i18next';
 import { useTranslation, initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend'
+import { ImSun } from 'react-icons/im';
+import { BsMoonStarsFill } from 'react-icons/bs';
 
 // Define sections
 const sections = ['home', 'skills', 'projects', 'about', 'contact'];
@@ -32,11 +34,25 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
     const [active, setActive] = useState('home');
     const [language, setLanguage] = useState(localStorage.getItem('language') || 'en'); // Default language 'en'
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
     const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown
     const dropdownRef = useRef(null); // Ref for click-outside detection
 
     // Get current translations
     const { t } = useTranslation();
+
+    useEffect(() => {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    };
 
     // Scroll handler for active section
     useEffect(() => {
@@ -84,12 +100,15 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="fixed top-0 left-0 w-full bg-opacity-95 z-50 shadow-md" style={{ backgroundColor: '#121212', color: '#ffffff' }}>
+        <nav className="fixed top-0 left-0 w-full bg-opacity-95 z-50 shadow-md bg-white text-gray-900 dark:bg-[#121212] dark:text-white">
             <div className="container mx-auto py-4 px-6 flex justify-between items-center">
                 <a href="#home" className="flex items-center gap-2" onClick={() => setOpen(false)}>
                     <div className="w-50 h-10 flex items-center rounded-lg font-bold text-xl">
-                        {/* <img src="/images/logo/chet_nobg.svg" alt="Logo" style={{ filter: 'invert(1)', height: '40px' }} /> */}
-                        <img src="/images/logo/chet_nobg.svg" alt="Logo" style={{  height: '40px' }} />
+                        {theme === 'light' ? (
+                            <img src="/images/logo/chet_nobg.svg" alt="Logo" style={{ filter: 'invert(1)', height: '40px' }} />
+                        ) : (
+                            <img src="/images/logo/chet_nobg.svg" alt="Logo" style={{ height: '40px' }} />
+                        )}                                            
                     </div>
                 </a>
 
@@ -105,12 +124,12 @@ export default function Navbar() {
                 </button>
 
                 {/* Navigation Links & Language Dropdown */}
-                <ul className={`md:flex items-center gap-6 ${open ? 'flex flex-col absolute top-full left-0 w-full bg-gray-900 py-4 md:static md:flex-row md:bg-transparent' : 'hidden'} text-white`}>
+                <ul className={`md:flex items-center gap-6 ${open ? 'flex flex-col absolute top-full left-0 w-full bg-gray-900 py-4 md:static md:flex-row md:bg-transparent' : 'hidden'} text-black dark:text-white`}>
                     {sections.map(item => (
                         <li key={item}>
                             <a
                                 href={`#${item}`}
-                                className={`relative py-2 block md:inline-block font-medium transition-colors ${active === item ? 'text-[#7e22ce] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#7e22ce]' : 'hover:text-[#7e22ce]'}`}
+                                className={`relative py-2 block md:inline-block font-medium transition-colors ${active === item ? 'text-primary after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#fdc435] dark:after:bg-[#7e22ce]' : 'hover:text-[#fdc435] dark:hover:text-[#7e22ce]'}`}
                                 onClick={() => setOpen(false)}
                             >
                                 {t(`menu.${item}`)}
@@ -121,7 +140,7 @@ export default function Navbar() {
                     <li className="relative" ref={dropdownRef}>
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
-                            className="flex items-center cursor-pointer gap-2 py-2 px-3 rounded hover:bg-gray-700 transition-colors"
+                            className="flex items-center cursor-pointer gap-2 py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                         >
                             <span>
                                 <img src={languages[language].flag} alt="flag" className="w-5 h-5 rounded-full" />
@@ -150,6 +169,21 @@ export default function Navbar() {
                                 ))}
                             </ul>
                         )}
+                    </li>
+
+                    <li style={{ width: "10px" }}>
+                        <button
+                            onClick={toggleTheme}
+                            className={`p-2 rounded-lg transition-all duration-300 flex items-center justify-center cursor-pointer
+                                ${theme === 'light' ? 'text-[#7e22ce] hover:bg-gray-100' : 'text-yellow-400 hover:bg-gray-800'}`}
+                            aria-label="Toggle Theme"
+                        >
+                            {theme === 'light' ? (
+                                <BsMoonStarsFill size={20} />
+                            ) : (
+                                <ImSun size={22} />
+                            )}
+                        </button>
                     </li>
                 </ul>
             </div>

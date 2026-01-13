@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --bg-color-primary: #fdc435;
+}
+
+.dark {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --bg-color-primary: #7e22ce;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+}
+
+@layer utilities {
+    .bg-primary {
+        background-color: var(--bg-color-primary);
+    }
+
+    .text-primary {
+        color: var(--bg-color-primary);
+    }
+}
+
+/* Ensure Tailwind's dark: utilities are recognized */
+@variant dark (&:where(.dark, .dark *));

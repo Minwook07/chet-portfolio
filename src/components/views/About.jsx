@@ -88,7 +88,7 @@ export default function EnhancedEducationalTimeline() {
                             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary dark:bg-gradient-to-r from-[#7e22ce] to-[#db2777] rounded-2xl mb-6">
                                 <span className="text-3xl">📚</span>
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+                            <h1 className="text-3xl font-bold text-secondary mb-4">
                                 {t('about.title')}
                             </h1>
                         </div>

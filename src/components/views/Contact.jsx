@@ -49,9 +49,22 @@ export default function Contact() {
 
     return (
         <section id="contact" className="py-20">
+            <style>{`
+                input::placeholder,
+                textarea::placeholder {
+                    color: #6b7280 !important;
+                    opacity: 1 !important;
+                }
+                
+                .dark input::placeholder,
+                .dark textarea::placeholder {
+                    color: #9ca3af !important;
+                    opacity: 1 !important;
+                }
+            `}</style>
             <ToastContainer />
             <div className="container mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-16 flex items-center justify-center">
+                <h2 className="text-3xl font-bold text-center mb-16 flex items-center justify-center text-gray-950 dark:text-white">
                     <span className="mr-2 text-2xl">
                         <MdOutlineContactSupport fontSize={35} className='text-primary' />
                     </span>
@@ -98,7 +111,7 @@ export default function Contact() {
                             <a
                                 href="https://github.com/Minwook07"
                                 target="_blank"
-                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] transition-colors"
+                                className="w-10 h-10 bg-[#333333] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] dark:hover:bg-[#333333] transition-colors"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +123,7 @@ export default function Contact() {
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
+                                    className="text-white"
                                 >
                                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
                                 </svg>
@@ -117,7 +131,7 @@ export default function Contact() {
                             <a
                                 href="https://www.linkedin.com/in/mith-chet-ab56b5295/"
                                 target="_blank"
-                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#0A66C2] transition-colors"
+                                className="w-10 h-10 bg-[#0A66C2] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#084d92] dark:hover:bg-[#0A66C2] transition-colors"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -129,6 +143,7 @@ export default function Contact() {
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
+                                    className="text-white"
                                 >
                                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                                     <rect x="2" y="9" width="4" height="12" />
@@ -139,13 +154,13 @@ export default function Contact() {
                                 href="https://t.me/min7wook_lee"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#0088cc] transition-colors"
+                                className="w-10 h-10 bg-[#0088cc] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#006699] dark:hover:bg-[#0088cc] transition-colors"
                             >
-                                <RiTelegram2Line fontSize={23} />
+                                <RiTelegram2Line fontSize={23} className="text-white" />
                             </a>
                             <a
                                 href="#"
-                                className="w-10 h-10 bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-gradient-to-r from-pink-500 via-yellow-400 to-purple-500 transition-colors"
+                                className="w-10 h-10 rounded-full flex items-center justify-center transition-colors bg-[#E1306C] hover:bg-[#b9275a] dark:bg-[#1E1E1E] dark:hover:bg-[#E1306C]"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -157,6 +172,7 @@ export default function Contact() {
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
+                                    className="text-white"
                                 >
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -177,7 +193,7 @@ export default function Contact() {
                                 <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-[#ffffff]">{t('contact.form_info.name')}</label>
                                 <input
                                     type="text"
-                                    className="w-full p-3 bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
+                                    className="w-full p-3 text-[#111827] dark:text-[#ffffff] bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
                                     placeholder={t('contact.form_info.place_holder.place_holder_name')}
                                     name="user_name"
                                     required
@@ -187,7 +203,7 @@ export default function Contact() {
                                 <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-[#ffffff]">{t('contact.form_info.email')}</label>
                                 <input
                                     type="email"
-                                    className="w-full p-3 bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
+                                    className="w-full p-3 text-[#111827] dark:text-[#ffffff] bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
                                     placeholder="your.email@example.com"
                                     name="user_email"
                                     required
@@ -197,7 +213,7 @@ export default function Contact() {
                                 <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-[#ffffff]">{t('contact.form_info.subject')}</label>
                                 <input
                                     type="text"
-                                    className="w-full p-3 bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
+                                    className="w-full p-3 text-[#111827] dark:text-[#ffffff] bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
                                     placeholder={t('contact.form_info.subject')}
                                     name="subject"
                                     required
@@ -207,7 +223,7 @@ export default function Contact() {
                                 <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-[#ffffff]">{t('contact.form_info.message')}</label>
                                 <textarea
                                     name="message"
-                                    className="w-full p-3 bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce] h-32 resize-none"
+                                    className="w-full p-3 text-[#111827] dark:text-[#ffffff] bg-[#ffffff] dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce] h-32 resize-none"
                                     placeholder={t('contact.form_info.place_holder.place_holder_message')}
                                     required
                                 ></textarea>

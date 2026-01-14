@@ -108,12 +108,12 @@ export default function Navbar() {
                             <img src="/images/logo/chet_nobg.svg" alt="Logo" style={{ filter: 'invert(1)', height: '40px' }} />
                         ) : (
                             <img src="/images/logo/chet_nobg.svg" alt="Logo" style={{ height: '40px' }} />
-                        )}                                            
+                        )}
                     </div>
                 </a>
 
                 {/* Hamburger Menu Button */}
-                <button className="md:hidden cursor-pointer text-white" onClick={() => setOpen(!open)}>
+                <button className="md:hidden cursor-pointer text-gray-950 dark:text-white" onClick={() => setOpen(!open)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         {open ? (
                             <> <line x1="18" y1="6" x2="6" y2="18" /> <line x1="6" y1="6" x2="18" y2="18" /> </>
@@ -124,7 +124,7 @@ export default function Navbar() {
                 </button>
 
                 {/* Navigation Links & Language Dropdown */}
-                <ul className={`md:flex items-center gap-6 ${open ? 'flex flex-col absolute top-full left-0 w-full bg-gray-900 py-4 md:static md:flex-row md:bg-transparent' : 'hidden'} text-black dark:text-white`}>
+                <ul className={`md:flex items-center gap-6 ${open ? 'flex flex-col absolute top-full left-0 w-full bg-gray-300 dark:bg-gray-900 py-4 md:static md:flex-row md:bg-transparent' : 'hidden'} text-black dark:text-white`}>
                     {sections.map(item => (
                         <li key={item}>
                             <a
@@ -142,7 +142,7 @@ export default function Navbar() {
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className="flex items-center cursor-pointer gap-2 py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                         >
-                            <span>
+                            <span style={{ width: "20px", height: "px" }}>
                                 <img src={languages[language].flag} alt="flag" className="w-5 h-5 rounded-full" />
                             </span>
                             <span className="hidden md:inline">{languages[language].name}</span> {/* Show name on desktop */}

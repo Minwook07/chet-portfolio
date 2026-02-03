@@ -6,7 +6,7 @@ import { ImSun } from 'react-icons/im';
 import { BsMoonStarsFill } from 'react-icons/bs';
 
 // Define sections
-const sections = ['home', 'skills', 'projects', 'about', 'contact'];
+const sections = ['home', 'skills', 'projects', 'contact'];
 
 // Define languages with flags
 const languages = {

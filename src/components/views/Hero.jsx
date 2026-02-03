@@ -30,7 +30,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-20 xl:px-32 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-20 xl:px-32 mt-30 lg:mt-0 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     <div className="lg:w-7/12 text-center lg:text-left space-y-8">
                         <div className="inline-flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
@@ -91,7 +91,7 @@ export default function Hero() {
 
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <span className="text-gray-400 dark:text-gray-500 text-lg font-medium"><img
-                                        src="images/DSC03885.JPG"
+                                        src="images/DSC03885.png"
                                         alt={t('hero.imageAlt')}
                                         className="w-full h-full object-cover"
                                     /></span>

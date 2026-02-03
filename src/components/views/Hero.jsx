@@ -30,7 +30,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-20 xl:px-32 mt-30 lg:mt-0 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6  mt-30 lg:mt-0 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     <div className="lg:w-7/12 text-center lg:text-left space-y-8">
                         <div className="inline-flex items-center gap-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
@@ -62,7 +62,7 @@ export default function Hero() {
                                 className="group relative bg-gradient-to-r from-yellow-400 to-yellow-500 dark:from-purple-600 dark:to-purple-700 text-gray-900 dark:text-white py-4 px-10 rounded-xl font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105 overflow-hidden"
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2">
-                                    Projects<FaArrowDown />
+                                    {t('hero.project')}<FaArrowDown />
                                 </span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 dark:from-purple-700 dark:to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             </a>

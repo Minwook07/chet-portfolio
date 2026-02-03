@@ -48,7 +48,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-20">
+        <section id="contact" className="py-10 lg:py-24">
             <style>{`
                 input::placeholder,
                 textarea::placeholder {

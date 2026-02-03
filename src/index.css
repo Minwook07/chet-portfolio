@@ -21,6 +21,14 @@ body {
     margin: 0;
 }
 
+.font-en {
+    font-family: "Poppins", sans-serif;
+}
+
+.font-km {
+    font-family: 'Kantumruy Pro', sans-serif;
+}
+
 @layer utilities {
     .bg-primary {
         background-color: var(--bg-color-primary);

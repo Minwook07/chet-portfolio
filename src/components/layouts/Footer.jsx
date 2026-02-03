@@ -9,14 +9,13 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-6 md:mb-0">
                         <div className="flex items-center justify-center md:justify-start mb-3">
-                            <div className="bg-primary text-gray-900 w-10 h-10 flex items-center justify-center rounded-lg font-bold text-xl mr-2 text-white">osi</div>
+                            <div className="bg-primary w-10 h-10 flex items-center justify-center rounded-lg font-bold text-xl mr-2 text-white">osi</div>
                             <span className="font-bold text-xl text-gray-950 dark:text-gray-300">Okawasaki</span>
                         </div>
                         <p className="text-gray-400 text-center md:text-left">Full Stack Web Developer</p>
                     </div>
                     <div>
                         <div className="flex justify-center mb-4">
-                            <a href="#about" className="mx-3 text-primary hover:text-[#7e22ce]">{t('menu.about')}</a>
                             <a href="#skills" className="mx-3 text-primary hover:text-[#7e22ce]">{t('menu.skills')}</a>
                             <a href="#projects" className="mx-3 text-primary hover:text-[#7e22ce]">{t('menu.projects')}</a>
                             <a href="#contacts" className="mx-3 text-primary hover:text-[#7e22ce]">{t('menu.contact')}</a>

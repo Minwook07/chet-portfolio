@@ -12,7 +12,6 @@ const sections = ['home', 'skills', 'projects', 'contact'];
 const languages = {
     en: { name: 'English', flag: '/images/flags/uk.png' },
     km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.png' },
-    // ko: { name: '한국어', flag: '/images/flags/kr.png' },
 };
 
 i18next
@@ -143,7 +142,12 @@ export default function Navbar() {
                             className="flex items-center cursor-pointer gap-2 py-2 px-3 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                         >
                             <span style={{ width: "20px", height: "px" }}>
-                                <img src={languages[language].flag} alt="flag" className="w-5 h-5 rounded-full" />
+                                <img
+                                    src={languages[language].flag}
+                                    alt="flag"
+                                    className="h-4 w-6 object-cover rounded-sm"
+                                />
+
                             </span>
                             <span className="hidden md:inline">{languages[language].name}</span> {/* Show name on desktop */}
                             {/* Dropdown Arrow */}
@@ -161,8 +165,12 @@ export default function Navbar() {
                                             onClick={() => handleLanguageChange(langKey)}
                                             className="flex items-center cursor-pointer gap-3 w-full px-4 py-2 text-sm text-white hover:bg-gray-700 text-left" // Added text-left
                                         >
-                                            {/* <span>{languages[langKey].flag}</span> */}
-                                            <img src={languages[langKey].flag} alt={`${languages[langKey].name} flag`} className="h-5 w-5 rounded-full" />
+                                            <img
+                                                src={languages[langKey].flag}
+                                                alt={`${languages[langKey].name} flag`}
+                                                className="h-4 w-7 object-contain rounded-sm"
+                                            />
+
                                             <span>{languages[langKey].name}</span>
                                         </button>
                                     </li>

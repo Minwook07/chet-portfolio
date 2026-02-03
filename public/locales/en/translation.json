@@ -8,12 +8,10 @@
 	"hero": {
 		"greeting": "Hello, I'm",
 		"name": "Chet MITH.",
-		"title": "Full-Stack Web Developer | Computer Science Major",
 		"sub_title": "API Developer",
 		"description": "I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies.",
-		"quote": "I'm not here just to write code — I’m here to grow, step by step, alongside everyone around me.",
-		"downloadCV": "Download CV",
-		"imageAlt": "Chet MITH Profile Picture"
+		"project": "Projects",
+		"imageAlt": "Profile Picture"
 	},
 	"skills": {
 		"title": "Skills",

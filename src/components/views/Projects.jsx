@@ -155,13 +155,13 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="relative py-24 overflow-hidden bg-white dark:bg-black">
+        <section id="projects" className="relative py-5 lg:py-24 overflow-hidden bg-white dark:bg-black">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-20 right-10 w-96 h-96 bg-yellow-300/10 dark:bg-purple-600/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-20 left-10 w-96 h-96 bg-orange-300/10 dark:bg-pink-600/10 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10">
                 <div className="text-center mb-16">
                     <div className="inline-flex items-center justify-center gap-3 mb-4">
                         <div className="p-3 bg-primary dark:bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl">

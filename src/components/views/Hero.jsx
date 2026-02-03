@@ -91,7 +91,7 @@ export default function Hero() {
 
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <span className="text-gray-400 dark:text-gray-500 text-lg font-medium"><img
-                                        src="images/DSC03885.JPG"
+                                        src="images/DSC03885.png"
                                         alt={t('hero.imageAlt')}
                                         className="w-full h-full object-cover"
                                     /></span>

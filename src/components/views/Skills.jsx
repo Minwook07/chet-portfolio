@@ -2,12 +2,12 @@ import { BsTools } from 'react-icons/bs';
 import { useTranslation } from 'react-i18next';
 
 const skills = [
-    { name: 'HTML5', img: '/images/skills/html5.svg' },
-    { name: 'CSS3', img: '/images/skills/css3.svg' },
+    // { name: 'HTML5', img: '/images/skills/html5.svg' },
+    // { name: 'CSS3', img: '/images/skills/css3.svg' },
     { name: 'Laravel', img: '/images/skills/laravel.svg' },
     // { name: 'PHP', img: '/images/skills/php.svg' },
-    // { name: 'MySQL', img: '/images/skills/mysql.svg' },
-    // { name: 'Vue.js', img: '/images/skills/vue.svg' },
+    { name: 'MySQL', img: '/images/skills/mysql.svg' },
+    { name: 'Vue.js', img: '/images/skills/vue.svg' },
     // { name: 'Nextjs', img: '/images/skills/nextjs.svg' },
     // { name: 'React', img: '/images/skills/react.svg' },
     // { name: 'Tailwind', img: '/images/skills/tailwind.svg' },

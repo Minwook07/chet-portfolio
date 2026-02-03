@@ -4,7 +4,7 @@ import Hero from './components/views/Hero';
 import Skills from './components/views/Skills';
 import Projects from './components/views/Projects';
 import Contact from './components/views/Contact';
-import EducationalTimeline from './components/views/About';
+// import EducationalTimeline from './components/views/About';
 import Footer from './components/layouts/Footer';
 import GlobalStyles from './components/views/GlobalStyles'
 import './App.css';
@@ -15,7 +15,7 @@ export default function App() {
       <Hero />
       <Skills />
       <Projects />
-      <EducationalTimeline />
+      {/* <EducationalTimeline /> */}
       <Contact />
       <Footer />
       <GlobalStyles />

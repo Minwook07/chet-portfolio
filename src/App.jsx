@@ -18,7 +18,7 @@ export default function App() {
         return () => i18next.off('languageChanged', handleLangChange);
     }, []);
     return (
-        <div className={`text-gray-100 min-h-screen overflow-x-hidden bg-white dark:bg-[#121212] font-${lang}`}>
+        <div className={`text-gray-100 min-h-screen overflow-x-hidden bg-gray-50 dark:bg-gray-900/50 font-${lang}`}>
             <Navbar />
             <Hero />
             <Skills />

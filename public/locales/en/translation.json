@@ -18,7 +18,9 @@
 		"sub_title": "Skills"
 	},
 	"projects": {
-		"title": "Projects",
+		"title": "Side",
+		"sub_title": "Projects",
+		"desc": "A collection of personal projects and technical explorations.",
 		"items": {
 			"ecommerce": {
 				"desc": "A fully functional e-commerce website with product listings, cart functionality, and payment integration."
@@ -46,10 +48,7 @@
 			}
 		},
 		"button": {
-			"btn_demo": "Demo",
-			"btn_code": "Code",
-			"btn_see_more": "See More Projects",
-			"btn_show_less": "Show Less"
+			"btn_demo": "Demo"
 		}
 	},
 	"about": {

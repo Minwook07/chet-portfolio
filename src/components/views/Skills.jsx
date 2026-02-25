@@ -35,7 +35,7 @@ export default function SkillsSection() {
                             <div className="w-20 h-1.5 bg-green-500 mt-2 rounded-full"></div>
                         </div>
 
-                        <div className="h-[400px] overflow-y-auto pr-4 space-y-3 custom-scroll">
+                        <div className="h-[400px] overflow-y-auto space-y-3 custom-scroll">
                             {skills.map((skill, idx) => (
                                 <div
                                     key={idx}

@@ -6,18 +6,16 @@
 		"contact": "Contact"
 	},
 	"hero": {
-		"greeting": "Hello, I'm",
+		"greeting": "Hello there! I'm",
 		"name": "Chet MITH.",
-		"sub_title": "API Developer",
-		"description": "I'm a passionate Full-stack Web Developer with a strong foundation in both frontend and backend technologies.",
-		"project": "Projects",
+		"sub_title": "API Specialist",
+		"description": "I build seamless digital experiences from the ground up. With a strong foundation in both Frontend and Backend, I specialize in crafting robust APIs that power modern, user-friendly websites.",
+		"project": "View My Work",
 		"imageAlt": "Profile Picture"
 	},
 	"skills": {
-		"title": "Skills",
-		"technology": "Technologies",
-		"experience": "Years Experience",
-		"learning": "Learning"
+		"title": "Technical",
+		"sub_title": "Skills"
 	},
 	"projects": {
 		"title": "Projects",

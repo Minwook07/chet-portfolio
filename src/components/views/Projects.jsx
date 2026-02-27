@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoCloseOutline } from "react-icons/io5";
 
 export default function Projects() {
     const { t } = useTranslation();
-    const scrollRef = useRef(null);
-    const animationRef = useRef(null);
     const [selectedProject, setSelectedProject] = useState(null);
+    const [paused, setPaused] = useState(false);
 
     const projects = [
         { title: "Kassar", key: "ecommerce", tech: ["Vue.js", "Laravel", "MySQL", "Bootstrap"], img: "/images/projects/image2.png", demo_link: "https://usr.kassar.publicvm.com/" },
@@ -21,39 +20,17 @@ export default function Projects() {
 
     const loopProjects = [...projects, ...projects];
 
-    const startAnimation = () => {
-        const scroll = () => {
-            if (!scrollRef.current) return;
-            scrollRef.current.scrollLeft += 0.5;
-            if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
-                scrollRef.current.scrollLeft = 0;
-            }
-            animationRef.current = requestAnimationFrame(scroll);
-        };
-        animationRef.current = requestAnimationFrame(scroll);
-    };
+    const CARD_WIDTH = 320;
+    const GAP = 24;
+    const TRANSLATE = (CARD_WIDTH + GAP) * projects.length;
 
-    const stopAnimation = () => {
-        if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
-
-    // Body Lock, and ESC Key
     useEffect(() => {
-        if (selectedProject) {
-            stopAnimation();
-            document.body.style.overflow = 'hidden'; // LOCK SCROLL
-        } else {
-            startAnimation();
-            document.body.style.overflow = 'unset';
-        }
+        document.body.style.overflow = selectedProject ? 'hidden' : 'unset';
+        setPaused(!!selectedProject);
 
-        const handleEsc = (e) => {
-            if (e.key === 'Escape') setSelectedProject(null);
-        };
+        const handleEsc = (e) => { if (e.key === 'Escape') setSelectedProject(null); };
         window.addEventListener('keydown', handleEsc);
-
         return () => {
-            stopAnimation();
             document.body.style.overflow = 'unset';
             window.removeEventListener('keydown', handleEsc);
         };
@@ -63,25 +40,27 @@ export default function Projects() {
         <section id='projects' className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
             <div className="container mx-auto px-10">
                 <div className="flex flex-col lg:flex-row gap-12">
+
                     <div className="lg:w-1/3 flex flex-col justify-center">
                         <h2 className="text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">
-                            {t('projects.title')} <span className="text-orange-500 dark:text-purple-500">{t('projects.sub_title')}</span>
+                            {t('projects.title')}{' '}
+                            <span className="text-orange-500 dark:text-purple-500">{t('projects.sub_title')}</span>
                         </h2>
-                        <div className="w-20 h-1.5 bg-green-500 my-4 rounded-full"></div>
+                        <div className="w-20 h-1.5 bg-green-500 my-4 rounded-full" />
                         <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed font-medium">
                             {t('projects.desc')}
                         </p>
                     </div>
 
-                    <div className="lg:w-2/3 w-full">
+                    <div className="lg:w-2/3 w-full overflow-hidden">
                         <div
-                            ref={scrollRef}
-                            onMouseEnter={stopAnimation}
-                            onMouseLeave={() => !selectedProject && startAnimation()}
-                            className="flex gap-6 overflow-x-auto custom-scroll-hidden pb-6"
+                            onMouseEnter={() => setPaused(true)}
+                            onMouseLeave={() => !selectedProject && setPaused(false)}
+                            className="projects-track pb-6"
+                            style={{ animationPlayState: paused ? 'paused' : 'running' }}
                         >
                             {loopProjects.map((project, idx) => (
-                                <div key={idx} className="min-w-[100%] sm:min-w-[48%]">
+                                <div key={idx} className="projects-card">
                                     <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-lg h-[460px] flex flex-col border border-gray-100 dark:border-gray-800 transition-all duration-300">
 
                                         <div className="p-4 h-72">
@@ -97,12 +76,22 @@ export default function Projects() {
                                                     <p className="text-gray-500 dark:text-gray-400 text-xs mt-2 line-clamp-2">
                                                         {t(`projects.items.${project.key}.desc`)}
                                                     </p>
-                                                    <button onClick={() => setSelectedProject(project)} className="text-orange-500 dark:text-purple-400 text-[10px] font-black mt-3 uppercase tracking-widest hover:opacity-70 transition-opacity cursor-pointer">
+                                                    <button
+                                                        onClick={() => setSelectedProject(project)}
+                                                        className="text-orange-500 dark:text-purple-400 text-[10px] font-black mt-3 uppercase tracking-widest hover:opacity-70 transition-opacity cursor-pointer"
+                                                    >
                                                         [ TRY IT OUT ]
                                                     </button>
                                                 </div>
-                                                <a href={project.demo_link} target="_blank" rel="noreferrer" className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3.5 rounded-xl hover:bg-orange-500 transition-all shadow-md">
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                                <a
+                                                    href={project.demo_link}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3.5 rounded-xl hover:bg-orange-500 transition-all shadow-md"
+                                                >
+                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                    </svg>
                                                 </a>
                                             </div>
 
@@ -123,15 +112,18 @@ export default function Projects() {
             </div>
 
             <div className={`fixed inset-0 z-[100] transition-opacity duration-300 ${selectedProject ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <div className="absolute inset-0 bg-black/40 backdrop-blur-md" onClick={() => setSelectedProject(null)}></div>
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-md" onClick={() => setSelectedProject(null)} />
                 <div className={`absolute top-0 right-0 h-full w-full max-w-lg bg-white dark:bg-gray-950 shadow-2xl transform transition-transform duration-500 ease-in-out ${selectedProject ? 'translate-x-0' : 'translate-x-full'}`}>
                     {selectedProject && (
                         <div className="p-8 flex flex-col h-full overflow-y-auto">
-                            <button onClick={() => setSelectedProject(null)} className="self-end p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-500 hover:text-orange-500 transition-all cursor-pointer">
+                            <button
+                                onClick={() => setSelectedProject(null)}
+                                className="self-end p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-500 hover:text-orange-500 transition-all cursor-pointer"
+                            >
                                 <IoCloseOutline size={28} />
                             </button>
                             <div className="mt-6">
-                                <img src={selectedProject.img} className="w-full h-64 object-cover rounded-3xl shadow-xl mb-8" />
+                                <img src={selectedProject.img} className="w-full h-64 object-cover rounded-3xl shadow-xl mb-8" alt={selectedProject.title} />
                                 <h2 className="text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">{selectedProject.title}</h2>
                                 <div className="flex flex-wrap gap-2 my-6">
                                     {selectedProject.tech.map((tag, i) => (
@@ -156,7 +148,32 @@ export default function Projects() {
                 </div>
             </div>
 
-            <style>{`.custom-scroll-hidden::-webkit-scrollbar { display: none; } .custom-scroll-hidden { -ms-overflow-style: none; scrollbar-width: none; }`}</style>
+            <style>{`
+                .projects-track {
+                    display: flex;
+                    gap: ${GAP}px;
+                    width: max-content;
+                    animation: projects-marquee 30s linear infinite;
+                    will-change: transform;
+                    -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+                }
+
+                .projects-card {
+                    width: ${CARD_WIDTH}px;
+                    flex-shrink: 0;
+                }
+
+                @keyframes projects-marquee {
+                    0%   { transform: translateX(0); }
+                    100% { transform: translateX(-${TRANSLATE}px); }
+                }
+
+                @-webkit-keyframes projects-marquee {
+                    0%   { -webkit-transform: translateX(0); }
+                    100% { -webkit-transform: translateX(-${TRANSLATE}px); }
+                }
+            `}</style>
         </section>
     );
 }

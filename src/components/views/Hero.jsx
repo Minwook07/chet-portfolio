@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaArrowDown, FaExternalLinkAlt } from 'react-icons/fa';
+import { TbChevronsDown, TbChevronsUpRight } from 'react-icons/tb';
 
 export default function Hero() {
     const { t } = useTranslation();
@@ -67,7 +67,7 @@ export default function Hero() {
                                 className="group relative bg-gradient-to-r from-yellow-400 to-yellow-500 dark:from-purple-600 dark:to-purple-700 text-gray-900 dark:text-white py-4 px-10 rounded-xl font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105 overflow-hidden"
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2">
-                                    {t('hero.project')}<FaArrowDown />
+                                    {t('hero.project')}<TbChevronsDown size={20} />
                                 </span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 dark:from-purple-700 dark:to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             </a>
@@ -80,7 +80,7 @@ export default function Hero() {
                             >
                                 <span className="flex items-center justify-center gap-2">
                                     LinkedIn
-                                    <FaExternalLinkAlt className="text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    <TbChevronsUpRight size={20} className="text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                 </span>
                             </a>
                         </div>

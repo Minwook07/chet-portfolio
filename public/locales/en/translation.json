@@ -113,5 +113,15 @@
 				"place_holder_message": "Your message here..."
 			}
 		}
+	},
+	"footer": {
+		"isAvailable": "Available",
+		"short_desc": "Full Stack Web Developer based in Cambodia. Building clean, fast, accessible web experiences, and security.",
+		"copyright": "All rights reserved.",
+		"credit": {
+			"text": "Crafted with passion",
+			"symbol": "♥",
+			"location": "in the Land of Tum Teav"
+		}
 	}
 }

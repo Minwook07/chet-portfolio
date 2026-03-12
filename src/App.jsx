@@ -8,6 +8,7 @@ import GlobalStyles from './components/views/GlobalStyles'
 import './App.css';
 import i18next from 'i18next';
 import { useEffect, useState } from 'react';
+import MusicPlayer from './components/views/MusicPlayer';
 
 export default function App() {
     const [lang, setLang] = useState(i18next.language);
@@ -20,6 +21,7 @@ export default function App() {
     return (
         <div className={`text-gray-100 min-h-screen overflow-x-hidden bg-gray-50 dark:bg-gray-900/50 font-${lang}`}>
             <Navbar />
+            <MusicPlayer />
             <Hero />
             <Skills />
             <Projects />

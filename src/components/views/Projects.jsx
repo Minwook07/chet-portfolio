@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IoCloseOutline } from "react-icons/io5";
+import { TbArrowBearRight2, TbGridScan } from 'react-icons/tb';
 
 export default function Projects() {
     const { t } = useTranslation();
@@ -38,7 +38,7 @@ export default function Projects() {
 
     return (
         <section id='projects' className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
-            <div className="container mx-auto px-10">
+            <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-12">
 
                     <div className="lg:w-1/3 flex flex-col justify-center">
@@ -89,9 +89,10 @@ export default function Projects() {
                                                     rel="noreferrer"
                                                     className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3.5 rounded-xl hover:bg-orange-500 transition-all shadow-md"
                                                 >
-                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    {/* <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                                    </svg>
+                                                    </svg> */}
+                                                    <TbArrowBearRight2 size={20}/>
                                                 </a>
                                             </div>
 
@@ -120,7 +121,7 @@ export default function Projects() {
                                 onClick={() => setSelectedProject(null)}
                                 className="self-end p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-500 hover:text-orange-500 transition-all cursor-pointer"
                             >
-                                <IoCloseOutline size={28} />
+                                <TbGridScan size={28} />
                             </button>
                             <div className="mt-6">
                                 <img src={selectedProject.img} className="w-full h-64 object-cover rounded-3xl shadow-xl mb-8" alt={selectedProject.title} />

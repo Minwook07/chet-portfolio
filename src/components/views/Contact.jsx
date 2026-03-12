@@ -1,10 +1,9 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import emailjs from 'emailjs-com';
-import { MdOutlineContactSupport } from 'react-icons/md';
-import { RiTelegram2Line } from 'react-icons/ri';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from 'react-i18next';
+import { TbBrandGithub, TbBrandInstagram, TbBrandLinkedin, TbBrandTelegram, TbMapPin, TbMessageQuestion } from 'react-icons/tb';
 
 export default function Contact() {
     const form = useRef();
@@ -66,7 +65,7 @@ export default function Contact() {
             <div className="container mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center mb-16 flex items-center justify-center text-gray-950 dark:text-white">
                     <span className="mr-2 text-2xl">
-                        <MdOutlineContactSupport fontSize={35} className='text-primary' />
+                        <TbMessageQuestion fontSize={35} className='text-primary' />
                     </span>
                     {t('contact.title')}
                 </h2>
@@ -81,20 +80,7 @@ export default function Contact() {
 
                             <div className="flex items-center mb-4">
                                 <div className="text-primary mr-4">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                        <circle cx="12" cy="10" r="3" />
-                                    </svg>
+                                    <TbMapPin size={20} />
                                 </div>
                                 <span>
                                     <a
@@ -113,42 +99,14 @@ export default function Contact() {
                                 target="_blank"
                                 className="w-10 h-10 bg-[#333333] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] dark:hover:bg-[#333333] transition-colors"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="text-white"
-                                >
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                </svg>
+                                <TbBrandGithub size={23} />
                             </a>
                             <a
                                 href="https://www.linkedin.com/in/mith-chet-ab56b5295/"
                                 target="_blank"
                                 className="w-10 h-10 bg-[#0A66C2] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#084d92] dark:hover:bg-[#0A66C2] transition-colors"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="text-white"
-                                >
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                    <rect x="2" y="9" width="4" height="12" />
-                                    <circle cx="4" cy="4" r="2" />
-                                </svg>
+                                <TbBrandLinkedin fontSize={23} />
                             </a>
                             <a
                                 href="https://t.me/min7wook_lee"
@@ -156,28 +114,13 @@ export default function Contact() {
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 bg-[#0088cc] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#006699] dark:hover:bg-[#0088cc] transition-colors"
                             >
-                                <RiTelegram2Line fontSize={23} className="text-white" />
+                                <TbBrandTelegram fontSize={23} />
                             </a>
                             <a
                                 href="#"
                                 className="w-10 h-10 rounded-full flex items-center justify-center transition-colors bg-[#E1306C] hover:bg-[#b9275a] dark:bg-[#1E1E1E] dark:hover:bg-[#E1306C]"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="text-white"
-                                >
-                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                                </svg>
+                                <TbBrandInstagram size={23} />
                             </a>
                         </div>
                     </div>

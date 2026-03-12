@@ -72,10 +72,10 @@ body {
 }
 
 .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
     height: 100%;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -170,9 +170,6 @@ body {
     height: 38px;
     border-radius: 10px;
     border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
     background: transparent;

@@ -2,9 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import i18next from 'i18next';
 import { useTranslation, initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
-import { ImSun } from 'react-icons/im';
-import { BsMoonStarsFill } from 'react-icons/bs';
-import { TbAppWindowFilled, TbCannabisFilled, TbHomeFilled, TbMessageFilled } from 'react-icons/tb';
+import { TbAppWindowFilled, TbBrightnessUp, TbCannabisFilled, TbHomeFilled, TbMessageFilled, TbMoonStars } from 'react-icons/tb';
 
 const sections = ['home', 'skills', 'projects', 'contact'];
 
@@ -87,7 +85,7 @@ export default function Navbar() {
     return (
         <nav className="nav-root">
             <div className="nav-bar">
-                <div className="nav-inner">
+                <div className="nav-inner container mx-auto px-6">
                     <a href="#home" className="nav-logo">
                         <img
                             src="/images/logo/chet_nobg.svg"
@@ -132,8 +130,8 @@ export default function Navbar() {
                             )}
                         </div>
 
-                        <button className="theme-btn" onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')} aria-label="Toggle Theme">
-                            {theme === 'light' ? <BsMoonStarsFill size={18} /> : <ImSun size={20} />}
+                        <button className="theme-btn hidden md:flex items-center justify-center" onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')} aria-label="Toggle Theme">
+                            {theme === 'light' ? <TbMoonStars size={25} /> : <TbBrightnessUp size={25} />}
                         </button>
 
                         <style>{`@media(min-width:768px){#desktop-lang{display:block!important}}`}</style>
@@ -188,12 +186,12 @@ export default function Navbar() {
                     </div>
 
                     <button
-                        className="theme-btn"
+                        className="theme-btn flex items-center justify-center"
                         onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}
                         aria-label="Toggle Theme"
                         style={{ width: 44, height: 44, borderRadius: 14, border: '1.5px solid rgba(0,0,0,0.1)' }}
                     >
-                        {theme === 'light' ? <BsMoonStarsFill size={18} /> : <ImSun size={20} />}
+                        {theme === 'light' ? <TbMoonStars size={25} /> : <TbBrightnessUp size={25} />}
                     </button>
                 </div>
             </div>

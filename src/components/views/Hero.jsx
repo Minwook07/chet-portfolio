@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbChevronsDown, TbChevronsUpRight } from 'react-icons/tb';
 
@@ -32,7 +31,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 sm:px-6 mt-30 lg:mt-0 relative z-10">
+            <div className="container mx-auto px-6 mt-30 lg:mt-0 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     <div className="lg:w-7/12 text-center lg:text-left space-y-8">
 

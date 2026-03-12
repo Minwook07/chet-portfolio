@@ -11,7 +11,7 @@ export default function SkillsSection() {
     const { t } = useTranslation();
     return (
         <section id="skills" className="py-24 bg-gray-50 dark:bg-gray-900/50">
-            <div className="container mx-auto px-10">
+            <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
 
                     <div className="lg:w-5/12 relative group">

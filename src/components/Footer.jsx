@@ -1,29 +1,33 @@
 import { useTranslation } from 'react-i18next';
 import { TbBrandGithub, TbBrandLinkedin, TbBrandTelegram, TbArrowUpRight, TbBrandInstagram } from 'react-icons/tb';
-
-const socials = [
-    { icon: <TbBrandGithub size={17} />, href: 'https://github.com/Minwook07', label: 'GitHub' },
-    { icon: <TbBrandLinkedin size={17} />, href: 'https://www.linkedin.com/in/mith-chet-ab56b5295/', label: 'LinkedIn' },
-    { icon: <TbBrandTelegram size={17} />, href: 'https://t.me/min7wook_lee', label: 'Telegram' },
-    { icon: <TbBrandInstagram size={17} />, href: '#', label: 'Instagram' },
-];
+import { socialLinks } from '../config/socialLinks';
 
 export default function Footer() {
     const { t } = useTranslation();
-    const navLinks = [
-        { label: t('menu.home'), href: '#home' },
-        { label: t('menu.skills'), href: '#skills' },
-        { label: t('menu.projects'), href: '#projects' },
-        { label: t('menu.contact'), href: '#contact' },
+
+    const socials = [
+        { icon: <TbBrandGithub size={17} />,    href: socialLinks.github,    label: 'GitHub' },
+        { icon: <TbBrandLinkedin size={17} />,  href: socialLinks.linkedin,  label: 'LinkedIn' },
+        { icon: <TbBrandTelegram size={17} />,  href: socialLinks.telegram,  label: 'Telegram' },
+        { icon: <TbBrandInstagram size={17} />, href: socialLinks.instagram, label: 'Instagram' },
     ];
+
+    const navLinks = [
+        { label: t('menu.home'),     href: '#home' },
+        { label: t('menu.skills'),   href: '#skills' },
+        { label: t('menu.projects'), href: '#projects' },
+        { label: t('menu.contact'),  href: '#contact' },
+    ];
+
     return (
         <footer className="bg-[#f0ede8] dark:bg-[#0f0f0f] border-t border-black/8 dark:border-white/8">
             <div className="container mx-auto px-6 py-10">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
 
+                    {/* Brand */}
                     <div className="flex flex-col gap-3">
                         <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-500 dark:from-purple-600 dark:to-purple-700 text-gray-900 dark:text-white  flex items-center justify-center font-bold text-xs flex-shrink-0">
+                            <div className="w-9 h-9 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-500 dark:from-purple-600 dark:to-purple-700 text-gray-900 dark:text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
                                 osi
                             </div>
                             <span className="text-base font-bold text-[#1a1a1a] dark:text-[#f5f5f0] tracking-tight">
@@ -39,6 +43,7 @@ export default function Footer() {
                         </p>
                     </div>
 
+                    {/* Nav links */}
                     <ul className="flex flex-wrap gap-x-6 gap-y-2 list-none p-0 m-0">
                         {navLinks.map(l => (
                             <li key={l.label}>
@@ -53,6 +58,7 @@ export default function Footer() {
                         ))}
                     </ul>
 
+                    {/* Social icons */}
                     <div className="flex gap-2">
                         {socials.map(s => (
                             <a

@@ -27,7 +27,7 @@ export default function Footer() {
                                 osi
                             </div>
                             <span className="text-base font-bold text-[#1a1a1a] dark:text-[#f5f5f0] tracking-tight">
-                                Okawasaki
+                                Okawasakii
                             </span>
                             <span className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium ml-1">
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -72,7 +72,7 @@ export default function Footer() {
                 <div className="mt-8 pt-6 border-t border-black/8 dark:border-white/8 flex flex-col sm:flex-row items-center justify-between gap-2">
                     <p className="text-sm text-gray-400 dark:text-gray-600">
                         © 2025–{new Date().getFullYear()}{' '}
-                        <span className="font-semibold text-gray-500 dark:text-gray-500 uppercase">Okawasaki</span>.
+                        <span className="font-semibold text-gray-500 dark:text-gray-500 uppercase">Okawasakii</span>.
                         {' '}{t('footer.copyright')}
                     </p>
                     <p className="text-sm text-gray-400 dark:text-gray-600 flex items-center gap-1">

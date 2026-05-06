@@ -8,7 +8,7 @@ const sections = ['home', 'skills', 'projects', 'contact'];
 
 const languages = {
     en: { name: 'English', flag: '/images/flags/uk.png' },
-    km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.png' },
+    km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.svg' },
 };
 
 i18next

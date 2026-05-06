@@ -1,14 +1,50 @@
-import Navbar from './components/layouts/Navbar';
-import Hero from './components/views/Hero';
-import Skills from './components/views/Skills';
-import Projects from './components/views/Projects';
-import Contact from './components/views/Contact';
-import Footer from './components/layouts/Footer';
-import GlobalStyles from './components/views/GlobalStyles'
+import { lazy, Suspense, useEffect, useState } from 'react';
+import { DarkModeProvider } from './contexts/DarkModeContext';
+import Navigation from './components/section/Navigation';
+import About from './components/section/About';
 import './App.css';
 import i18next from 'i18next';
-import { useEffect, useState } from 'react';
-import MusicPlayer from './components/views/MusicPlayer';
+
+// Lazy load below-the-fold sections for better initial load
+const Skills = lazy(() => import('./components/section/Skills'));
+const Projects = lazy(() => import('./components/section/Projects'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const MusicPlayer = lazy(() => import('./components/MusicPlayer'));
+
+function HomePage() {
+    return (
+        <>
+            <About />
+            <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+                <Skills />
+            </Suspense>
+            <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+                <Projects />
+            </Suspense>
+            <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading...</div>}>
+                <Contact />
+            </Suspense>
+        </>
+    );
+}
+
+function AppContent() {
+    return (
+        <>
+            <Navigation />
+            <Suspense fallback={null}>
+                <MusicPlayer />
+            </Suspense>
+            <main id="main-content">
+                <HomePage />
+            </main>
+            <Suspense fallback={<div className="h-32" />}>
+                <Footer />
+            </Suspense>
+        </>
+    );
+}
 
 export default function App() {
     const [lang, setLang] = useState(i18next.language);
@@ -19,15 +55,12 @@ export default function App() {
         return () => i18next.off('languageChanged', handleLangChange);
     }, []);
     return (
-        <div className={`text-gray-100 min-h-screen overflow-x-hidden bg-gray-50 dark:bg-gray-900/50 font-${lang}`}>
-            <Navbar />
-            <MusicPlayer />
-            <Hero />
-            <Skills />
-            <Projects />
-            <Contact />
-            <Footer />
-            <GlobalStyles />
-        </div>
+        <>
+            <div className={`font-${lang}`}>
+                <DarkModeProvider>
+                    <AppContent />
+                </DarkModeProvider>
+            </div>
+        </>
     );
 }

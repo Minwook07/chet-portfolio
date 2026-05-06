@@ -2,32 +2,30 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbArrowBearRight2, TbGridScan } from 'react-icons/tb';
 
+const projects = [
+    { title: 'Kassar',      key: 'ecommerce',   tech: ['Vue.js', 'Laravel', 'MySQL', 'Bootstrap'], img: '/images/projects/image2.png', demo_link: 'https://usr.kassar.publicvm.com/' },
+    { title: 'Study Home',  key: 'study_home',  tech: ['Tailwind', 'HTML', 'JS'],                  img: '/images/projects/image6.png', demo_link: 'https://reanwithus.netlify.app/' },
+    { title: 'Yummy',       key: 'yummy',       tech: ['JS', 'Bootstrap', 'API', 'MySQL'],         img: '/images/projects/image7.png', demo_link: 'http://antstudents.com/' },
+    { title: 'សូត្រ',       key: 'online_shop', tech: ['JS', 'Bootstrap', 'API'],                 img: '/images/projects/image1.png', demo_link: 'http://antstudents.com/' },
+    { title: 'CSC Express', key: 'express_bus', tech: ['Bootstrap', 'HTML', 'CSS'],                img: '/images/projects/image3.png', demo_link: 'http://antstudents.com/' },
+    { title: '3KAMi',       key: 'movies',      tech: ['Vue.js', 'Bootstrap', 'JS'],               img: '/images/projects/image5.png', demo_link: 'https://merl3kam.netlify.app/' },
+    { title: 'CSC Express', key: 'logistics',   tech: ['HTML', 'CSS'],                             img: '/images/projects/image4.png', demo_link: 'http://antstudents.com/' },
+    { title: 'Portfolio',   key: 'portfolio',   tech: ['React.js', 'Tailwind'],                    img: '/images/projects/image8.png', demo_link: 'https://chet-portfolio.vercel.app/' },
+];
+
+const CARD_WIDTH = 320;
+const GAP = 24;
+const TRANSLATE = (CARD_WIDTH + GAP) * projects.length;
+const loopProjects = [...projects, ...projects];
+
 export default function Projects() {
     const { t } = useTranslation();
     const [selectedProject, setSelectedProject] = useState(null);
     const [paused, setPaused] = useState(false);
 
-    const projects = [
-        { title: "Kassar", key: "ecommerce", tech: ["Vue.js", "Laravel", "MySQL", "Bootstrap"], img: "/images/projects/image2.png", demo_link: "https://usr.kassar.publicvm.com/" },
-        { title: "Study Home", key: "study_home", tech: ["Tailwind", "HTML", "JS"], img: "/images/projects/image6.png", demo_link: "https://reanwithus.netlify.app/" },
-        { title: "Yummy", key: "yummy", tech: ["JS", "Bootstrap", "API", "MySQL"], img: "/images/projects/image7.png", demo_link: "http://antstudents.com/..." },
-        { title: "សូត្រ", key: "online_shop", tech: ["JS", "Bootstrap", "API"], img: "/images/projects/image1.png", demo_link: "http://antstudents.com/..." },
-        { title: "CSC Express", key: "express_bus", tech: ["Bootstrap", "HTML", "CSS"], img: "/images/projects/image3.png", demo_link: "http://antstudents.com/..." },
-        { title: "3KAMi", key: "movies", tech: ["Vue.js", "Bootstrap", "JS"], img: "/images/projects/image5.png", demo_link: "https://merl3kam.netlify.app/" },
-        { title: "CSC Express", key: 'logistics', tech: ["HTML", "CSS"], img: "/images/projects/image4.png", demo_link: "http://antstudents.com/..." },
-        { title: "Portfolio", key: 'portfolio', tech: ["React.js", "Tailwind"], img: "/images/projects/image8.png", demo_link: "https://chet-portfolio.vercel.app/" },
-    ];
-
-    const loopProjects = [...projects, ...projects];
-
-    const CARD_WIDTH = 320;
-    const GAP = 24;
-    const TRANSLATE = (CARD_WIDTH + GAP) * projects.length;
-
     useEffect(() => {
         document.body.style.overflow = selectedProject ? 'hidden' : 'unset';
         setPaused(!!selectedProject);
-
         const handleEsc = (e) => { if (e.key === 'Escape') setSelectedProject(null); };
         window.addEventListener('keydown', handleEsc);
         return () => {
@@ -37,10 +35,11 @@ export default function Projects() {
     }, [selectedProject]);
 
     return (
-        <section id='projects' className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
+        <section id="projects" className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-12">
 
+                    {/* Heading */}
                     <div className="lg:w-1/3 flex flex-col justify-center">
                         <h2 className="text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">
                             {t('projects.title')}{' '}
@@ -52,6 +51,7 @@ export default function Projects() {
                         </p>
                     </div>
 
+                    {/* Marquee */}
                     <div className="lg:w-2/3 w-full overflow-hidden">
                         <div
                             onMouseEnter={() => setPaused(true)}
@@ -62,13 +62,11 @@ export default function Projects() {
                             {loopProjects.map((project, idx) => (
                                 <div key={idx} className="projects-card">
                                     <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-lg h-[460px] flex flex-col border border-gray-100 dark:border-gray-800 transition-all duration-300">
-
                                         <div className="p-4 h-72">
                                             <div className="overflow-hidden rounded-2xl h-full shadow-inner">
                                                 <img src={project.img} alt={project.title} className="w-full h-full object-cover" />
                                             </div>
                                         </div>
-
                                         <div className="p-6 pt-2 flex flex-col justify-between flex-grow">
                                             <div className="flex justify-between items-start gap-3">
                                                 <div className="flex-1">
@@ -89,13 +87,9 @@ export default function Projects() {
                                                     rel="noreferrer"
                                                     className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3.5 rounded-xl hover:bg-orange-500 transition-all shadow-md"
                                                 >
-                                                    {/* <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                                    </svg> */}
-                                                    <TbArrowBearRight2 size={20}/>
+                                                    <TbArrowBearRight2 size={20} />
                                                 </a>
                                             </div>
-
                                             <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-gray-50 dark:border-gray-800/50">
                                                 {project.tech.map((tag, i) => (
                                                     <span key={i} className="px-2 py-1 text-[9px] font-black bg-gray-100 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 rounded-md border border-gray-200/50 uppercase">
@@ -112,6 +106,7 @@ export default function Projects() {
                 </div>
             </div>
 
+            {/* Project detail slide-in panel */}
             <div className={`fixed inset-0 z-[100] transition-opacity duration-300 ${selectedProject ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div className="absolute inset-0 bg-black/40 backdrop-blur-md" onClick={() => setSelectedProject(null)} />
                 <div className={`absolute top-0 right-0 h-full w-full max-w-lg bg-white dark:bg-gray-950 shadow-2xl transform transition-transform duration-500 ease-in-out ${selectedProject ? 'translate-x-0' : 'translate-x-full'}`}>
@@ -131,12 +126,10 @@ export default function Projects() {
                                         <span key={i} className="px-3 py-1 text-xs font-black border-2 border-orange-500/20 text-orange-500 dark:text-purple-500 rounded-full">{tag}</span>
                                     ))}
                                 </div>
-                                <div className="space-y-6">
-                                    <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border-l-4 border-orange-500 dark:border-purple-500">
-                                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg font-medium">
-                                            {t(`projects.items.${selectedProject.key}.desc`)}
-                                        </p>
-                                    </div>
+                                <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border-l-4 border-orange-500 dark:border-purple-500">
+                                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg font-medium">
+                                        {t(`projects.items.${selectedProject.key}.desc`)}
+                                    </p>
                                 </div>
                             </div>
                             <a href={selectedProject.demo_link} target="_blank" rel="noreferrer" className="mt-auto pt-8 w-full block">
@@ -156,23 +149,11 @@ export default function Projects() {
                     width: max-content;
                     animation: projects-marquee 30s linear infinite;
                     will-change: transform;
-                    -webkit-transform: translateZ(0);
-                    transform: translateZ(0);
                 }
-
-                .projects-card {
-                    width: ${CARD_WIDTH}px;
-                    flex-shrink: 0;
-                }
-
+                .projects-card { width: ${CARD_WIDTH}px; flex-shrink: 0; }
                 @keyframes projects-marquee {
                     0%   { transform: translateX(0); }
                     100% { transform: translateX(-${TRANSLATE}px); }
-                }
-
-                @-webkit-keyframes projects-marquee {
-                    0%   { -webkit-transform: translateX(0); }
-                    100% { -webkit-transform: translateX(-${TRANSLATE}px); }
                 }
             `}</style>
         </section>

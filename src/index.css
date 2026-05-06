@@ -533,6 +533,7 @@ body {
     border: 1.5px solid rgba(0, 0, 0, 0.1);
     background: transparent;
     cursor: pointer;
+    font-family: 'Sora', sans-serif;
     font-size: 0.78rem;
     font-weight: 600;
     color: #374151;

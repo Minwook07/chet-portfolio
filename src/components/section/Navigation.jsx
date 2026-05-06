@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import i18next from 'i18next';
 import { useTranslation, initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
-import { TbAppWindowFilled, TbBrightnessUp, TbCannabisFilled, TbHomeFilled, TbMessageFilled, TbMoonStars } from 'react-icons/tb';
+import { TbAppWindowFilled, TbCannabisFilled, TbHomeFilled, TbMessageFilled } from 'react-icons/tb';
+import { useDarkMode } from '../../contexts/DarkModeContext';
+import DarkModeToggle from '../DarkModeToggle';
 
 const sections = ['home', 'skills', 'projects', 'contact'];
 
 const languages = {
     en: { name: 'English', flag: '/images/flags/uk.png' },
-    km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.svg' },
+    km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.png' },
 };
 
 i18next
@@ -29,20 +31,14 @@ const sectionIcons = {
     contact:  <TbMessageFilled />,
 };
 
-export default function Navbar() {
+export default function Navigation() {
     const [open, setOpen] = useState(false);
     const [active, setActive] = useState('home');
     const [language, setLanguage] = useState(localStorage.getItem('language') || 'en');
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const { t } = useTranslation();
-
-    // Theme
-    useEffect(() => {
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-        localStorage.setItem('theme', theme);
-    }, [theme]);
+    const { isDarkMode } = useDarkMode();
 
     // Lock body scroll when drawer open
     useEffect(() => {
@@ -50,7 +46,7 @@ export default function Navbar() {
         return () => { document.body.style.overflow = ''; };
     }, [open]);
 
-    // Active section
+    // Active section detection
     useEffect(() => {
         const handler = () => {
             sections.forEach(id => {
@@ -65,7 +61,7 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handler);
     }, []);
 
-    // Click-outside dropdown
+    // Click-outside for language dropdown
     useEffect(() => {
         const cb = (e) => {
             if (dropdownRef.current && !dropdownRef.current.contains(e.target)) setDropdownOpen(false);
@@ -90,9 +86,10 @@ export default function Navbar() {
                         <img
                             src="/images/logo/chet_nobg.svg"
                             alt="Logo"
-                            style={{ filter: theme === 'light' ? 'invert(1)' : 'none' }}
+                            style={{ filter: isDarkMode ? 'none' : 'invert(1)' }}
                         />
                     </a>
+
                     <ul className="nav-links-desktop">
                         {sections.map(item => (
                             <li key={item}>
@@ -108,6 +105,7 @@ export default function Navbar() {
                     </ul>
 
                     <div className="nav-controls">
+                        {/* Language dropdown - desktop */}
                         <div className="lang-wrap" ref={dropdownRef} style={{ display: 'none' }} id="desktop-lang">
                             <button className="lang-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
                                 <img src={languages[language].flag} alt="flag" />
@@ -130,13 +128,15 @@ export default function Navbar() {
                             )}
                         </div>
 
-                        <button className="theme-btn hidden md:flex items-center justify-center" onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')} aria-label="Toggle Theme">
-                            {theme === 'light' ? <TbMoonStars size={25} /> : <TbBrightnessUp size={25} />}
-                        </button>
+                        <DarkModeToggle />
 
                         <style>{`@media(min-width:768px){#desktop-lang{display:block!important}}`}</style>
 
-                        <button className={`hamburger ${open ? 'open' : ''}`} onClick={() => setOpen(!open)} aria-label="Menu">
+                        <button
+                            className={`hamburger ${open ? 'open' : ''}`}
+                            onClick={() => setOpen(!open)}
+                            aria-label="Menu"
+                        >
                             <span className="ham-line" />
                             <span className="ham-line" />
                             <span className="ham-line" />
@@ -145,11 +145,13 @@ export default function Navbar() {
                 </div>
             </div>
 
+            {/* Mobile overlay */}
             <div
                 className={`drawer-overlay ${open ? 'visible' : ''}`}
                 onClick={() => setOpen(false)}
             />
 
+            {/* Mobile drawer */}
             <div className={`drawer ${open ? 'open' : ''}`}>
                 <div className="drawer-handle" />
 
@@ -185,14 +187,7 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    <button
-                        className="theme-btn flex items-center justify-center"
-                        onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}
-                        aria-label="Toggle Theme"
-                        style={{ width: 44, height: 44, borderRadius: 14, border: '1.5px solid rgba(0,0,0,0.1)' }}
-                    >
-                        {theme === 'light' ? <TbMoonStars size={25} /> : <TbBrightnessUp size={25} />}
-                    </button>
+                    <DarkModeToggle style={{ width: 44, height: 44, borderRadius: 14, border: '1.5px solid rgba(0,0,0,0.1)' }} />
                 </div>
             </div>
         </nav>

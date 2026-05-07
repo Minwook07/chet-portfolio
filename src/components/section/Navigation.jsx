@@ -9,8 +9,8 @@ import DarkModeToggle from '../DarkModeToggle';
 const sections = ['home', 'skills', 'projects', 'contact'];
 
 const languages = {
-    en: { name: 'English', flag: '/images/flags/uk.png' },
-    km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.png' },
+    en: { name: 'English', flag: '/images/flags/uk.webp' },
+    km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.webp' },
 };
 
 i18next
@@ -107,8 +107,8 @@ export default function Navigation() {
                     <div className="nav-controls">
                         {/* Language dropdown - desktop */}
                         <div className="lang-wrap" ref={dropdownRef} style={{ display: 'none' }} id="desktop-lang">
-                            <button className="lang-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                                <img src={languages[language].flag} alt="flag" />
+                            <button className="lang-btn" aria-label="Dropdown btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                                <img src={languages[language].flag} alt="flag" width="56" height="28" />
                                 <span>{languages[language].name}</span>
                                 <svg className={`arrow ${dropdownOpen ? 'open' : ''}`} width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
                                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -118,8 +118,8 @@ export default function Navigation() {
                                 <ul className="lang-dropdown" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
                                     {Object.keys(languages).map(langKey => (
                                         <li key={langKey}>
-                                            <button className="lang-item" onClick={() => handleLanguageChange(langKey)}>
-                                                <img src={languages[langKey].flag} alt={languages[langKey].name} />
+                                            <button className="lang-item" aria-label="dropdown btn 2" onClick={() => handleLanguageChange(langKey)}>
+                                                <img src={languages[langKey].flag} alt={languages[langKey].name} width="56" height="28" />
                                                 {languages[langKey].name}
                                             </button>
                                         </li>
@@ -180,8 +180,9 @@ export default function Navigation() {
                                 key={langKey}
                                 className={`drawer-lang-pill ${language === langKey ? 'active-lang' : ''}`}
                                 onClick={() => handleLanguageChange(langKey)}
+                                aria-label="change lang"
                             >
-                                <img src={languages[langKey].flag} alt={languages[langKey].name} />
+                                <img src={languages[langKey].flag} alt={languages[langKey].name} width="56" height="28" />
                                 {languages[langKey].name}
                             </button>
                         ))}

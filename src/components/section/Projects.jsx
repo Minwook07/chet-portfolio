@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { TbArrowBearRight2, TbGridScan } from 'react-icons/tb';
 
 const projects = [
-    { title: 'Kassar',      key: 'ecommerce',   tech: ['Vue.js', 'Laravel', 'MySQL', 'Bootstrap'], img: '/images/projects/image2.png', demo_link: 'https://usr.kassar.publicvm.com/' },
-    { title: 'Study Home',  key: 'study_home',  tech: ['Tailwind', 'HTML', 'JS'],                  img: '/images/projects/image6.png', demo_link: 'https://reanwithus.netlify.app/' },
-    { title: 'Yummy',       key: 'yummy',       tech: ['JS', 'Bootstrap', 'API', 'MySQL'],         img: '/images/projects/image7.png', demo_link: 'http://antstudents.com/' },
-    { title: 'សូត្រ',       key: 'online_shop', tech: ['JS', 'Bootstrap', 'API'],                 img: '/images/projects/image1.png', demo_link: 'http://antstudents.com/' },
-    { title: 'CSC Express', key: 'express_bus', tech: ['Bootstrap', 'HTML', 'CSS'],                img: '/images/projects/image3.png', demo_link: 'http://antstudents.com/' },
-    { title: '3KAMi',       key: 'movies',      tech: ['Vue.js', 'Bootstrap', 'JS'],               img: '/images/projects/image5.png', demo_link: 'https://merl3kam.netlify.app/' },
-    { title: 'CSC Express', key: 'logistics',   tech: ['HTML', 'CSS'],                             img: '/images/projects/image4.png', demo_link: 'http://antstudents.com/' },
-    { title: 'Portfolio',   key: 'portfolio',   tech: ['React.js', 'Tailwind'],                    img: '/images/projects/image8.png', demo_link: 'https://chet-portfolio.vercel.app/' },
+    { title: 'Kassar', key: 'ecommerce', tech: ['Vue.js', 'Laravel', 'MySQL', 'Bootstrap'], img: '/images/projects/image2.webp', demo_link: 'https://usr.kassar.publicvm.com/' },
+    { title: 'Study Home', key: 'study_home', tech: ['Tailwind', 'HTML', 'JS'], img: '/images/projects/image6.webp', demo_link: 'https://reanwithus.netlify.app/' },
+    { title: 'Yummy', key: 'yummy', tech: ['JS', 'Bootstrap', 'API', 'MySQL'], img: '/images/projects/image7.webp', demo_link: 'http://antstudents.com/' },
+    { title: 'សូត្រ', key: 'online_shop', tech: ['JS', 'Bootstrap', 'API'], img: '/images/projects/image1.webp', demo_link: 'http://antstudents.com/' },
+    { title: 'CSC Express', key: 'express_bus', tech: ['Bootstrap', 'HTML', 'CSS'], img: '/images/projects/image3.webp', demo_link: 'http://antstudents.com/' },
+    { title: '3KAMi', key: 'movies', tech: ['Vue.js', 'Bootstrap', 'JS'], img: '/images/projects/image5.webp', demo_link: 'https://merl3kam.netlify.app/' },
+    { title: 'CSC Express', key: 'logistics', tech: ['HTML', 'CSS'], img: '/images/projects/image4.webp', demo_link: 'http://antstudents.com/' },
+    { title: 'Portfolio', key: 'portfolio', tech: ['React.js', 'Tailwind'], img: '/images/projects/image8.webp', demo_link: 'https://chet-portfolio.vercel.app/' },
 ];
 
 const CARD_WIDTH = 320;
@@ -64,7 +64,9 @@ export default function Projects() {
                                     <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-lg h-[460px] flex flex-col border border-gray-100 dark:border-gray-800 transition-all duration-300">
                                         <div className="p-4 h-72">
                                             <div className="overflow-hidden rounded-2xl h-full shadow-inner">
-                                                <img src={project.img} alt={project.title} className="w-full h-full object-cover" />
+                                                <img src={project.img} alt={project.title} className="w-full h-full object-cover" width="1100"
+                                                    height="512"
+                                                    loading="lazy" />
                                             </div>
                                         </div>
                                         <div className="p-6 pt-2 flex flex-col justify-between flex-grow">
@@ -77,6 +79,7 @@ export default function Projects() {
                                                     <button
                                                         onClick={() => setSelectedProject(project)}
                                                         className="text-orange-500 dark:text-purple-400 text-[10px] font-black mt-3 uppercase tracking-widest hover:opacity-70 transition-opacity cursor-pointer"
+                                                        aria-label="see more"
                                                     >
                                                         [ TRY IT OUT ]
                                                     </button>
@@ -116,6 +119,7 @@ export default function Projects() {
                             <button
                                 onClick={() => setSelectedProject(null)}
                                 className="self-end p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-500 hover:text-orange-500 transition-all cursor-pointer"
+                                aria-label="close"
                             >
                                 <TbGridScan size={28} />
                             </button>
@@ -134,7 +138,7 @@ export default function Projects() {
                                 </div>
                             </div>
                             <a href={selectedProject.demo_link} target="_blank" rel="noreferrer" className="mt-auto pt-8 w-full block">
-                                <button className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-5 rounded-2xl font-black text-sm tracking-widest hover:bg-orange-500 transition-all shadow-xl cursor-pointer">
+                                <button className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-5 rounded-2xl font-black text-sm tracking-widest hover:bg-orange-500 transition-all shadow-xl cursor-pointer" aria-label="see demo">
                                     {t('projects.button.btn_demo')}
                                 </button>
                             </a>

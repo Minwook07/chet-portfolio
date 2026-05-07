@@ -113,7 +113,7 @@ export default function Contact() {
                                 />
                             </div>
                             <button type="submit"
-                                className="w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-[#db2777] transition-colors cursor-pointer">
+                                className="w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-[#db2777] transition-colors cursor-pointer" aria-label="submit btn">
                                 {t('contact.form_info.btn_submit')}
                             </button>
                         </form>

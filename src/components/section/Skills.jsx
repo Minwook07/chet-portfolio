@@ -6,12 +6,12 @@ const skills = [
     { name: 'Vue.js',      progress: '90%', img: techstack.Vue,        color: 'bg-[#42b883]' },
     { name: 'React.js',    progress: '50%', img: techstack.React,      color: 'bg-[#61dafb]' },
     { name: 'Tailwind CSS',progress: '75%', img: techstack.Tailwind,   color: 'bg-cyan-400' },
-    { name: 'Bootstrap',   progress: '85%', img: techstack.Bootstrap,  color: 'bg-purple-600' },
-    { name: 'JavaScript',  progress: '70%', img: techstack.JavaScript, color: 'bg-yellow-400' },
-    { name: 'PHP',         progress: '80%', img: techstack.PHP,        color: 'bg-indigo-400' },
-    { name: 'MySQL',       progress: '75%', img: techstack.MySQL,      color: 'bg-blue-500' },
-    { name: 'Figma',       progress: '65%', img: techstack.Figma,      color: 'bg-pink-500' },
-    { name: 'Git',         progress: '70%', img: techstack.Git,        color: 'bg-orange-500' },
+    // { name: 'Bootstrap',   progress: '85%', img: techstack.Bootstrap,  color: 'bg-purple-600' },
+    // { name: 'JavaScript',  progress: '70%', img: techstack.JavaScript, color: 'bg-yellow-400' },
+    // { name: 'PHP',         progress: '80%', img: techstack.PHP,        color: 'bg-indigo-400' },
+    // { name: 'MySQL',       progress: '75%', img: techstack.MySQL,      color: 'bg-blue-500' },
+    // { name: 'Figma',       progress: '65%', img: techstack.Figma,      color: 'bg-pink-500' },
+    // { name: 'Git',         progress: '70%', img: techstack.Git,        color: 'bg-orange-500' },
 ];
 
 export default function Skills() {

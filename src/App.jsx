@@ -5,7 +5,7 @@ import About from './components/section/About';
 import './App.css';
 import i18next from 'i18next';
 
-// Lazy load below-the-fold sections for better initial load
+// Lazy load below-the-fold sections
 const Skills = lazy(() => import('./components/section/Skills'));
 const Projects = lazy(() => import('./components/section/Projects'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -15,14 +15,13 @@ const MusicPlayer = lazy(() => import('./components/MusicPlayer'));
 function HomePage() {
     return (
         <>
+            {/* About is critical/above-the-fold, keep it synchronous */}
             <About />
-            <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+            
+            {/* Grouping these prevents multiple layout shifts */}
+            <Suspense fallback={<div className="h-screen flex items-center justify-center text-gray-500">Loading Experience...</div>}>
                 <Skills />
-            </Suspense>
-            <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
                 <Projects />
-            </Suspense>
-            <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading...</div>}>
                 <Contact />
             </Suspense>
         </>
@@ -31,7 +30,7 @@ function HomePage() {
 
 function AppContent() {
     return (
-        <>
+        <DarkModeProvider>
             <Navigation />
             <Suspense fallback={null}>
                 <MusicPlayer />
@@ -42,7 +41,7 @@ function AppContent() {
             <Suspense fallback={<div className="h-32" />}>
                 <Footer />
             </Suspense>
-        </>
+        </DarkModeProvider>
     );
 }
 
@@ -54,13 +53,10 @@ export default function App() {
         i18next.on('languageChanged', handleLangChange);
         return () => i18next.off('languageChanged', handleLangChange);
     }, []);
+
     return (
-        <>
-            <div className={`font-${lang}`}>
-                <DarkModeProvider>
-                    <AppContent />
-                </DarkModeProvider>
-            </div>
-        </>
+        <div className={`font-${lang} transition-colors duration-300`}>
+            <AppContent />
+        </div>
     );
 }

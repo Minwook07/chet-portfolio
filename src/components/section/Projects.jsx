@@ -86,6 +86,7 @@ export default function Projects() {
                                                     target="_blank"
                                                     rel="noreferrer"
                                                     className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3.5 rounded-xl hover:bg-orange-500 transition-all shadow-md"
+                                                    aria-label={`${t('common.view_demo')} ${t(`projects.items.${project.key}.title`)}`}
                                                 >
                                                     <TbArrowBearRight2 size={20} />
                                                 </a>

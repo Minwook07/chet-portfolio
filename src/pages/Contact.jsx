@@ -59,19 +59,19 @@ export default function Contact() {
 
                         <div className="flex gap-4">
                             <a href={socialLinks.github} target="_blank" rel="noreferrer"
-                                className="w-10 h-10 bg-[#333333] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] dark:hover:bg-[#333333] transition-colors">
+                                className="w-10 h-10 text-white bg-[#333333] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] dark:hover:bg-[#333333] transition-colors">
                                 <TbBrandGithub size={23} />
                             </a>
                             <a href={socialLinks.linkedin} target="_blank" rel="noreferrer"
-                                className="w-10 h-10 bg-[#0A66C2] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#084d92] dark:hover:bg-[#0A66C2] transition-colors">
+                                className="w-10 h-10 text-white bg-[#0A66C2] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#084d92] dark:hover:bg-[#0A66C2] transition-colors">
                                 <TbBrandLinkedin size={23} />
                             </a>
                             <a href={socialLinks.telegram} target="_blank" rel="noreferrer"
-                                className="w-10 h-10 bg-[#0088cc] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#006699] dark:hover:bg-[#0088cc] transition-colors">
+                                className="w-10 h-10 text-white bg-[#0088cc] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#006699] dark:hover:bg-[#0088cc] transition-colors">
                                 <TbBrandTelegram size={23} />
                             </a>
                             <a href={socialLinks.instagram}
-                                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#E1306C] hover:bg-[#b9275a] dark:bg-[#1E1E1E] dark:hover:bg-[#E1306C] transition-colors">
+                                className="w-10 h-10 text-white rounded-full flex items-center justify-center bg-[#E1306C] hover:bg-[#b9275a] dark:bg-[#1E1E1E] dark:hover:bg-[#E1306C] transition-colors">
                                 <TbBrandInstagram size={23} />
                             </a>
                         </div>

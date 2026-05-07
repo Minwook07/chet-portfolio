@@ -100,6 +100,7 @@ export default function MusicPlayer() {
                         <button
                             onClick={() => setOpen(false)}
                             className="w-6 h-6 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                            aria-label="Close"
                         >
                             <TbX size={13} />
                         </button>
@@ -126,6 +127,7 @@ export default function MusicPlayer() {
                         <button
                             onClick={() => skipTo(currentIndex - 1)}
                             className="flex items-center gap-1.5 text-xs font-semibold text-gray-400 dark:text-gray-500 hover:text-[#1DB954] transition-colors cursor-pointer"
+                            aria-label="skip"
                         >
                             <TbPlayerSkipBackFilled size={14} /> Prev
                         </button>
@@ -147,6 +149,7 @@ export default function MusicPlayer() {
                         <button
                             onClick={() => skipTo(currentIndex + 1)}
                             className="flex items-center gap-1.5 text-xs font-semibold text-gray-400 dark:text-gray-500 hover:text-[#1DB954] transition-colors cursor-pointer"
+                            aria-label="skipto"
                         >
                             Next <TbPlayerSkipForwardFilled size={14} />
                         </button>

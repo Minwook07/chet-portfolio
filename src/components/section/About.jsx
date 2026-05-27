@@ -7,7 +7,14 @@ export default function About() {
     const { t } = useTranslation();
 
     return (
-        <section id="home" className="relative overflow-hidden min-h-screen flex items-center bg-white dark:bg-gray-900 transition-colors duration-300">
+        <section
+            id="home"
+            className="relative overflow-hidden min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/images/hero/ss1.jpg')" }}
+        >
+
+            <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-[0.5px]" />
+
             {/* Background blobs */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/4 -left-20 w-[300px] h-[300px] bg-green-500/10 dark:bg-green-500/5 rounded-full blur-[120px] animate-pulse" />

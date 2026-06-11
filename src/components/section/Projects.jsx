@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbArrowBearRight2, TbGridScan } from 'react-icons/tb';
+import { TbArrowBearRight2, TbChevronLeft, TbChevronRight, TbGridScan } from 'react-icons/tb';
 
 const projects = [
     { title: 'Kassar', key: 'ecommerce', tech: ['Vue.js', 'Laravel', 'MySQL', 'Bootstrap'], img: '/images/projects/image2.webp', demo_link: 'https://usr.kassar.publicvm.com/' },
@@ -15,13 +15,37 @@ const projects = [
 
 const CARD_WIDTH = 320;
 const GAP = 24;
-const TRANSLATE = (CARD_WIDTH + GAP) * projects.length;
+const STEP = CARD_WIDTH + GAP;
+const TRANSLATE = STEP * projects.length;
 const loopProjects = [...projects, ...projects];
 
 export default function Projects() {
     const { t } = useTranslation();
     const [selectedProject, setSelectedProject] = useState(null);
     const [paused, setPaused] = useState(false);
+    const [offset, setOffset] = useState(0);
+    const trackRef = useRef(null);
+
+    const getMax = () => {
+        if (!trackRef.current) return 0;
+        const visible = Math.floor(trackRef.current.parentElement.offsetWidth / STEP);
+        return (projects.length - visible) * STEP;
+    };
+
+    const handlePrev = () => {
+        setPaused(true);
+        setOffset(prev => Math.max(prev - STEP, 0));
+    };
+
+    const handleNext = () => {
+        setPaused(true);
+        setOffset(prev => Math.min(prev + STEP, getMax()));
+    };
+
+    const handleAuto = () => {
+        setOffset(0);
+        setPaused(false);
+    };
 
     useEffect(() => {
         document.body.style.overflow = selectedProject ? 'hidden' : 'unset';
@@ -49,24 +73,66 @@ export default function Projects() {
                         <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed font-medium">
                             {t('projects.desc')}
                         </p>
+
+                        <div className="flex items-center gap-3 mt-8">
+                            <button
+                                onClick={handlePrev}
+                                disabled={offset === 0}
+                                className="flex items-center justify-center w-12 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-orange-500 dark:hover:border-purple-500 hover:text-orange-500 dark:hover:text-purple-400 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md"
+                                aria-label="Previous project"
+                            >
+                                <TbChevronLeft size={22} />
+                            </button>
+                            <button
+                                onClick={handleNext}
+                                disabled={paused && offset >= getMax()}
+                                className="flex items-center justify-center w-12 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-orange-500 dark:hover:border-purple-500 hover:text-orange-500 dark:hover:text-purple-400 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md"
+                                aria-label="Next project"
+                            >
+                                <TbChevronRight size={22} />
+                            </button>
+
+                            {paused && !selectedProject && (
+                                <button
+                                    onClick={handleAuto}
+                                    className="text-xs font-bold text-gray-400 dark:text-gray-500 hover:text-orange-500 dark:hover:text-purple-400 transition-colors underline underline-offset-2 ml-1"
+                                >
+                                    Auto
+                                </button>
+                            )}
+                        </div>
                     </div>
 
                     {/* Marquee */}
                     <div className="lg:w-2/3 w-full overflow-hidden">
                         <div
+                            ref={trackRef}
                             onMouseEnter={() => setPaused(true)}
-                            onMouseLeave={() => !selectedProject && setPaused(false)}
-                            className="projects-track pb-6"
-                            style={{ animationPlayState: paused ? 'paused' : 'running' }}
+                            onMouseLeave={() => { if (!selectedProject && offset === 0) setPaused(false); }}
+                            className="pb-6"
+                            style={{
+                                display: 'flex',
+                                gap: `${GAP}px`,
+                                width: 'max-content',
+                                transform: paused ? `translateX(-${offset}px)` : undefined,
+                                animation: paused ? 'none' : `projects-marquee 30s linear infinite`,
+                                transition: paused ? 'transform 0.5s cubic-bezier(0.4,0,0.2,1)' : 'none',
+                                willChange: 'transform',
+                            }}
                         >
-                            {loopProjects.map((project, idx) => (
-                                <div key={idx} className="projects-card">
+                            {(paused ? projects : loopProjects).map((project, idx) => (
+                                <div key={idx} style={{ width: `${CARD_WIDTH}px`, flexShrink: 0 }}>
                                     <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-lg h-[460px] flex flex-col border border-gray-100 dark:border-gray-800 transition-all duration-300">
                                         <div className="p-4 h-72">
                                             <div className="overflow-hidden rounded-2xl h-full shadow-inner">
-                                                <img src={project.img} alt={project.title} className="w-full h-full object-cover" width="1100"
+                                                <img
+                                                    src={project.img}
+                                                    alt={project.title}
+                                                    className="w-full h-full object-cover"
+                                                    width="1100"
                                                     height="512"
-                                                    loading="lazy" />
+                                                    loading="lazy"
+                                                />
                                             </div>
                                         </div>
                                         <div className="p-6 pt-2 flex flex-col justify-between flex-grow">
@@ -148,14 +214,6 @@ export default function Projects() {
             </div>
 
             <style>{`
-                .projects-track {
-                    display: flex;
-                    gap: ${GAP}px;
-                    width: max-content;
-                    animation: projects-marquee 30s linear infinite;
-                    will-change: transform;
-                }
-                .projects-card { width: ${CARD_WIDTH}px; flex-shrink: 0; }
                 @keyframes projects-marquee {
                     0%   { transform: translateX(0); }
                     100% { transform: translateX(-${TRANSLATE}px); }

@@ -59,7 +59,12 @@ export default function Projects() {
     }, [selectedProject]);
 
     return (
-        <section id="projects" className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
+        <section id="projects" className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden"
+            style={{
+                backgroundImage: "url('/images/bg/dark-tech.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+            }}>
             <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-12">
 

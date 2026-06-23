@@ -1,7 +1,12 @@
+import { CSSProperties } from 'react';
 import { TbBrightnessUp, TbMoonStars } from 'react-icons/tb';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
-export default function DarkModeToggle({ style = {} }) {
+interface DarkModeToggleProps {
+    style?: CSSProperties;
+}
+
+export default function DarkModeToggle({ style = {} }: DarkModeToggleProps) {
     const { isDarkMode, toggleDarkMode } = useDarkMode();
 
     return (

@@ -2,7 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbArrowBearRight2, TbChevronLeft, TbChevronRight, TbGridScan } from 'react-icons/tb';
 
-const projects = [
+interface Project {
+    title: string;
+    key: string;
+    tech: string[];
+    img: string;
+    demo_link: string;
+}
+
+const projects: Project[] = [
     { title: 'Kassar', key: 'ecommerce', tech: ['Vue.js', 'Laravel', 'MySQL', 'Bootstrap'], img: '/images/projects/image2.webp', demo_link: 'https://usr.kassar.publicvm.com/' },
     { title: 'Study Home', key: 'study_home', tech: ['Tailwind', 'HTML', 'JS'], img: '/images/projects/image6.webp', demo_link: 'https://reanwithus.netlify.app/' },
     { title: 'Yummy', key: 'yummy', tech: ['JS', 'Bootstrap', 'API', 'MySQL'], img: '/images/projects/image7.webp', demo_link: 'http://antstudents.com/' },
@@ -21,14 +29,14 @@ const loopProjects = [...projects, ...projects];
 
 export default function Projects() {
     const { t } = useTranslation();
-    const [selectedProject, setSelectedProject] = useState(null);
-    const [paused, setPaused] = useState(false);
-    const [offset, setOffset] = useState(0);
-    const trackRef = useRef(null);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [paused, setPaused] = useState<boolean>(false);
+    const [offset, setOffset] = useState<number>(0);
+    const trackRef = useRef<HTMLDivElement>(null);
 
-    const getMax = () => {
+    const getMax = (): number => {
         if (!trackRef.current) return 0;
-        const visible = Math.floor(trackRef.current.parentElement.offsetWidth / STEP);
+        const visible = Math.floor((trackRef.current.parentElement?.offsetWidth ?? 0) / STEP);
         return (projects.length - visible) * STEP;
     };
 
@@ -50,7 +58,7 @@ export default function Projects() {
     useEffect(() => {
         document.body.style.overflow = selectedProject ? 'hidden' : 'unset';
         setPaused(!!selectedProject);
-        const handleEsc = (e) => { if (e.key === 'Escape') setSelectedProject(null); };
+        const handleEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelectedProject(null); };
         window.addEventListener('keydown', handleEsc);
         return () => {
             document.body.style.overflow = 'unset';

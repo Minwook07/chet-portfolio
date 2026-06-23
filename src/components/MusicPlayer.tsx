@@ -1,7 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { TbPlayerSkipForwardFilled, TbPlayerSkipBackFilled, TbBrandSpotify, TbX } from 'react-icons/tb';
 
-const playlist = [
+interface Track {
+    title: string;
+    artist: string;
+    embedUrl: string;
+}
+
+const playlist: Track[] = [
     { title: 'Cross the Way', artist: 'BUMJIN', embedUrl: 'https://open.spotify.com/embed/track/7cvn6zVKjayauPGGby6fjR' },
     { title: 'WANNABE', artist: 'ITZY', embedUrl: 'https://open.spotify.com/embed/track/4pspYVQGFHLPEFgQPD1J7e' },
     { title: 'Not Shy', artist: 'ITZY', embedUrl: 'https://open.spotify.com/embed/track/1ehags7lQMM1qX94VJkoaf' },
@@ -14,14 +20,14 @@ const playlist = [
 const IFRAME_HEIGHT = 352;
 
 export default function MusicPlayer() {
-    const timerRef = useRef(null);
-    const cardRef = useRef(null);
-    const btnRef = useRef(null);
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const cardRef = useRef<HTMLDivElement>(null);
+    const btnRef = useRef<HTMLButtonElement>(null);
 
-    const [open, setOpen] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isDark, setIsDark] = useState(document.documentElement.classList.contains('dark'));
-    const [userInteracted, setUserInteracted] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [isDark, setIsDark] = useState<boolean>(document.documentElement.classList.contains('dark'));
+    const [userInteracted, setUserInteracted] = useState<boolean>(false);
 
     const song = playlist[currentIndex];
 
@@ -37,9 +43,9 @@ export default function MusicPlayer() {
     // Click outside → close card (music keeps playing)
     useEffect(() => {
         if (!open) return;
-        const handler = (e) => {
-            if (cardRef.current && !cardRef.current.contains(e.target) &&
-                btnRef.current && !btnRef.current.contains(e.target)) {
+        const handler = (e: MouseEvent) => {
+            if (cardRef.current && !cardRef.current.contains(e.target as Node) &&
+                btnRef.current && !btnRef.current.contains(e.target as Node)) {
                 setOpen(false);
             }
         };
@@ -49,19 +55,21 @@ export default function MusicPlayer() {
 
     // Clear timer on manual skip or unmount
     useEffect(() => {
-        return () => clearTimeout(timerRef.current);
+        return () => {
+            if (timerRef.current) clearTimeout(timerRef.current);
+        };
     }, [currentIndex]);
 
     // Start 30s timer only AFTER iframe has loaded
     const handleIframeLoad = () => {
-        clearTimeout(timerRef.current);
+        if (timerRef.current) clearTimeout(timerRef.current);
         timerRef.current = setTimeout(() => {
             setCurrentIndex(i => (i + 1) % playlist.length);
         }, 30_000);
     };
 
-    const skipTo = (index) => {
-        clearTimeout(timerRef.current);
+    const skipTo = (index: number) => {
+        if (timerRef.current) clearTimeout(timerRef.current);
         setCurrentIndex((index + playlist.length) % playlist.length);
     };
 
@@ -71,7 +79,7 @@ export default function MusicPlayer() {
             <button
                 ref={btnRef}
                 onClick={() => {
-                    setUserInteracted(true); // enable autoplay
+                    setUserInteracted(true);
                     setOpen(o => !o);
                 }}
                 aria-label="Toggle music player"
@@ -139,8 +147,8 @@ export default function MusicPlayer() {
                                     key={i}
                                     onClick={() => skipTo(i)}
                                     className={`rounded-full transition-all duration-200 cursor-pointer ${i === currentIndex
-                                            ? 'w-4 h-1.5 bg-[#1DB954]'
-                                            : 'w-1.5 h-1.5 bg-gray-300 dark:bg-gray-700 hover:bg-[#1DB954]/50'
+                                        ? 'w-4 h-1.5 bg-[#1DB954]'
+                                        : 'w-1.5 h-1.5 bg-gray-300 dark:bg-gray-700 hover:bg-[#1DB954]/50'
                                         }`}
                                 />
                             ))}

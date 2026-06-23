@@ -17,7 +17,7 @@ function HomePage() {
         <>
             {/* About is critical/above-the-fold, keep it synchronous */}
             <About />
-            
+
             {/* Grouping these prevents multiple layout shifts */}
             <Suspense fallback={<div className="h-screen flex items-center justify-center text-gray-500">Loading Experience...</div>}>
                 <Skills />
@@ -46,10 +46,10 @@ function AppContent() {
 }
 
 export default function App() {
-    const [lang, setLang] = useState(i18next.language);
+    const [lang, setLang] = useState<string>(i18next.language);
 
     useEffect(() => {
-        const handleLangChange = (lng) => setLang(lng);
+        const handleLangChange = (lng: string) => setLang(lng);
         i18next.on('languageChanged', handleLangChange);
         return () => i18next.off('languageChanged', handleLangChange);
     }, []);

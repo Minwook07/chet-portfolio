@@ -1,6 +1,3 @@
-// Re-export all skill SVGs from their public path for easy reference
-// These are served from /images/skills/ (public folder)
-
 export const techstack = {
     Laravel:    '/images/skills/laravel.svg',
     Vue:        '/images/skills/vue.svg',

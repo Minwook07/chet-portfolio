@@ -12,7 +12,6 @@ export default function About() {
             className="relative overflow-hidden min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/images/hero/ss1.jpg')" }}
         >
-
             <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-[0.5px]" />
 
             {/* Background blobs */}

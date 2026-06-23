@@ -1,6 +1,5 @@
-export { techstack } from './techstack/index.js';
+export { techstack } from './techstack/index.ts';
 
-// Static assets served from public/
 export const images = {
     profile:     '/images/DSC03885.webp',
     skillBanner: '/images/skills/skill-banner.webp',

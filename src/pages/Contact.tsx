@@ -7,17 +7,19 @@ import { TbBrandGithub, TbBrandInstagram, TbBrandLinkedin, TbBrandTelegram, TbMa
 import { socialLinks } from '../config/socialLinks';
 
 export default function Contact() {
-    const form = useRef();
+    const form = useRef<HTMLFormElement>(null);
     const { t } = useTranslation();
 
-    const sendEmail = (e) => {
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (!form.current) return;
+
         emailjs
             .sendForm('service_sqho7re', 'template_w35rh1l', form.current, 'X9mPXd-vubu0WW5U-')
             .then(
                 () => {
                     toast.success('Message sent successfully!', { position: 'top-right', autoClose: 5000 });
-                    form.current.reset();
+                    form.current?.reset();
                 },
                 () => {
                     toast.error('Something went wrong!', { position: 'top-right', autoClose: 5000 });

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, ReactNode } from 'react';
 import i18next from 'i18next';
 import { useTranslation, initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
@@ -6,9 +6,17 @@ import { TbAppWindowFilled, TbCannabisFilled, TbHomeFilled, TbMessageFilled } fr
 import { useDarkMode } from '../../contexts/DarkModeContext';
 import DarkModeToggle from '../DarkModeToggle';
 
-const sections = ['home', 'skills', 'projects', 'contact'];
+type SectionId = 'home' | 'skills' | 'projects' | 'contact';
+type LanguageKey = 'en' | 'km';
 
-const languages = {
+interface LanguageOption {
+    name: string;
+    flag: string;
+}
+
+const sections: SectionId[] = ['home', 'skills', 'projects', 'contact'];
+
+const languages: Record<LanguageKey, LanguageOption> = {
     en: { name: 'English', flag: '/images/flags/uk.webp' },
     km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.webp' },
 };
@@ -24,7 +32,7 @@ i18next
         interpolation: { escapeValue: false }
     });
 
-const sectionIcons = {
+const sectionIcons: Record<SectionId, ReactNode> = {
     home:     <TbHomeFilled />,
     skills:   <TbCannabisFilled />,
     projects: <TbAppWindowFilled />,
@@ -32,11 +40,13 @@ const sectionIcons = {
 };
 
 export default function Navigation() {
-    const [open, setOpen] = useState(false);
-    const [active, setActive] = useState('home');
-    const [language, setLanguage] = useState(localStorage.getItem('language') || 'en');
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const dropdownRef = useRef(null);
+    const [open, setOpen] = useState<boolean>(false);
+    const [active, setActive] = useState<SectionId>('home');
+    const [language, setLanguage] = useState<LanguageKey>(
+        (localStorage.getItem('language') as LanguageKey) || 'en'
+    );
+    const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
     const { t } = useTranslation();
     const { isDarkMode } = useDarkMode();
 
@@ -63,14 +73,16 @@ export default function Navigation() {
 
     // Click-outside for language dropdown
     useEffect(() => {
-        const cb = (e) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) setDropdownOpen(false);
+        const cb = (e: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+                setDropdownOpen(false);
+            }
         };
         if (dropdownOpen) document.addEventListener('mousedown', cb);
         return () => document.removeEventListener('mousedown', cb);
     }, [dropdownOpen]);
 
-    const handleLanguageChange = (langKey) => {
+    const handleLanguageChange = (langKey: LanguageKey) => {
         setLanguage(langKey);
         i18next.changeLanguage(langKey);
         localStorage.setItem('language', langKey);
@@ -116,7 +128,7 @@ export default function Navigation() {
                             </button>
                             {dropdownOpen && (
                                 <ul className="lang-dropdown" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                                    {Object.keys(languages).map(langKey => (
+                                    {(Object.keys(languages) as LanguageKey[]).map(langKey => (
                                         <li key={langKey}>
                                             <button className="lang-item" aria-label="dropdown btn 2" onClick={() => handleLanguageChange(langKey)}>
                                                 <img src={languages[langKey].flag} alt={languages[langKey].name} width="56" height="28" />
@@ -175,7 +187,7 @@ export default function Navigation() {
 
                 <div className="drawer-controls">
                     <div className="drawer-lang-grid">
-                        {Object.keys(languages).map(langKey => (
+                        {(Object.keys(languages) as LanguageKey[]).map(langKey => (
                             <button
                                 key={langKey}
                                 className={`drawer-lang-pill ${language === langKey ? 'active-lang' : ''}`}

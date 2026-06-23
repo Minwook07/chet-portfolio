@@ -1,18 +1,30 @@
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbBrandGithub, TbBrandLinkedin, TbBrandTelegram, TbArrowUpRight, TbBrandInstagram } from 'react-icons/tb';
 import { socialLinks } from '../config/socialLinks';
 
+interface SocialItem {
+    icon: ReactNode;
+    href: string;
+    label: string;
+}
+
+interface NavLink {
+    label: string;
+    href: string;
+}
+
 export default function Footer() {
     const { t } = useTranslation();
 
-    const socials = [
+    const socials: SocialItem[] = [
         { icon: <TbBrandGithub size={17} />, href: socialLinks.github, label: 'GitHub' },
         { icon: <TbBrandLinkedin size={17} />, href: socialLinks.linkedin, label: 'LinkedIn' },
         { icon: <TbBrandTelegram size={17} />, href: socialLinks.telegram, label: 'Telegram' },
         { icon: <TbBrandInstagram size={17} />, href: socialLinks.instagram, label: 'Instagram' },
     ];
 
-    const navLinks = [
+    const navLinks: NavLink[] = [
         { label: t('menu.home'), href: '#home' },
         { label: t('menu.skills'), href: '#skills' },
         { label: t('menu.projects'), href: '#projects' },

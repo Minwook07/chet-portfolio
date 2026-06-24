@@ -51,7 +51,7 @@ export default function About() {
                             <span className="block text-gray-900 dark:text-white mb-2">
                                 {t('hero.greeting')}
                             </span>
-                            <span className="block bg-gradient-to-r from-yellow-500 via-yellow-600 to-orange-500 dark:from-purple-500 dark:via-purple-600 dark:to-pink-500 bg-clip-text text-transparent leading-[1.3]">
+                            <span className="block bg-linear-to-r from-yellow-500 via-yellow-600 to-orange-500 dark:from-purple-500 dark:via-purple-600 dark:to-pink-500 bg-clip-text text-transparent leading-[1.3]">
                                 {t('hero.name')}
                             </span>
                         </h1>
@@ -63,12 +63,12 @@ export default function About() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                             <a
                                 href="#projects"
-                                className="group relative bg-gradient-to-r from-yellow-400 to-yellow-500 dark:from-purple-600 dark:to-purple-700 text-gray-900 dark:text-white py-4 px-10 rounded-xl font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105 overflow-hidden"
+                                className="group relative bg-linear-to-r from-yellow-400 to-yellow-500 dark:from-purple-600 dark:to-purple-700 text-gray-900 dark:text-white py-4 px-10 rounded-xl font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105 overflow-hidden"
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2">
                                     {t('hero.project')}<TbChevronsDown size={20} />
                                 </span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 dark:from-purple-700 dark:to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute inset-0 bg-linear-to-r from-yellow-500 to-orange-500 dark:from-purple-700 dark:to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                             </a>
                             <a
                                 href={socialLinks.linkedin}
@@ -87,9 +87,9 @@ export default function About() {
                     {/* Profile image */}
                     <div className="lg:w-5/12 flex justify-center lg:justify-end">
                         <div className="relative group">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-[2rem] blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200" />
-                            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-500 dark:from-purple-600 dark:to-pink-600 rounded-3xl transform rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20" />
-                            <div className="relative w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-4 border-white/50 dark:border-gray-800/50">
+                            <div className="absolute -inset-1 bg-linear-to-r from-green-400 to-emerald-500 rounded-[2rem] blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200" />
+                            <div className="absolute inset-0 bg-linear-to-br from-yellow-400 to-orange-500 dark:from-purple-600 dark:to-pink-600 rounded-3xl transform rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20" />
+                            <div className="relative w-72 h-72 sm:w-96 sm:h-96 bg-linear-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-4 border-white/50 dark:border-gray-800/50">
                                 <img
                                     src={images.profile}
                                     alt={t('hero.imageAlt')}

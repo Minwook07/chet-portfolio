@@ -4,7 +4,6 @@ interface SocialLinks {
     telegram: string;
     instagram: string;
     maps: string;
-    cv: string;
 }
 
 export const socialLinks: SocialLinks = {
@@ -13,5 +12,4 @@ export const socialLinks: SocialLinks = {
     telegram: 'https://t.me/min7wook_lee',
     instagram: '#',
     maps: 'https://maps.app.goo.gl/EfTTUYva6FZCFT1PA',
-    cv: '/pdf/Mith Chet-CV.pdf',
 };

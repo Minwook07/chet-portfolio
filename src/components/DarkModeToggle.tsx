@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { TbBrightnessUp, TbMoonStars } from 'react-icons/tb';
+import { BsEmojiSunglassesFill, BsEmojiSunglasses } from 'react-icons/bs';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
 interface DarkModeToggleProps {
@@ -16,7 +16,7 @@ export default function DarkModeToggle({ style = {} }: DarkModeToggleProps) {
             aria-label="Toggle Theme"
             style={style}
         >
-            {isDarkMode ? <TbBrightnessUp size={25} /> : <TbMoonStars size={25} />}
+            {isDarkMode ? <BsEmojiSunglassesFill size={25} /> : <BsEmojiSunglasses size={25} />}
         </button>
     );
 }

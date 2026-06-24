@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbArrowBearRight2, TbChevronLeft, TbChevronRight, TbGridScan } from 'react-icons/tb';
 
@@ -24,8 +24,6 @@ const projects: Project[] = [
 const CARD_WIDTH = 320;
 const GAP = 24;
 const STEP = CARD_WIDTH + GAP;
-const TRANSLATE = STEP * projects.length;
-const loopProjects = [...projects, ...projects];
 
 export default function Projects() {
     const { t } = useTranslation();
@@ -33,12 +31,60 @@ export default function Projects() {
     const [paused, setPaused] = useState<boolean>(false);
     const [offset, setOffset] = useState<number>(0);
     const trackRef = useRef<HTMLDivElement>(null);
+    const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    const getMax = (): number => {
+    const getMax = useCallback((): number => {
         if (!trackRef.current) return 0;
         const visible = Math.floor((trackRef.current.parentElement?.offsetWidth ?? 0) / STEP);
         return (projects.length - visible) * STEP;
-    };
+    }, []);
+
+    // Auto-advance: every 3s move one card forward, wrap back to 0 at end
+    const startAuto = useCallback(() => {
+        if (autoRef.current) clearInterval(autoRef.current);
+        autoRef.current = setInterval(() => {
+            setOffset(prev => {
+                const max = getMax();
+                return prev + STEP > max ? 0 : prev + STEP;
+            });
+        }, 3000);
+    }, [getMax]);
+
+    const stopAuto = useCallback(() => {
+        if (autoRef.current) {
+            clearInterval(autoRef.current);
+            autoRef.current = null;
+        }
+    }, []);
+
+    // Start auto on mount, stop on unmount
+    useEffect(() => {
+        startAuto();
+        return () => stopAuto();
+    }, [startAuto, stopAuto]);
+
+    // Pause/resume auto when paused state changes
+    useEffect(() => {
+        if (paused) {
+            stopAuto();
+        } else {
+            startAuto();
+        }
+    }, [paused, startAuto, stopAuto]);
+
+    // Pause when project detail is open
+    useEffect(() => {
+        document.body.style.overflow = selectedProject ? 'hidden' : 'unset';
+        if (selectedProject) {
+            setPaused(true);
+        }
+        const handleEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelectedProject(null); };
+        window.addEventListener('keydown', handleEsc);
+        return () => {
+            document.body.style.overflow = 'unset';
+            window.removeEventListener('keydown', handleEsc);
+        };
+    }, [selectedProject]);
 
     const handlePrev = () => {
         setPaused(true);
@@ -54,17 +100,6 @@ export default function Projects() {
         setOffset(0);
         setPaused(false);
     };
-
-    useEffect(() => {
-        document.body.style.overflow = selectedProject ? 'hidden' : 'unset';
-        setPaused(!!selectedProject);
-        const handleEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelectedProject(null); };
-        window.addEventListener('keydown', handleEsc);
-        return () => {
-            document.body.style.overflow = 'unset';
-            window.removeEventListener('keydown', handleEsc);
-        };
-    }, [selectedProject]);
 
     return (
         <section id="projects" className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden"
@@ -115,25 +150,23 @@ export default function Projects() {
                             )}
                         </div>
                     </div>
-
-                    {/* Marquee */}
+                    
                     <div className="lg:w-2/3 w-full overflow-hidden">
                         <div
                             ref={trackRef}
                             onMouseEnter={() => setPaused(true)}
-                            onMouseLeave={() => { if (!selectedProject && offset === 0) setPaused(false); }}
+                            onMouseLeave={() => { if (!selectedProject) setPaused(false); }}
                             className="pb-6"
                             style={{
                                 display: 'flex',
                                 gap: `${GAP}px`,
                                 width: 'max-content',
-                                transform: paused ? `translateX(-${offset}px)` : undefined,
-                                animation: paused ? 'none' : `projects-marquee 30s linear infinite`,
-                                transition: paused ? 'transform 0.5s cubic-bezier(0.4,0,0.2,1)' : 'none',
+                                transform: `translateX(-${offset}px)`,
+                                transition: 'transform 0.5s cubic-bezier(0.4,0,0.2,1)',
                                 willChange: 'transform',
                             }}
                         >
-                            {(paused ? projects : loopProjects).map((project, idx) => (
+                            {projects.map((project, idx) => (
                                 <div key={idx} style={{ width: `${CARD_WIDTH}px`, flexShrink: 0 }}>
                                     <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-lg h-[460px] flex flex-col border border-gray-100 dark:border-gray-800 transition-all duration-300">
                                         <div className="p-4 h-72">
@@ -148,7 +181,7 @@ export default function Projects() {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="p-6 pt-2 flex flex-col justify-between flex-grow">
+                                        <div className="p-6 pt-2 flex flex-col justify-between grow">
                                             <div className="flex justify-between items-start gap-3">
                                                 <div className="flex-1">
                                                     <h3 className="text-xl font-bold text-gray-900 dark:text-white truncate">{project.title}</h3>
@@ -190,7 +223,7 @@ export default function Projects() {
             </div>
 
             {/* Project detail slide-in panel */}
-            <div className={`fixed inset-0 z-[100] transition-opacity duration-300 ${selectedProject ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <div className={`fixed inset-0 z-100 transition-opacity duration-300 ${selectedProject ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div className="absolute inset-0 bg-black/40 backdrop-blur-md" onClick={() => setSelectedProject(null)} />
                 <div className={`absolute top-0 right-0 h-full w-full max-w-lg bg-white dark:bg-gray-950 shadow-2xl transform transition-transform duration-500 ease-in-out ${selectedProject ? 'translate-x-0' : 'translate-x-full'}`}>
                     {selectedProject && (
@@ -225,13 +258,6 @@ export default function Projects() {
                     )}
                 </div>
             </div>
-
-            <style>{`
-                @keyframes projects-marquee {
-                    0%   { transform: translateX(0); }
-                    100% { transform: translateX(-${TRANSLATE}px); }
-                }
-            `}</style>
         </section>
     );
 }

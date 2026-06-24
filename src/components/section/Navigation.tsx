@@ -18,7 +18,7 @@ const sections: SectionId[] = ['home', 'skills', 'projects', 'contact'];
 
 const languages: Record<LanguageKey, LanguageOption> = {
     en: { name: 'English', flag: '/images/flags/uk.webp' },
-    km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.webp' },
+    km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.svg' },
 };
 
 i18next
@@ -33,10 +33,10 @@ i18next
     });
 
 const sectionIcons: Record<SectionId, ReactNode> = {
-    home:     <TbHomeFilled />,
-    skills:   <TbCannabisFilled />,
+    home: <TbHomeFilled />,
+    skills: <TbCannabisFilled />,
     projects: <TbAppWindowFilled />,
-    contact:  <TbMessageFilled />,
+    contact: <TbMessageFilled />,
 };
 
 export default function Navigation() {
@@ -87,7 +87,6 @@ export default function Navigation() {
         i18next.changeLanguage(langKey);
         localStorage.setItem('language', langKey);
         setDropdownOpen(false);
-        setOpen(false);
     };
 
     return (
@@ -116,28 +115,46 @@ export default function Navigation() {
                         ))}
                     </ul>
 
-                    <div className="nav-controls">
-                        {/* Language dropdown - desktop */}
-                        <div className="lang-wrap" ref={dropdownRef} style={{ display: 'none' }} id="desktop-lang">
-                            <button className="lang-btn" aria-label="Dropdown btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                                <img src={languages[language].flag} alt="flag" width="56" height="28" />
-                                <span>{languages[language].name}</span>
-                                <svg className={`arrow ${dropdownOpen ? 'open' : ''}`} width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                                </svg>
-                            </button>
-                            {dropdownOpen && (
-                                <ul className="lang-dropdown" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                                    {(Object.keys(languages) as LanguageKey[]).map(langKey => (
-                                        <li key={langKey}>
-                                            <button className="lang-item" aria-label="dropdown btn 2" onClick={() => handleLanguageChange(langKey)}>
-                                                <img src={languages[langKey].flag} alt={languages[langKey].name} width="56" height="28" />
-                                                {languages[langKey].name}
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
+                    <div className="nav-controls flex items-center gap-4">
+                        <div className="hidden md:flex items-center">
+                            {Object.keys(languages).map((key, index) => {
+                                const lang = key as LanguageKey;
+                                const isKhmer = lang === 'km';
+                                return (
+                                    <div key={lang} className="flex items-center">
+                                        <button
+                                            onClick={() => handleLanguageChange(lang)}
+                                            className={`
+                                                flex items-center gap-2
+                                                px-3 py-1.5
+                                                rounded-full
+                                                transition-all duration-300
+
+                                                ${language === lang
+                                                    ? "bg-linear-to-r from-yellow-500 via-yellow-600 to-orange-500 dark:from-purple-500 dark:via-purple-600 dark:to-pink-500 bg-clip-text text-transparent font-bold"
+                                                    : "text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-yellow-500 hover:via-yellow-600 hover:to-orange-500 dark:hover:from-purple-500 dark:hover:via-purple-600 dark:hover:to-pink-500 hover:bg-clip-text hover:text-transparent"
+                                                }
+                                            `}
+                                        >
+                                            <img
+                                                src={languages[lang].flag}
+                                                className="w-6 h-6 rounded-full object-cover"
+                                                alt=""
+                                            />
+
+                                            <span className={`whitespace-nowrap text-sm ${isKhmer ? 'font-km' : 'font-en'}`}>
+                                                {languages[lang].name}
+                                            </span>
+                                        </button>
+
+                                        {index !== Object.keys(languages).length - 1 && (
+                                            <span className="text-gray-500 text-xl">
+                                                |
+                                            </span>
+                                        )}
+                                    </div>
+                                );
+                            })}
                         </div>
 
                         <DarkModeToggle />
@@ -164,6 +181,7 @@ export default function Navigation() {
             />
 
             {/* Mobile drawer */}
+            {/* Mobile drawer */}
             <div className={`drawer ${open ? 'open' : ''}`}>
                 <div className="drawer-handle" />
 
@@ -184,23 +202,46 @@ export default function Navigation() {
                 </ul>
 
                 <div className="drawer-divider" />
+                <div className="drawer-controls pt-2 pb-6 px-4 flex flex-col items-center justify-center">
+                    <div className="flex items-center justify-center gap-2">
+                        {(Object.keys(languages) as LanguageKey[]).map((langKey, index) => {
+                            const isKhmer = langKey === 'km';
+                            return (
+                                <div key={langKey} className="flex items-center">
+                                    <button
+                                        onClick={() => handleLanguageChange(langKey)}
+                                        className={`
+                                    flex items-center gap-2
+                                    px-4 py-2
+                                    rounded-full
+                                    transition-all duration-300
 
-                <div className="drawer-controls">
-                    <div className="drawer-lang-grid">
-                        {(Object.keys(languages) as LanguageKey[]).map(langKey => (
-                            <button
-                                key={langKey}
-                                className={`drawer-lang-pill ${language === langKey ? 'active-lang' : ''}`}
-                                onClick={() => handleLanguageChange(langKey)}
-                                aria-label="change lang"
-                            >
-                                <img src={languages[langKey].flag} alt={languages[langKey].name} width="56" height="28" />
-                                {languages[langKey].name}
-                            </button>
-                        ))}
+                                    ${language === langKey
+                                                ? "bg-linear-to-r from-yellow-500 via-yellow-600 to-orange-500 dark:from-purple-500 dark:via-purple-600 dark:to-pink-500 bg-clip-text text-transparent font-bold"
+                                                : "text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-yellow-500 hover:via-yellow-600 hover:to-orange-500 dark:hover:from-purple-500 dark:hover:via-purple-600 dark:hover:to-pink-500 hover:bg-clip-text hover:text-transparent"
+                                            }
+                                `}
+                                    >
+                                        <img
+                                            src={languages[langKey].flag}
+                                            alt=""
+                                            className="w-6 h-6 rounded-full object-cover"
+                                        />
+                                        <span className={`text-base whitespace-nowrap ${isKhmer ? 'font-km' : 'font-en'}`}>
+                                            {languages[langKey].name}
+                                        </span>
+                                    </button>
+
+                                    {/* Divider separator between English and Khmer */}
+                                    {index !== Object.keys(languages).length - 1 && (
+                                        <span className="text-gray-400 dark:text-gray-600 text-lg mx-1">
+                                            |
+                                        </span>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
-
-                    <DarkModeToggle style={{ width: 44, height: 44, borderRadius: 14, border: '1.5px solid rgba(0,0,0,0.1)' }} />
                 </div>
             </div>
         </nav>

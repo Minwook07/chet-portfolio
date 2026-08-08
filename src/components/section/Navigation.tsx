@@ -131,8 +131,8 @@ export default function Navigation() {
                                                 transition-all duration-300
 
                                                 ${language === lang
-                                                    ? "bg-linear-to-r from-yellow-500 via-yellow-600 to-orange-500 dark:from-purple-500 dark:via-purple-600 dark:to-pink-500 bg-clip-text text-transparent font-bold"
-                                                    : "text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-yellow-500 hover:via-yellow-600 hover:to-orange-500 dark:hover:from-purple-500 dark:hover:via-purple-600 dark:hover:to-pink-500 hover:bg-clip-text hover:text-transparent"
+                                                    ? "accent-gradient-text bg-clip-text text-transparent font-bold"
+                                                    : "text-gray-700 dark:text-gray-300 hover-gradient-text hover:bg-clip-text hover:text-transparent"
                                                 }
                                             `}
                                         >
@@ -217,8 +217,8 @@ export default function Navigation() {
                                     transition-all duration-300
 
                                     ${language === langKey
-                                                ? "bg-linear-to-r from-yellow-500 via-yellow-600 to-orange-500 dark:from-purple-500 dark:via-purple-600 dark:to-pink-500 bg-clip-text text-transparent font-bold"
-                                                : "text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-yellow-500 hover:via-yellow-600 hover:to-orange-500 dark:hover:from-purple-500 dark:hover:via-purple-600 dark:hover:to-pink-500 hover:bg-clip-text hover:text-transparent"
+                                                ? "accent-gradient-text bg-clip-text text-transparent font-bold"
+                                                : "text-gray-700 dark:text-gray-300 hover-gradient-text hover:bg-clip-text hover:text-transparent"
                                             }
                                 `}
                                     >

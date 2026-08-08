@@ -25,8 +25,8 @@ export default function Skills() {
 
                     {/* Image */}
                     <div className="lg:w-5/12 relative group">
-                        <div className="absolute -top-4 -left-4 w-32 h-32 border-t-4 border-l-4 border-yellow-500 dark:border-purple-500 rounded-tl-2xl transition-all group-hover:-top-6 group-hover:-left-6" />
-                        <div className="absolute -bottom-4 -right-4 w-32 h-32 border-b-4 border-r-4 border-orange-500 dark:border-pink-500 rounded-br-2xl transition-all group-hover:-bottom-6 group-hover:-right-6" />
+                        <div className="absolute -top-4 -left-4 w-32 h-32 border-t-4 border-l-4 border-accent rounded-tl-2xl transition-all group-hover:-top-6 group-hover:-left-6" />
+                        <div className="absolute -bottom-4 -right-4 w-32 h-32 border-b-4 border-r-4 border-accent-2 rounded-br-2xl transition-all group-hover:-bottom-6 group-hover:-right-6" />
                         <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl bg-white dark:bg-gray-800 p-2">
                             <img
                                 src={images.skillBanner}
@@ -41,7 +41,7 @@ export default function Skills() {
                         <div className="mb-8">
                             <h2 className="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tight">
                                 {t('skills.title')}{' '}
-                                <span className="text-orange-500 dark:text-purple-500">{t('skills.sub_title')}</span>
+                                <span className="text-accent">{t('skills.sub_title')}</span>
                             </h2>
                             <div className="w-20 h-1.5 bg-green-500 mt-2 rounded-full" />
                         </div>

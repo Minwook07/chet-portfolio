@@ -9,7 +9,7 @@
 		"greeting": "Hello there! I'm",
 		"name": "Chet MITH.",
 		"sub_title": "API Specialist",
-		"description": "I build seamless digital experiences from the ground up. With a strong foundation in both Frontend and Backend, I specialize in crafting robust APIs that power modern, user-friendly websites.",
+		"description": "Crafting beautiful websites with strong backend APIs. Frontend or Backend—let’s bring your vision to life!",
 		"project": "View My Work",
 		"imageAlt": "Profile Picture"
 	},
@@ -51,52 +51,6 @@
 			"btn_demo": "Demo"
 		}
 	},
-	"about": {
-		"title": "Educational Journey Timeline",
-		"batch": "Batch",
-		"items": {
-			"high_school": {
-				"batch": "12",
-				"title": "BaccII",
-				"institution": "Hun Sen Khnar High School",
-				"location": "TboungKhmum",
-				"startDate": "2014-01",
-				"endDate": "2020-12",
-				"status": "completed",
-				"description": "Completed comprehensive high school education with focus on STEM subjects and extracurricular activities."
-			},
-			"university": {
-				"batch": "24",
-				"title": "Bachelor of Computer Science",
-				"institution": "Royal University of Phnom Penh",
-				"location": "Tuol Kork, PP",
-				"startDate": "2021-04",
-				"endDate": "2024-05",
-				"status": "completed",
-				"description": "Pursuing comprehensive computer science education with specialization in software engineering and AI."
-			},
-			"short_course": {
-				"batch": "1",
-				"title": "3D Modeling",
-				"institution": "CKCC - Cambodia-Korea Cooperation Center",
-				"location": "Tuol Kork, PP",
-				"startDate": "2025-01",
-				"endDate": "2025-05",
-				"status": "completed",
-				"description": "Completed a 3D modeling internship while immersing in Korean lecture-style learning. Gained hands-on experience with digital design tools and learned valuable insights into Korean academic and work culture."
-			},
-			"training_center": {
-				"batch": "1",
-				"title": "Full Stack Development Bootcamp",
-				"institution": "ANT Technology Training Center",
-				"location": "Tuol Kork, PP",
-				"startDate": "2024-01",
-				"endDate": "2025-04",
-				"status": "completed",
-				"description": "Developed a full-stack web application using Laravel as part of a scholarship package supported by the Ministry of Post and Telecommunications. This opportunity strengthened my skills in web development and backend integration."
-			}
-		}
-	},
 	"contact": {
 		"title": "Contact",
 		"sub_title": "Let's Connect",
@@ -119,9 +73,9 @@
 		"short_desc": "Full Stack Web Developer based in Cambodia. Building clean, fast, accessible web experiences, and security.",
 		"copyright": "All rights reserved.",
 		"credit": {
-			"text": "Crafted with passion",
+			"text": "Made with heart",
 			"symbol": "♥",
-			"location": "in the Land of Tum Teav"
+			"location": "in the land of Tum Teav"
 		}
 	}
 }

@@ -1,24 +1,22 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { DarkModeProvider } from './contexts/DarkModeContext';
+import { ColorThemeProvider } from './contexts/ColorThemeContext';
 import Navigation from './components/section/Navigation';
 import About from './components/section/About';
+import ColorThemePicker from './components/ColorThemePicker';
 import './App.css';
 import i18next from 'i18next';
 
-// Lazy load below-the-fold sections
 const Skills = lazy(() => import('./components/section/Skills'));
 const Projects = lazy(() => import('./components/section/Projects'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
-const MusicPlayer = lazy(() => import('./components/MusicPlayer'));
+// const MusicPlayer = lazy(() => import('./components/MusicPlayer'));
 
 function HomePage() {
     return (
         <>
-            {/* About is critical/above-the-fold, keep it synchronous */}
             <About />
-
-            {/* Grouping these prevents multiple layout shifts */}
             <Suspense fallback={<div className="h-screen flex items-center justify-center text-gray-500">Loading Experience...</div>}>
                 <Skills />
                 <Projects />
@@ -31,16 +29,19 @@ function HomePage() {
 function AppContent() {
     return (
         <DarkModeProvider>
-            <Navigation />
-            <Suspense fallback={null}>
-                <MusicPlayer />
-            </Suspense>
-            <main id="main-content">
-                <HomePage />
-            </main>
-            <Suspense fallback={<div className="h-32" />}>
-                <Footer />
-            </Suspense>
+            <ColorThemeProvider>
+                <Navigation />
+                <ColorThemePicker />
+                {/* <Suspense fallback={null}>
+                    <MusicPlayer />
+                </Suspense> */}
+                <main id="main-content">
+                    <HomePage />
+                </main>
+                <Suspense fallback={<div className="h-32" />}>
+                    <Footer />
+                </Suspense>
+            </ColorThemeProvider>
         </DarkModeProvider>
     );
 }

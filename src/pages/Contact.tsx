@@ -61,7 +61,7 @@ export default function Contact() {
 
                         <div className="flex gap-4">
                             <a href={socialLinks.github} target="_blank" rel="noreferrer"
-                                className="w-10 h-10 text-white bg-[#333333] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#7e22ce] dark:hover:bg-[#333333] transition-colors">
+                                className="w-10 h-10 text-white bg-[#333333] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover-bg-accent transition-colors">
                                 <TbBrandGithub size={23} />
                             </a>
                             <a href={socialLinks.linkedin} target="_blank" rel="noreferrer"
@@ -90,32 +90,32 @@ export default function Contact() {
                                 <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-white">{t('contact.form_info.name')}</label>
                                 <input type="text" name="user_name" required
                                     placeholder={t('contact.form_info.place_holder.place_holder_name')}
-                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
+                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus-border-accent"
                                 />
                             </div>
                             <div className="mb-4">
                                 <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-white">{t('contact.form_info.email')}</label>
                                 <input type="email" name="user_email" required
                                     placeholder="your.email@example.com"
-                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
+                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus-border-accent"
                                 />
                             </div>
                             <div className="mb-4">
                                 <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-white">{t('contact.form_info.subject')}</label>
                                 <input type="text" name="subject" required
                                     placeholder={t('contact.form_info.subject')}
-                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce]"
+                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus-border-accent"
                                 />
                             </div>
                             <div className="mb-6">
                                 <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-white">{t('contact.form_info.message')}</label>
                                 <textarea name="message" required
                                     placeholder={t('contact.form_info.place_holder.place_holder_message')}
-                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus:border-[#fdc435] dark:focus:border-[#7e22ce] h-32 resize-none"
+                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus-border-accent h-32 resize-none"
                                 />
                             </div>
                             <button type="submit"
-                                className="w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-[#db2777] transition-colors cursor-pointer" aria-label="submit btn">
+                                className="w-full py-3 bg-primary text-white rounded-lg font-medium hover-bg-accent-2 transition-colors cursor-pointer" aria-label="submit btn">
                                 {t('contact.form_info.btn_submit')}
                             </button>
                         </form>

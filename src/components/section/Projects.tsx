@@ -102,12 +102,7 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden"
-            style={{
-                backgroundImage: "url('/images/bg/dark-tech.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center"
-            }}>
+        <section id="projects" className="py-24 bg-white dark:bg-gray-950 relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-12">
 
@@ -115,7 +110,7 @@ export default function Projects() {
                     <div className="lg:w-1/3 flex flex-col justify-center">
                         <h2 className="text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">
                             {t('projects.title')}{' '}
-                            <span className="text-orange-500 dark:text-purple-500">{t('projects.sub_title')}</span>
+                            <span className="text-accent">{t('projects.sub_title')}</span>
                         </h2>
                         <div className="w-20 h-1.5 bg-green-500 my-4 rounded-full" />
                         <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed font-medium">
@@ -126,7 +121,7 @@ export default function Projects() {
                             <button
                                 onClick={handlePrev}
                                 disabled={offset === 0}
-                                className="flex items-center justify-center w-12 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-orange-500 dark:hover:border-purple-500 hover:text-orange-500 dark:hover:text-purple-400 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md"
+                                className="flex items-center justify-center w-12 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover-border-accent hover-text-accent disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md"
                                 aria-label="Previous project"
                             >
                                 <TbChevronLeft size={22} />
@@ -134,7 +129,7 @@ export default function Projects() {
                             <button
                                 onClick={handleNext}
                                 disabled={paused && offset >= getMax()}
-                                className="flex items-center justify-center w-12 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-orange-500 dark:hover:border-purple-500 hover:text-orange-500 dark:hover:text-purple-400 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md"
+                                className="flex items-center justify-center w-12 h-12 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover-border-accent hover-text-accent disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md"
                                 aria-label="Next project"
                             >
                                 <TbChevronRight size={22} />
@@ -143,7 +138,7 @@ export default function Projects() {
                             {paused && !selectedProject && (
                                 <button
                                     onClick={handleAuto}
-                                    className="text-xs font-bold text-gray-400 dark:text-gray-500 hover:text-orange-500 dark:hover:text-purple-400 transition-colors underline underline-offset-2 ml-1"
+                                    className="text-xs font-bold text-gray-400 dark:text-gray-500 hover-text-accent transition-colors underline underline-offset-2 ml-1"
                                 >
                                     Auto
                                 </button>
@@ -190,7 +185,7 @@ export default function Projects() {
                                                     </p>
                                                     <button
                                                         onClick={() => setSelectedProject(project)}
-                                                        className="text-orange-500 dark:text-purple-400 text-[10px] font-black mt-3 uppercase tracking-widest hover:opacity-70 transition-opacity cursor-pointer"
+                                                        className="text-accent text-[10px] font-black mt-3 uppercase tracking-widest hover:opacity-70 transition-opacity cursor-pointer"
                                                         aria-label="see more"
                                                     >
                                                         [ TRY IT OUT ]
@@ -200,7 +195,7 @@ export default function Projects() {
                                                     href={project.demo_link}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3.5 rounded-xl hover:bg-orange-500 transition-all shadow-md"
+                                                    className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3.5 rounded-xl hover-bg-accent transition-all shadow-md"
                                                     aria-label={`${t('common.view_demo')} ${t(`projects.items.${project.key}.title`)}`}
                                                 >
                                                     <TbArrowBearRight2 size={20} />
@@ -230,7 +225,7 @@ export default function Projects() {
                         <div className="p-8 flex flex-col h-full overflow-y-auto">
                             <button
                                 onClick={() => setSelectedProject(null)}
-                                className="self-end p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-500 hover:text-orange-500 transition-all cursor-pointer"
+                                className="self-end p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-500 hover-text-accent transition-all cursor-pointer"
                                 aria-label="close"
                             >
                                 <TbGridScan size={28} />
@@ -240,17 +235,17 @@ export default function Projects() {
                                 <h2 className="text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">{selectedProject.title}</h2>
                                 <div className="flex flex-wrap gap-2 my-6">
                                     {selectedProject.tech.map((tag, i) => (
-                                        <span key={i} className="px-3 py-1 text-xs font-black border-2 border-orange-500/20 text-orange-500 dark:text-purple-500 rounded-full">{tag}</span>
+                                        <span key={i} className="px-3 py-1 text-xs font-black border-2 border-accent-soft text-accent rounded-full">{tag}</span>
                                     ))}
                                 </div>
-                                <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border-l-4 border-orange-500 dark:border-purple-500">
+                                <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border-l-4 border-accent">
                                     <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg font-medium">
                                         {t(`projects.items.${selectedProject.key}.desc`)}
                                     </p>
                                 </div>
                             </div>
                             <a href={selectedProject.demo_link} target="_blank" rel="noreferrer" className="mt-auto pt-8 w-full block">
-                                <button className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-5 rounded-2xl font-black text-sm tracking-widest hover:bg-orange-500 transition-all shadow-xl cursor-pointer" aria-label="see demo">
+                                <button className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-5 rounded-2xl font-black text-sm tracking-widest hover-bg-accent transition-all shadow-xl cursor-pointer" aria-label="see demo">
                                     {t('projects.button.btn_demo')}
                                 </button>
                             </a>

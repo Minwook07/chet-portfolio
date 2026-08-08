@@ -44,7 +44,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="flex flex-col gap-3">
                         <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-500 dark:from-purple-600 dark:to-purple-700 text-gray-900 dark:text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+                            <div className="w-9 h-9 rounded-lg accent-gradient-btn text-gray-900 dark:text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
                                 osi
                             </div>
                             <span className="text-base font-bold text-[#1a1a1a] dark:text-[#f5f5f0] tracking-tight">
@@ -84,7 +84,7 @@ export default function Footer() {
                                 aria-label={s.label}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="w-8 h-8 rounded-lg border border-black/10 dark:border-white/10 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-yellow-500 hover:text-white hover:border-yellow-500 dark:hover:bg-purple-700 dark:hover:border-purple-700 transition-all duration-200 hover:-translate-y-0.5 no-underline"
+                                className="w-8 h-8 rounded-lg border border-black/10 dark:border-white/10 flex items-center justify-center text-gray-600 dark:text-gray-300 hover-bg-accent hover:text-white hover-border-accent transition-all duration-200 hover:-translate-y-0.5 no-underline"
                             >
                                 {s.icon}
                             </a>

@@ -17,14 +17,14 @@ export default function About() {
             {/* Background blobs */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/4 -left-20 w-[300px] h-[300px] bg-green-500/10 dark:bg-green-500/5 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute -top-40 -right-40 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-yellow-400/20 dark:bg-purple-600/20 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-orange-400/10 dark:bg-pink-600/10 rounded-full blur-3xl" />
+                <div className="absolute -top-40 -right-40 w-[500px] h-[500px] md:w-[700px] md:h-[700px] accent-blob-a rounded-full blur-3xl animate-pulse" />
+                <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] md:w-[600px] md:h-[600px] accent-blob-b rounded-full blur-3xl" />
                 <div className="absolute top-20 right-10 md:top-40 md:right-20 opacity-20 dark:opacity-10">
                     <div className="grid grid-cols-4 gap-4">
                         {[...Array(16)].map((_, i) => (
                             <div
                                 key={i}
-                                className={`w-2 h-2 rounded-full ${i % 5 === 0 ? 'bg-green-500' : 'bg-yellow-500 dark:bg-purple-500'}`}
+                                className={`w-2 h-2 rounded-full ${i % 5 === 0 ? 'bg-green-500' : 'bg-accent'}`}
                             />
                         ))}
                     </div>
@@ -51,7 +51,7 @@ export default function About() {
                             <span className="block text-gray-900 dark:text-white mb-2">
                                 {t('hero.greeting')}
                             </span>
-                            <span className="block bg-linear-to-r from-yellow-500 via-yellow-600 to-orange-500 dark:from-purple-500 dark:via-purple-600 dark:to-pink-500 bg-clip-text text-transparent leading-[1.3]">
+                            <span className="block accent-gradient-text bg-clip-text text-transparent leading-[1.3]">
                                 {t('hero.name')}
                             </span>
                         </h1>
@@ -63,12 +63,12 @@ export default function About() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                             <a
                                 href="#projects"
-                                className="group relative bg-linear-to-r from-yellow-400 to-yellow-500 dark:from-purple-600 dark:to-purple-700 text-gray-900 dark:text-white py-4 px-10 rounded-xl font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105 overflow-hidden"
+                                className="group relative accent-gradient-btn text-gray-900 dark:text-white py-4 px-10 rounded-xl font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105 overflow-hidden"
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2">
                                     {t('hero.project')}<TbChevronsDown size={20} />
                                 </span>
-                                <div className="absolute inset-0 bg-linear-to-r from-yellow-500 to-orange-500 dark:from-purple-700 dark:to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute inset-0 accent-gradient-btn opacity-0 group-hover:opacity-100 transition-opacity" />
                             </a>
                             <a
                                 href={socialLinks.linkedin}
@@ -88,7 +88,7 @@ export default function About() {
                     <div className="lg:w-5/12 flex justify-center lg:justify-end">
                         <div className="relative group">
                             <div className="absolute -inset-1 bg-linear-to-r from-green-400 to-emerald-500 rounded-[2rem] blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200" />
-                            <div className="absolute inset-0 bg-linear-to-br from-yellow-400 to-orange-500 dark:from-purple-600 dark:to-pink-600 rounded-3xl transform rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20" />
+                            <div className="absolute inset-0 accent-gradient-decor rounded-3xl transform rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20" />
                             <div className="relative w-72 h-72 sm:w-96 sm:h-96 bg-linear-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-4 border-white/50 dark:border-gray-800/50">
                                 <img
                                     src={images.profile}

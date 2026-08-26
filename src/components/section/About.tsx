@@ -93,7 +93,7 @@ export default function About() {
                                 <img
                                     src={images.profile}
                                     alt={t('hero.imageAlt')}
-                                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                                    className="w-full h-full object-cover object-top grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                                 />
                             </div>
                         </div>

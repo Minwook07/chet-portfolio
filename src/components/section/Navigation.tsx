@@ -129,6 +129,7 @@ export default function Navigation() {
                                                 px-3 py-1.5
                                                 rounded-full
                                                 transition-all duration-300
+                                                cursor-pointer
 
                                                 ${language === lang
                                                     ? "accent-gradient-text bg-clip-text text-transparent font-bold"
@@ -180,7 +181,6 @@ export default function Navigation() {
                 onClick={() => setOpen(false)}
             />
 
-            {/* Mobile drawer */}
             {/* Mobile drawer */}
             <div className={`drawer ${open ? 'open' : ''}`}>
                 <div className="drawer-handle" />

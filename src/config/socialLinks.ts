@@ -8,8 +8,8 @@ interface SocialLinks {
 
 export const socialLinks: SocialLinks = {
     github: 'https://github.com/Minwook07',
-    linkedin: 'https://www.linkedin.com/in/mith-chet-ab56b5295/',
+    linkedin: 'https://www.linkedin.com/in/chet-mith',
     telegram: 'https://t.me/min7wook_lee',
-    instagram: '#',
+    instagram: '#home',
     maps: 'https://maps.app.goo.gl/EfTTUYva6FZCFT1PA',
 };

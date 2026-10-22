@@ -6,12 +6,12 @@ import About from './components/section/About';
 import ColorThemePicker from './components/ColorThemePicker';
 import './App.css';
 import i18next from 'i18next';
+import NotFound from './pages/NotFound';
 
 const Skills = lazy(() => import('./components/section/Skills'));
 const Projects = lazy(() => import('./components/section/Projects'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
-// const MusicPlayer = lazy(() => import('./components/MusicPlayer'));
 
 function HomePage() {
     return (
@@ -26,18 +26,40 @@ function HomePage() {
     );
 }
 
+function isValidPath(pathname: string) {
+    return pathname === '/' || pathname === '';
+}
+
 function AppContent() {
+    const [validPath, setValidPath] = useState(() =>
+        isValidPath(window.location.pathname)
+    );
+    useEffect(() => {
+        const handleNavigation = () => {
+            setValidPath(isValidPath(window.location.pathname));
+        };
+
+        window.addEventListener('popstate', handleNavigation);
+
+        return () => {
+            window.removeEventListener('popstate', handleNavigation);
+        };
+    }, []);
+
+    if (!validPath) {
+        return <NotFound />;
+    }
+
     return (
         <DarkModeProvider>
             <ColorThemeProvider>
                 <Navigation />
                 <ColorThemePicker />
-                {/* <Suspense fallback={null}>
-                    <MusicPlayer />
-                </Suspense> */}
+
                 <main id="main-content">
                     <HomePage />
                 </main>
+                
                 <Suspense fallback={<div className="h-32" />}>
                     <Footer />
                 </Suspense>

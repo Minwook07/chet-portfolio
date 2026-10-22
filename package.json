@@ -17,12 +17,12 @@
         "aos": "^2.3.4",
         "emailjs-com": "^3.2.0",
         "i18next": "^25.2.1",
-        "i18next-http-backend": "^3.0.5",
+        "i18next-http-backend": "^4.0.2",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-i18next": "^15.5.2",
         "react-icons": "^5.5.0",
-        "react-router-dom": "^7.15.1",
+        "react-router-dom": "^7.18.2",
         "react-toastify": "^11.0.5"
     },
     "devDependencies": {
@@ -37,9 +37,9 @@
         "eslint-plugin-react-hooks": "^5.1.0",
         "eslint-plugin-react-refresh": "^0.4.19",
         "globals": "^15.15.0",
-        "postcss": "^8.5.15",
+        "postcss": "^8.5.23",
         "tailwindcss": "^4.1.4",
         "typescript": "^5.9.3",
-        "vite": "^6.4.3"
+        "vite": "^6.4.4"
     }
 }

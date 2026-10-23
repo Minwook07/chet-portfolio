@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { gsap, useGSAP, ScrollTrigger } from '../../lib/motion';
+import { ScrollTrigger } from '../../lib/motion';
 import { images } from '../../assets';
 import { TbArrowBearRight2, TbGridScan } from 'react-icons/tb';
 

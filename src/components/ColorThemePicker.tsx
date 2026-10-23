@@ -39,7 +39,6 @@ export default function ColorThemePicker() {
     useEffect(() => {
         const selectedPreset = presets.find(p => p.id === colorPresetId) || presets[0];
         const primaryColor = isDarkMode ? selectedPreset.dark : selectedPreset.light;
-        const secondaryColor = isDarkMode ? selectedPreset.dark2 : selectedPreset.light2;
 
         document.documentElement.style.setProperty('--bg-color-primary', primaryColor);
         document.documentElement.style.setProperty('--text-accent', primaryColor);

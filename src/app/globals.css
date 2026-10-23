@@ -62,15 +62,8 @@ body {
 }
 
 /* Ensure Tailwind's dark: utilities are recognized */
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* ══════════════════════════════════════════════════════════════
-   Theme accent utilities — driven by --accent-light / --accent-dark
-   (and their -2 secondary tones), set at runtime by ColorThemeContext.
-   Using these instead of hardcoded Tailwind colors means every section
-   picks up the user's chosen accent color automatically, in both
-   light and dark mode, on every screen size.
-   ══════════════════════════════════════════════════════════════ */
 .text-accent {
     color: var(--accent-light);
 }

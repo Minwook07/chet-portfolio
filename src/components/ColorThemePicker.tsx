@@ -1,52 +1,17 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { TbPalette, TbCheck } from 'react-icons/tb';
 import { useDarkMode } from '../contexts/DarkModeContext';
-
-interface Preset {
-    id: string;
-    name: string;
-    light: string;
-    light2: string;
-    dark: string;
-    dark2: string;
-}
-
-const presets: Preset[] = [
-    { id: 'orange', name: 'Orange', light: '#FF6B56', light2: '#FF8A78', dark: '#FF6B56', dark2: '#FF8A78' },
-    { id: 'emerald', name: 'Emerald', light: '#10B981', light2: '#34D399', dark: '#10B981', dark2: '#34D399' },
-    { id: 'blue', name: 'Blue', light: '#3B82F6', light2: '#60A5FA', dark: '#3B82F6', dark2: '#60A5FA' },
-    { id: 'purple', name: 'Purple', light: '#8B5CF6', light2: '#A78BFA', dark: '#8B5CF6', dark2: '#A78BFA' },
-    { id: 'rose', name: 'Rose', light: '#F43F5E', light2: '#FB7185', dark: '#F43F5E', dark2: '#FB7185' },
-];
+import { useColorTheme } from '../contexts/ColorThemeContext';
 
 export default function ColorThemePicker() {
     const [open, setOpen] = useState(false);
-    const [colorPresetId, setColorPresetId] = useState('orange');
     const wrapRef = useRef<HTMLDivElement>(null);
     const { isDarkMode } = useDarkMode();
+    const { colorPresetId, setColorPresetId, presets } = useColorTheme();
 
-    // Load saved theme on mount
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('color_preset');
-        if (savedTheme) {
-            setColorPresetId(savedTheme);
-        }
-    }, []);
-
-    // Apply colors to root HTML element whenever theme or dark mode changes
-    useEffect(() => {
-        const selectedPreset = presets.find(p => p.id === colorPresetId) || presets[0];
-        const primaryColor = isDarkMode ? selectedPreset.dark : selectedPreset.light;
-
-        document.documentElement.style.setProperty('--bg-color-primary', primaryColor);
-        document.documentElement.style.setProperty('--text-accent', primaryColor);
-        
-        localStorage.setItem('color_preset', colorPresetId);
-    }, [colorPresetId, isDarkMode]);
-
-    // Handle click outside to close dropdown
+    // Handle click outside to close dropdown panel
     useEffect(() => {
         const cb = (e: MouseEvent) => {
             if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
@@ -61,11 +26,10 @@ export default function ColorThemePicker() {
         <div ref={wrapRef} className="fixed bottom-6 left-6 z-50">
             {/* Panel */}
             <div
-                className={`absolute bottom-16 left-0 origin-bottom-left transition-all duration-300 ${
-                    open
+                className={`absolute bottom-16 left-0 origin-bottom-left transition-all duration-300 ${open
                         ? 'opacity-100 scale-100 pointer-events-auto'
                         : 'opacity-0 scale-95 pointer-events-none'
-                }`}
+                    }`}
             >
                 <div
                     className="rounded-2xl p-4 w-56 shadow-xl border"

@@ -1,4 +1,4 @@
-export { techstack } from './techstack/index.ts';
+export { techstack } from './techstack';
 
 export const images = {
     profile:     '/images/DSC03885.png',

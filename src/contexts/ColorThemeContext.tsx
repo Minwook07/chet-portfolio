@@ -1,6 +1,9 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+'use client';
+
+import { createContext, useContext, useEffect } from 'react';
 import { colorPresets, DEFAULT_COLOR_PRESET_ID, type ColorPreset } from '../styles/colors';
 import { useDarkMode } from './DarkModeContext';
+import { useLocalStorage } from '../lib/useLocalStorage';
 
 interface ColorThemeContextType {
     colorPresetId: string;
@@ -17,9 +20,7 @@ const ColorThemeContext = createContext<ColorThemeContextType | undefined>(undef
 
 export function ColorThemeProvider({ children }: ColorThemeProviderProps) {
     const { isDarkMode } = useDarkMode();
-    const [colorPresetId, setColorPresetId] = useState<string>(
-        () => localStorage.getItem('colorTheme') || DEFAULT_COLOR_PRESET_ID
-    );
+    const [colorPresetId, setColorPresetId] = useLocalStorage('colorTheme', DEFAULT_COLOR_PRESET_ID);
 
     const colorPreset =
         colorPresets.find(p => p.id === colorPresetId) ?? colorPresets[0];
@@ -34,8 +35,7 @@ export function ColorThemeProvider({ children }: ColorThemeProviderProps) {
             '--bg-color-primary',
             isDarkMode ? colorPreset.dark : colorPreset.light
         );
-        localStorage.setItem('colorTheme', colorPresetId);
-    }, [colorPresetId, colorPreset, isDarkMode]);
+    }, [colorPreset, isDarkMode]);
 
     return (
         <ColorThemeContext.Provider

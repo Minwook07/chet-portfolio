@@ -1,45 +1,36 @@
 {
     "name": "portfolio-dev",
     "private": true,
-    "version": "0.0.0",
-    "type": "module",
+    "version": "0.1.0",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "lint": "eslint .",
-        "preview": "vite preview"
+        "dev": "next dev -p 3000",
+        "build": "next build",
+        "start": "next start -p 3000",
+        "lint": "eslint ."
     },
     "dependencies": {
-        "@emailjs/browser": "^4.4.1",
-        "@tailwindcss/vite": "^4.0.9",
         "@vercel/analytics": "^1.5.0",
         "@vercel/speed-insights": "^2.0.0",
         "aos": "^2.3.4",
         "emailjs-com": "^3.2.0",
         "i18next": "^25.2.1",
-        "i18next-http-backend": "^4.0.2",
+        "next": "^16.4.2",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-i18next": "^15.5.2",
         "react-icons": "^5.5.0",
-        "react-router-dom": "^7.18.2",
         "react-toastify": "^11.0.5"
     },
     "devDependencies": {
-        "@eslint/js": "^9.21.0",
+        "@tailwindcss/postcss": "^4.1.4",
         "@types/aos": "^3.0.8",
+        "@types/node": "^22.0.0",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
-        "@typescript-eslint/eslint-plugin": "^8.62.0",
-        "@typescript-eslint/parser": "^8.62.0",
-        "@vitejs/plugin-react": "^4.3.4",
         "eslint": "^9.21.0",
-        "eslint-plugin-react-hooks": "^5.1.0",
-        "eslint-plugin-react-refresh": "^0.4.19",
-        "globals": "^15.15.0",
+        "eslint-config-next": "^15.0.0",
         "postcss": "^8.5.23",
         "tailwindcss": "^4.1.4",
-        "typescript": "^5.9.3",
-        "vite": "^6.4.4"
+        "typescript": "^5.9.3"
     }
 }

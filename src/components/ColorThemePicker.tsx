@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { TbPalette, TbCheck } from 'react-icons/tb';
 import { useColorTheme } from '../contexts/ColorThemeContext';

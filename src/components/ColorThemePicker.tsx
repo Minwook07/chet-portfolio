@@ -1,16 +1,53 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { TbPalette, TbCheck } from 'react-icons/tb';
-import { useColorTheme } from '../contexts/ColorThemeContext';
 import { useDarkMode } from '../contexts/DarkModeContext';
+
+interface Preset {
+    id: string;
+    name: string;
+    light: string;
+    light2: string;
+    dark: string;
+    dark2: string;
+}
+
+const presets: Preset[] = [
+    { id: 'orange', name: 'Orange', light: '#FF6B56', light2: '#FF8A78', dark: '#FF6B56', dark2: '#FF8A78' },
+    { id: 'emerald', name: 'Emerald', light: '#10B981', light2: '#34D399', dark: '#10B981', dark2: '#34D399' },
+    { id: 'blue', name: 'Blue', light: '#3B82F6', light2: '#60A5FA', dark: '#3B82F6', dark2: '#60A5FA' },
+    { id: 'purple', name: 'Purple', light: '#8B5CF6', light2: '#A78BFA', dark: '#8B5CF6', dark2: '#A78BFA' },
+    { id: 'rose', name: 'Rose', light: '#F43F5E', light2: '#FB7185', dark: '#F43F5E', dark2: '#FB7185' },
+];
 
 export default function ColorThemePicker() {
     const [open, setOpen] = useState(false);
+    const [colorPresetId, setColorPresetId] = useState('orange');
     const wrapRef = useRef<HTMLDivElement>(null);
-    const { colorPresetId, setColorPresetId, presets } = useColorTheme();
     const { isDarkMode } = useDarkMode();
 
+    // Load saved theme on mount
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('color_preset');
+        if (savedTheme) {
+            setColorPresetId(savedTheme);
+        }
+    }, []);
+
+    // Apply colors to root HTML element whenever theme or dark mode changes
+    useEffect(() => {
+        const selectedPreset = presets.find(p => p.id === colorPresetId) || presets[0];
+        const primaryColor = isDarkMode ? selectedPreset.dark : selectedPreset.light;
+        const secondaryColor = isDarkMode ? selectedPreset.dark2 : selectedPreset.light2;
+
+        document.documentElement.style.setProperty('--bg-color-primary', primaryColor);
+        document.documentElement.style.setProperty('--text-accent', primaryColor);
+        
+        localStorage.setItem('color_preset', colorPresetId);
+    }, [colorPresetId, isDarkMode]);
+
+    // Handle click outside to close dropdown
     useEffect(() => {
         const cb = (e: MouseEvent) => {
             if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
@@ -78,14 +115,14 @@ export default function ColorThemePicker() {
                 </div>
             </div>
 
-            {/* Toggle button */}
+            {/* Floating Toggle Button */}
             <button
                 onClick={() => setOpen(o => !o)}
                 aria-label="Choose accent color"
                 aria-expanded={open}
                 className="w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
                 style={{
-                    background: 'var(--bg-color-primary)',
+                    background: 'var(--bg-color-primary, #FF6B56)',
                     boxShadow: '0 4px 14px rgba(0,0,0,0.25)',
                 }}
             >

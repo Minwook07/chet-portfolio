@@ -5,7 +5,7 @@ import Providers from './providers';
 import Navigation from '../components/section/Navigation';
 import ColorThemePicker from '../components/ColorThemePicker';
 import Footer from '../components/Footer';
-import { Jost, Kantumruy_Pro } from 'next/font/google';
+import { Caveat, Jost, Kantumruy_Pro } from 'next/font/google';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -21,6 +21,11 @@ export const viewport: Viewport = {
     viewportFit: 'cover',
 };
 
+const caveat = Caveat({ 
+  subsets: ['latin'],
+  variable: '--font-caveat',
+});
+
 // Applies the saved theme before first paint to avoid a light-mode flash.
 const themeInitScript = `try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}`;
 
@@ -32,7 +37,7 @@ const langInitScript = `try{var l=localStorage.getItem('app_lang');if(l==='km'){
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={`${jost.variable} ${kantumruy.variable}`} suppressHydrationWarning data-scroll-behavior="smooth">
+        <html lang="en" className={`${jost.variable} ${kantumruy.variable} ${caveat.variable}`} suppressHydrationWarning data-scroll-behavior="smooth">
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
                 <script dangerouslySetInnerHTML={{ __html: langInitScript }} />

@@ -1,127 +1,251 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from 'react-i18next';
-import { TbBrandGithub, TbBrandInstagram, TbBrandLinkedin, TbBrandTelegram, TbMapPin, TbMessageQuestion } from 'react-icons/tb';
+import { motion } from 'framer-motion';
+import { 
+    TbBrandGithub, 
+    TbBrandInstagram, 
+    TbBrandLinkedin, 
+    TbBrandTelegram, 
+    TbMapPin, 
+    TbSend
+} from 'react-icons/tb';
 import { socialLinks } from '../../config/socialLinks';
 
 export default function Contact() {
     const form = useRef<HTMLFormElement>(null);
     const { t } = useTranslation();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!form.current) return;
 
+        setIsSubmitting(true);
+
         emailjs
             .sendForm('service_fx2pjmn', 'template_w35rh1l', form.current, 'X9mPXd-vubu0WW5U-')
             .then(
                 () => {
-                    toast.success('Message sent successfully!', { position: 'top-right', autoClose: 5000 });
+                    toast.success('Message sent successfully! 🚀', { position: 'top-right', autoClose: 5000 });
                     form.current?.reset();
+                    setIsSubmitting(false);
                 },
                 () => {
-                    toast.error('Something went wrong!', { position: 'top-right', autoClose: 5000 });
+                    toast.error('Something went wrong. Please try again! 😅', { position: 'top-right', autoClose: 5000 });
+                    setIsSubmitting(false);
                 }
             );
     };
 
-    return (
-        <section id="contact" className="py-10 lg:py-24">
-            <style>{`
-                input::placeholder, textarea::placeholder { color: #6b7280 !important; opacity: 1 !important; }
-                .dark input::placeholder, .dark textarea::placeholder { color: #9ca3af !important; opacity: 1 !important; }
-            `}</style>
-            <ToastContainer />
-            <div className="container mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-16 flex items-center justify-center text-gray-950 dark:text-white">
-                    <TbMessageQuestion fontSize={35} className="text-primary mr-2" />
-                    {t('contact.title')}
-                </h2>
+    const socials = [
+        { name: 'GitHub', icon: TbBrandGithub, url: socialLinks.github, color: 'bg-gray-900 text-white dark:bg-gray-800' },
+        { name: 'LinkedIn', icon: TbBrandLinkedin, url: socialLinks.linkedin, color: 'bg-[#0A66C2] text-white' },
+        { name: 'Telegram', icon: TbBrandTelegram, url: socialLinks.telegram, color: 'bg-[#0088cc] text-white' },
+        { name: 'Instagram', icon: TbBrandInstagram, url: socialLinks.instagram, color: 'bg-[#E1306C] text-white' },
+    ];
 
-                <div className="grid md:grid-cols-2 gap-10">
-                    {/* Contact info */}
-                    <div>
-                        <div className="mb-10">
-                            <h3 className="text-2xl font-semibold text-primary mb-4">{t('contact.sub_title')}</h3>
-                            <p className="text-gray-950 dark:text-gray-300 mb-8">{t('contact.text_info')}</p>
-                            <div className="flex items-center mb-4">
-                                <TbMapPin size={20} className="text-primary mr-4" />
+    return (
+        <section id="contact" className="py-24 bg-[#FFF8F5] dark:bg-gray-950 relative overflow-hidden text-gray-900 dark:text-gray-100">
+            <ToastContainer />
+
+            {/* Decorative background blur elements */}
+            <div className="absolute top-1/2 -left-20 w-80 h-80 bg-orange-200/30 dark:bg-orange-950/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-red-100/40 dark:bg-red-950/20 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="container mx-auto px-6 max-w-6xl relative z-10">
+
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    {/* <span className="inline-block px-4 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-bold shadow-xs mb-3">
+                        Get in touch
+                    </span> */}
+
+                    <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#1A1A1A] dark:text-white">
+                        {mounted ? (t('contact.title') || "Say Hello") : "Say Hello"}{' '}
+                        <span 
+                            className="relative inline-block"
+                            style={{ color: 'var(--bg-color-primary)' }}
+                        >
+                            👋
+                            <svg 
+                                className="absolute -bottom-2 left-0 w-full h-3" 
+                                style={{ color: 'var(--bg-color-primary)' }}
+                                viewBox="0 0 100 20" 
+                                preserveAspectRatio="none"
+                            >
+                                <path d="M0,10 Q25,20 50,10 T100,10" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                            </svg>
+                        </span>
+                    </h2>
+
+                    <p 
+                        className="text-xl mt-3 italic font-medium"
+                        style={{ 
+                            fontFamily: "'Caveat', cursive, sans-serif",
+                            color: 'var(--bg-color-primary)'
+                        }}
+                    >
+                        Let's build something cool together! ✉️
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+                    {/* Left Column: Contact Details & Social Stickers */}
+                    <div className="lg:col-span-5 space-y-8">
+                        {/* Information Card */}
+                        <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800 space-y-6">
+                            <div>
+                                <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-2">
+                                    {mounted ? (t('contact.sub_title') || "Let's Talk") : "Let's Talk"}
+                                </h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                                    {mounted ? t('contact.text_info') : ''}
+                                </p>
+                            </div>
+
+                            {/* Location */}
+                            <div className="flex items-center gap-3 pt-2">
+                                <div 
+                                    className="w-10 h-10 rounded-2xl bg-[#FFF3EE] dark:bg-gray-800 flex items-center justify-center shrink-0"
+                                    style={{ color: 'var(--bg-color-primary)' }}
+                                >
+                                    <TbMapPin size={22} />
+                                </div>
                                 <a
                                     href={socialLinks.maps}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-primary hover:underline transition-colors duration-200"
+                                    className="text-gray-700 dark:text-gray-300 font-bold transition-colors text-sm hover:opacity-80"
                                 >
-                                    {t('contact.address_town')}
+                                    {mounted ? t('contact.address_town') : 'Phnom Penh'}
                                 </a>
                             </div>
                         </div>
 
-                        <div className="flex gap-4">
-                            <a href={socialLinks.github} target="_blank" rel="noreferrer"
-                                className="w-10 h-10 text-white bg-[#333333] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover-bg-accent transition-colors">
-                                <TbBrandGithub size={23} />
-                            </a>
-                            <a href={socialLinks.linkedin} target="_blank" rel="noreferrer"
-                                className="w-10 h-10 text-white bg-[#0A66C2] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#084d92] dark:hover:bg-[#0A66C2] transition-colors">
-                                <TbBrandLinkedin size={23} />
-                            </a>
-                            <a href={socialLinks.telegram} target="_blank" rel="noreferrer"
-                                className="w-10 h-10 text-white bg-[#0088cc] dark:bg-[#1E1E1E] rounded-full flex items-center justify-center hover:bg-[#006699] dark:hover:bg-[#0088cc] transition-colors">
-                                <TbBrandTelegram size={23} />
-                            </a>
-                            <a href={socialLinks.instagram}
-                                className="w-10 h-10 text-white rounded-full flex items-center justify-center bg-[#E1306C] hover:bg-[#b9275a] dark:bg-[#1E1E1E] dark:hover:bg-[#E1306C] transition-colors">
-                                <TbBrandInstagram size={23} />
-                            </a>
+                        {/* Social Media Sticker Buttons */}
+                        <div className="space-y-3">
+                            <span 
+                                className="text-lg italic block pl-1"
+                                style={{ 
+                                    fontFamily: "'Caveat', cursive, sans-serif",
+                                    color: 'var(--bg-color-primary)'
+                                }}
+                            >
+                                find me on social media:
+                            </span>
+
+                            <div className="grid grid-cols-2 gap-3">
+                                {socials.map((soc) => {
+                                    const Icon = soc.icon;
+                                    return (
+                                        <motion.a
+                                            key={soc.name}
+                                            href={soc.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            whileHover={{ scale: 1.03 }}
+                                            whileTap={{ scale: 0.97 }}
+                                            className={`flex items-center gap-3 p-3.5 rounded-2xl font-bold text-sm shadow-sm transition-all ${soc.color}`}
+                                        >
+                                            <Icon size={20} />
+                                            <span>{soc.name}</span>
+                                        </motion.a>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
 
-                    {/* Form */}
-                    <div>
+                    {/* Right Column: Contact Form */}
+                    <div className="lg:col-span-7">
                         <form
                             ref={form}
                             onSubmit={sendEmail}
-                            className="border bg-[#f5f5f5] dark:bg-[#1E1E1E] border-[#e5e5e5] dark:border-[#1E1E1E] rounded-xl p-8"
+                            className="bg-white dark:bg-gray-900 p-8 sm:p-10 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800 space-y-6"
                         >
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-white">{t('contact.form_info.name')}</label>
-                                <input type="text" name="user_name" required
-                                    placeholder={t('contact.form_info.place_holder.place_holder_name')}
-                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus-border-accent"
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {/* Name Input */}
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700 dark:text-gray-300">
+                                        {mounted ? t('contact.form_info.name') : 'Name'}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="user_name"
+                                        required
+                                        placeholder={mounted ? t('contact.form_info.place_holder.place_holder_name') : 'Your Name'}
+                                        className="w-full p-4 text-sm text-gray-900 dark:text-white bg-[#FFF8F5] dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none transition-all placeholder:text-gray-400"
+                                    />
+                                </div>
+
+                                {/* Email Input */}
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700 dark:text-gray-300">
+                                        {mounted ? t('contact.form_info.email') : 'Email'}
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="user_email"
+                                        required
+                                        placeholder="your.email@example.com"
+                                        className="w-full p-4 text-sm text-gray-900 dark:text-white bg-[#FFF8F5] dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none transition-all placeholder:text-gray-400"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Subject Input */}
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700 dark:text-gray-300">
+                                    {mounted ? t('contact.form_info.subject') : 'Subject'}
+                                </label>
+                                <input
+                                    type="text"
+                                    name="subject"
+                                    required
+                                    placeholder={mounted ? t('contact.form_info.subject') : 'Subject'}
+                                    className="w-full p-4 text-sm text-gray-900 dark:text-white bg-[#FFF8F5] dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none transition-all placeholder:text-gray-400"
                                 />
                             </div>
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-white">{t('contact.form_info.email')}</label>
-                                <input type="email" name="user_email" required
-                                    placeholder="your.email@example.com"
-                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus-border-accent"
+
+                            {/* Message Textarea */}
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700 dark:text-gray-300">
+                                    {mounted ? t('contact.form_info.message') : 'Message'}
+                                </label>
+                                <textarea
+                                    name="message"
+                                    required
+                                    placeholder={mounted ? t('contact.form_info.place_holder.place_holder_message') : 'Your message...'}
+                                    className="w-full p-4 text-sm text-gray-900 dark:text-white bg-[#FFF8F5] dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none transition-all h-36 resize-none placeholder:text-gray-400"
                                 />
                             </div>
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-white">{t('contact.form_info.subject')}</label>
-                                <input type="text" name="subject" required
-                                    placeholder={t('contact.form_info.subject')}
-                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus-border-accent"
-                                />
-                            </div>
-                            <div className="mb-6">
-                                <label className="block text-sm font-medium mb-2 text-[#171717] dark:text-white">{t('contact.form_info.message')}</label>
-                                <textarea name="message" required
-                                    placeholder={t('contact.form_info.place_holder.place_holder_message')}
-                                    className="w-full p-3 text-[#111827] dark:text-white bg-white dark:bg-[#171717] border border-[#dadada] dark:border-[#171717] rounded-lg focus:outline-none focus-border-accent h-32 resize-none"
-                                />
-                            </div>
-                            <button type="submit"
-                                className="w-full py-3 bg-primary text-white rounded-lg font-medium hover-bg-accent-2 transition-colors cursor-pointer" aria-label="submit btn">
-                                {t('contact.form_info.btn_submit')}
-                            </button>
+
+                            {/* Submit Button */}
+                            <motion.button
+                                type="submit"
+                                disabled={isSubmitting}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                style={{ backgroundColor: 'var(--bg-color-primary)' }}
+                                className="w-full py-4 text-white rounded-full font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 hover:opacity-90"
+                            >
+                                <span>{isSubmitting ? 'Sending...' : (mounted ? t('contact.form_info.btn_submit') : 'Send Message')}</span>
+                                <TbSend size={18} />
+                            </motion.button>
                         </form>
                     </div>
+
                 </div>
             </div>
         </section>

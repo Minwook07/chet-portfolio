@@ -7,6 +7,12 @@ function easeInOutCubic(t: number) {
 }
 
 export function scrollToSection(event: MouseEvent<HTMLAnchorElement>, id: string) {
+    const isHomepage = window.location.pathname === '/';
+
+    if (!isHomepage) {
+        return;
+    }
+
     const element = document.getElementById(id);
     if (!element) return;
 

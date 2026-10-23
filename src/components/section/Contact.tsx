@@ -1,10 +1,12 @@
+'use client';
+
 import { useRef } from 'react';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from 'react-i18next';
 import { TbBrandGithub, TbBrandInstagram, TbBrandLinkedin, TbBrandTelegram, TbMapPin, TbMessageQuestion } from 'react-icons/tb';
-import { socialLinks } from '../config/socialLinks';
+import { socialLinks } from '../../config/socialLinks';
 
 export default function Contact() {
     const form = useRef<HTMLFormElement>(null);
@@ -15,7 +17,7 @@ export default function Contact() {
         if (!form.current) return;
 
         emailjs
-            .sendForm('service_sqho7re', 'template_w35rh1l', form.current, 'X9mPXd-vubu0WW5U-')
+            .sendForm('service_fx2pjmn', 'template_w35rh1l', form.current, 'X9mPXd-vubu0WW5U-')
             .then(
                 () => {
                     toast.success('Message sent successfully!', { position: 'top-right', autoClose: 5000 });

@@ -1,6 +1,6 @@
 # Okawasakii — Personal Portfolio
 
-A personal developer portfolio built with **React 19**, **TypeScript**, and **Vite** — featuring dark mode, multilingual support, a Spotify music player, and lazy-loaded sections for optimal performance. Deployed on Vercel.
+A personal developer portfolio built with **Next.js (App Router)**, **React 19**, and **TypeScript** — featuring dark mode, multilingual support, a Spotify music player, and lazy-loaded sections for optimal performance. Deployed on Vercel.
 
 ---
 
@@ -8,10 +8,10 @@ A personal developer portfolio built with **React 19**, **TypeScript**, and **Vi
 
 | Layer | Technology |
 |---|---|
-| Framework | React 19 + Vite 6 |
+| Framework | Next.js 16 (App Router) + React 19 |
 | Language | TypeScript 5 |
 | Styling | Tailwind CSS 4 |
-| i18n | i18next + react-i18next |
+| i18n | i18next + react-i18next (bundled JSON in `src/locales`) |
 | Email | EmailJS |
 | Analytics | Vercel Analytics + Speed Insights |
 | Animation | AOS (Animate On Scroll) |
@@ -24,24 +24,23 @@ A personal developer portfolio built with **React 19**, **TypeScript**, and **Vi
 
 ```
 src/
-├── assets/               # Static asset references & techstack map
-│   └── techstack/
+├── app/
+│   ├── layout.tsx        # Root layout, metadata, fonts, analytics
+│   ├── page.tsx          # Home page (About, Skills, Projects, Contact)
+│   ├── providers.tsx     # Client providers: dark mode, accent color, AOS, i18n
+│   ├── not-found.tsx     # 404 page
+│   └── globals.css       # Tailwind 4 + theme CSS
 ├── components/
-│   ├── section/          # Page sections (Navigation, About, Skills, Projects)
+│   ├── section/          # Navigation, About, Skills, Projects, Contact
+│   ├── ColorThemePicker.tsx
 │   ├── DarkModeToggle.tsx
-│   ├── Footer.tsx
-│   └── MusicPlayer.tsx   # Floating Spotify embed player
-├── config/
-│   └── socialLinks.ts    # Centralized social link config
-├── contexts/
-│   └── DarkModeContext.tsx
-├── pages/
-│   └── Contact.tsx
-├── styles/
-│   └── colors.ts
-├── App.tsx
-├── main.tsx
-└── vite-env.d.ts
+│   └── Footer.tsx
+├── config/socialLinks.ts
+├── contexts/             # DarkModeContext, ColorThemeContext
+├── lib/                  # i18n setup, useLocalStorage (SSR-safe)
+├── locales/              # en / km translation.json
+└── styles/colors.ts
+public/                   # images, pdf, robots.txt
 ```
 
 ---
@@ -49,49 +48,22 @@ src/
 ## Getting Started
 
 ```bash
-# Install dependencies
-npm install --legacy-peer-deps
-
-# Start dev server
-npm run dev
-
-# Build for production
+npm install
+npm run dev      # http://localhost:3000
 npm run build
-
-# Preview production build
-npm run preview
+npm run start    # http://localhost:3000
 ```
-
----
-
-## Features
-
-- **Dark / Light mode** — persisted via `localStorage`, toggled with a single button
-- **Multilingual** — English and Khmer (ភាសាខ្មែរ) via i18next HTTP backend
-- **Spotify music player** — floating widget with playlist, skip controls, and auto-advance
-- **Lazy-loaded sections** — Skills, Projects, Contact, Footer, and MusicPlayer are code-split for fast initial load
-- **Contact form** — powered by EmailJS with toast notifications
-- **Performance** — Vercel Analytics and Speed Insights integrated
-- **AOS animations** — scroll-triggered reveal animations
 
 ---
 
 ## Internationalization
 
-Translation files live in `public/locales/`:
-
-```
-public/locales/
-├── en/translation.json
-└── km/translation.json
-```
-
-Add a new language by creating a new folder and registering the locale key in `Navigation.tsx`.
+Translations live in `src/locales/<lang>/translation.json` and are bundled
+(no HTTP fetch). To add a language: add the JSON, register it in
+`src/lib/i18n.ts`, and add it to `languages` in `Navigation.tsx`.
 
 ---
 
 ## License
 
 This project is personal and not licensed for reuse. All content, images, and copy belong to Mith Chet.
-
----

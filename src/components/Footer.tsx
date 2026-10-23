@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbBrandGithub, TbBrandLinkedin, TbBrandTelegram, TbArrowUpRight, TbBrandInstagram } from 'react-icons/tb';
@@ -36,7 +38,7 @@ export default function Footer() {
             className="relative bg-cover bg-no-repeat bg-center border-t border-black/8 dark:border-white/8"
             style={{ backgroundImage: "url('/images/hero/chinese-great-wall.jpg')" }}
         >
-            <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-[0.5px]" />
+            <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/80" />
 
             <div className="container mx-auto px-6 py-10 relative">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">

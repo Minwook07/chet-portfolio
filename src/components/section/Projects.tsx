@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbArrowBearRight2, TbChevronLeft, TbChevronRight, TbGridScan } from 'react-icons/tb';

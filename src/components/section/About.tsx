@@ -1,7 +1,10 @@
+'use client';
+
 import { useTranslation } from 'react-i18next';
 import { TbChevronsDown, TbChevronsUpRight } from 'react-icons/tb';
 import { images } from '../../assets';
 import { socialLinks } from '../../config/socialLinks';
+import Image from 'next/image';
 
 export default function About() {
     const { t } = useTranslation();
@@ -12,13 +15,13 @@ export default function About() {
             className="relative overflow-hidden min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/images/hero/ss1.jpg')" }}
         >
-            <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-[0.5px]" />
+            <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/80" />
 
             {/* Background blobs */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 -left-20 w-[300px] h-[300px] bg-green-500/10 dark:bg-green-500/5 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute -top-40 -right-40 w-[500px] h-[500px] md:w-[700px] md:h-[700px] accent-blob-a rounded-full blur-3xl animate-pulse" />
-                <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] md:w-[600px] md:h-[600px] accent-blob-b rounded-full blur-3xl" />
+                <div className="absolute top-1/4 -left-20 w-[300px] h-[300px] green-blob rounded-full" />
+                <div className="absolute -top-40 -right-40 w-[500px] h-[500px] md:w-[700px] md:h-[700px] accent-blob-a rounded-full" />
+                <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] md:w-[600px] md:h-[600px] accent-blob-b rounded-full" />
                 <div className="absolute top-20 right-10 md:top-40 md:right-20 opacity-20 dark:opacity-10">
                     <div className="grid grid-cols-4 gap-4">
                         {[...Array(16)].map((_, i) => (
@@ -90,9 +93,12 @@ export default function About() {
                             <div className="absolute -inset-1 bg-linear-to-r from-green-400 to-emerald-500 rounded-[2rem] blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200" />
                             <div className="absolute inset-0 accent-gradient-decor rounded-3xl transform rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20" />
                             <div className="relative w-72 h-72 sm:w-96 sm:h-96 bg-linear-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-4 border-white/50 dark:border-gray-800/50">
-                                <img
+                                <Image
                                     src={images.profile}
                                     alt={t('hero.imageAlt')}
+                                    width={752}
+                                    height={940}
+                                    priority
                                     className="w-full h-full object-cover object-top grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                                 />
                             </div>

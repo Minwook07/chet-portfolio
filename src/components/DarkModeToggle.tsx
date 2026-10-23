@@ -1,3 +1,5 @@
+'use client';
+
 import { CSSProperties } from 'react';
 import { BsEmojiSunglassesFill, BsEmojiSunglasses } from 'react-icons/bs';
 import { useDarkMode } from '../contexts/DarkModeContext';

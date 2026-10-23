@@ -1,13 +1,15 @@
+'use client';
+
 import { useState, useEffect, useRef, ReactNode } from 'react';
-import i18next from 'i18next';
-import { useTranslation, initReactI18next } from 'react-i18next';
-import HttpApi from 'i18next-http-backend';
+import { useTranslation } from 'react-i18next';
 import { TbAppWindowFilled, TbCannabisFilled, TbHomeFilled, TbMessageFilled } from 'react-icons/tb';
 import { useDarkMode } from '../../contexts/DarkModeContext';
 import DarkModeToggle from '../DarkModeToggle';
+import { LANGUAGE_STORAGE_KEY, type LanguageKey } from '../../lib/i18n';
+import { scrollToSection } from '../../lib/scrollToSection';
+import Link from 'next/link';
 
 type SectionId = 'home' | 'skills' | 'projects' | 'contact';
-type LanguageKey = 'en' | 'km';
 
 interface LanguageOption {
     name: string;
@@ -21,17 +23,6 @@ const languages: Record<LanguageKey, LanguageOption> = {
     km: { name: 'ភាសាខ្មែរ', flag: '/images/flags/km.svg' },
 };
 
-i18next
-    .use(HttpApi)
-    .use(initReactI18next)
-    .init({
-        supportedLngs: ['en', 'ko', 'km'],
-        fallbackLng: 'en',
-        lng: localStorage.getItem('language') || 'en',
-        backend: { loadPath: '/locales/{{lng}}/translation.json' },
-        interpolation: { escapeValue: false }
-    });
-
 const sectionIcons: Record<SectionId, ReactNode> = {
     home: <TbHomeFilled />,
     skills: <TbCannabisFilled />,
@@ -42,12 +33,10 @@ const sectionIcons: Record<SectionId, ReactNode> = {
 export default function Navigation() {
     const [open, setOpen] = useState<boolean>(false);
     const [active, setActive] = useState<SectionId>('home');
-    const [language, setLanguage] = useState<LanguageKey>(
-        (localStorage.getItem('language') as LanguageKey) || 'en'
-    );
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const language = i18n.language;
     const { isDarkMode } = useDarkMode();
 
     // Lock body scroll when drawer open
@@ -58,17 +47,22 @@ export default function Navigation() {
 
     // Active section detection
     useEffect(() => {
-        const handler = () => {
-            sections.forEach(id => {
-                const el = document.getElementById(id);
-                if (!el) return;
-                const { top } = el.getBoundingClientRect();
-                if (top <= window.innerHeight * 0.3 && top >= -el.offsetHeight * 0.3) setActive(id);
-            });
-        };
-        window.addEventListener('scroll', handler);
-        handler();
-        return () => window.removeEventListener('scroll', handler);
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    setActive(entry.target.id as SectionId);
+                });
+            },
+            { rootMargin: '-30% 0px -60% 0px' },
+        );
+
+        sections.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) observer.observe(element);
+        });
+
+        return () => observer.disconnect();
     }, []);
 
     // Click-outside for language dropdown
@@ -83,9 +77,8 @@ export default function Navigation() {
     }, [dropdownOpen]);
 
     const handleLanguageChange = (langKey: LanguageKey) => {
-        setLanguage(langKey);
-        i18next.changeLanguage(langKey);
-        localStorage.setItem('language', langKey);
+        i18n.changeLanguage(langKey);
+        localStorage.setItem(LANGUAGE_STORAGE_KEY, langKey);
         setDropdownOpen(false);
     };
 
@@ -93,24 +86,25 @@ export default function Navigation() {
         <nav className="nav-root">
             <div className="nav-bar">
                 <div className="nav-inner container mx-auto px-6">
-                    <a href="#home" className="nav-logo">
+                    <Link href="/" className="nav-logo">
                         <img
                             src="/images/logo/chet_nobg.svg"
                             alt="Logo"
                             style={{ filter: isDarkMode ? 'none' : 'invert(1)' }}
                         />
-                    </a>
+                    </Link>
 
                     <ul className="nav-links-desktop">
                         {sections.map(item => (
                             <li key={item}>
-                                <a
+                                <Link
                                     href={`#${item}`}
+                                    onClick={e => scrollToSection(e, item)}
                                     className={`nav-link ${active === item ? 'active' : ''}`}
                                 >
                                     {t(`menu.${item}`)}
                                     <span className="link-dot" />
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -190,8 +184,11 @@ export default function Navigation() {
                         <li key={item}>
                             <a
                                 href={`#${item}`}
+                                onClick={e => {
+                                    scrollToSection(e, item);
+                                    setOpen(false);
+                                }}
                                 className={`drawer-link ${active === item ? 'active' : ''}`}
-                                onClick={() => setOpen(false)}
                             >
                                 <span className="dl-icon">{sectionIcons[item]}</span>
                                 {t(`menu.${item}`)}

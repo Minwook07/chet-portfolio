@@ -1,4 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+'use client';
+
+import { createContext, useContext, useEffect } from 'react';
+import { useLocalStorage } from '../lib/useLocalStorage';
 
 interface DarkModeContextType {
     isDarkMode: boolean;
@@ -12,16 +15,14 @@ interface DarkModeProviderProps {
 const DarkModeContext = createContext<DarkModeContextType | undefined>(undefined);
 
 export function DarkModeProvider({ children }: DarkModeProviderProps) {
-    const [isDarkMode, setIsDarkMode] = useState<boolean>(
-        () => localStorage.getItem('theme') === 'dark'
-    );
+    const [theme, setTheme] = useLocalStorage('theme', 'light');
+    const isDarkMode = theme === 'dark';
 
     useEffect(() => {
         document.documentElement.classList.toggle('dark', isDarkMode);
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
     }, [isDarkMode]);
 
-    const toggleDarkMode = () => setIsDarkMode(prev => !prev);
+    const toggleDarkMode = () => setTheme(isDarkMode ? 'light' : 'dark');
 
     return (
         <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>

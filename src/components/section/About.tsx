@@ -7,10 +7,17 @@ import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import Image from 'next/image';
 import { images } from '../../assets';
 import { socialLinks } from '../../config/socialLinks';
+import { useCulture } from '../../contexts/CultureContext';
+import CultureScene from '../culture/CultureScene';
+import CultureStrip from '../culture/CultureStrip';
+import { cultureArt } from '../culture/registry';
+import { scriptClass } from '../culture/scriptFont';
 
 export default function About() {
     const { t } = useTranslation();
     const [mounted, setMounted] = useState(false);
+    const { culture } = useCulture();
+    const SipIcon = cultureArt[culture.id].icon;
 
     // Prevent hydration mismatch by ensuring i18n text renders after client mounts
     useEffect(() => {
@@ -43,11 +50,11 @@ export default function About() {
     return (
         <section
             id="home"
-            className="relative min-h-screen flex items-center bg-[#FFF8F5] dark:bg-gray-950 text-gray-900 dark:text-gray-100 overflow-hidden py-16 lg:py-0"
+            className="relative flex min-h-screen items-center overflow-hidden bg-paper px-0 pb-20 pt-28 text-ink lg:py-28"
         >
             {/* Soft decorative background shapes */}
-            <div className="absolute top-10 left-10 w-72 h-72 bg-orange-200/40 dark:bg-orange-950/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-red-100/50 dark:bg-red-950/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="accent-blob-a pointer-events-none absolute -left-20 top-10 h-96 w-96" />
+            <div className="accent-blob-b pointer-events-none absolute -right-10 bottom-10 h-[28rem] w-[28rem]" />
 
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -59,18 +66,20 @@ export default function About() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: 'easeOut' }}
                     >
-                        {/* Greeting Callout */}
+                        {/* Greeting: the local hello, then the translated line */}
                         <motion.div
-                            className="inline-flex items-center gap-2 text-2xl font-serif italic font-handwriting"
-                            style={{
-                                fontFamily: "'Caveat', cursive, sans-serif",
-                                color: 'var(--bg-color-primary)'
-                            }}
+                            className="flex flex-wrap items-center gap-x-3 gap-y-1"
+                            style={{ color: 'var(--bg-color-primary)' }}
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
                         >
-                            <span>{mounted ? (t('hero.greeting') || "Hi there, I'm") : "Hi there, I'm"}</span>
+                            <span lang={culture.lang} className={`${scriptClass(culture.lang)} leading-none`}>
+                                {culture.greeting}
+                            </span>
+                            <span className="font-hand text-2xl">
+                                {mounted ? (t('hero.greeting') || "Hi there, I'm") : "Hi there, I'm"}
+                            </span>
                             <motion.span
                                 animate={{ rotate: [0, 20, 0] }}
                                 transition={{ repeat: Infinity, duration: 1.5, repeatDelay: 2 }}
@@ -82,7 +91,7 @@ export default function About() {
 
                         {/* Title / Name */}
                         <div className="relative">
-                            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#1A1A1A] dark:text-white leading-none">
+                            <h1 className="font-display text-6xl font-semibold leading-[1.05] text-ink sm:text-7xl lg:text-8xl">
                                 {mounted ? (t('hero.name') || 'Lohitha') : 'Lohitha'}
                             </h1>
                             {/* Decorative underline with dynamic theme color */}
@@ -102,47 +111,53 @@ export default function About() {
                             </svg>
                         </div>
 
-                        {/* Subtitle / Description */}
-                        <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-xl leading-relaxed font-normal">
-                            <span className="font-bold text-gray-900 dark:text-white">
+                        {/* Role sticker + description */}
+                        <div className="space-y-4">
+                            <span
+                                className="on-accent sticker inline-block -rotate-2 rounded-full px-5 py-1.5 text-base font-bold"
+                                style={{ backgroundColor: 'var(--bg-color-primary)' }}
+                            >
                                 {mounted ? (t('hero.sub_title') || 'Full-stack developer') : 'Full-stack developer'}
-                            </span>{' '}
-                            ✦ {mounted ? t('hero.description') : ''}
-                        </p>
+                            </span>
+                            <p className="max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl">
+                                {mounted ? t('hero.description') : ''}
+                            </p>
+                        </div>
 
                         {/* Optional Stats Counter Section */}
                         <motion.div
-                            className="grid grid-cols-3 gap-6 pt-2 border-t border-gray-200/60 dark:border-gray-800 max-w-lg"
+                            className="grid max-w-lg grid-cols-3 gap-6 border-t-2 border-dashed pt-4"
+                            style={{ borderColor: 'var(--stitch)' }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
                         >
                             <div>
                                 <h4
-                                    className="text-2xl sm:text-3xl font-extrabold"
+                                    className="font-display text-3xl font-semibold sm:text-4xl"
                                     style={{ color: 'var(--bg-color-primary)' }}
                                 >
                                     1+
                                 </h4>
-                                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Years Experience</p>
+                                <p className="text-xs text-ink-soft sm:text-sm">Years Experience</p>
                             </div>
                             <div>
                                 <h4
-                                    className="text-2xl sm:text-3xl font-extrabold"
+                                    className="font-display text-3xl font-semibold sm:text-4xl"
                                     style={{ color: 'var(--bg-color-primary)' }}
                                 >
                                     10+
                                 </h4>
-                                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Projects Built</p>
+                                <p className="text-xs text-ink-soft sm:text-sm">Projects Built</p>
                             </div>
                             <div>
                                 <h4
-                                    className="text-2xl sm:text-3xl font-extrabold"
+                                    className="font-display text-3xl font-semibold sm:text-4xl"
                                     style={{ color: 'var(--bg-color-primary)' }}
                                 >
                                     100%
                                 </h4>
-                                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Client Satisfaction</p>
+                                <p className="text-xs text-ink-soft sm:text-sm">Client Satisfaction</p>
                             </div>
                         </motion.div>
 
@@ -156,7 +171,7 @@ export default function About() {
                             <a
                                 href="#projects"
                                 style={{ backgroundColor: 'var(--bg-color-primary)' }}
-                                className="inline-flex items-center gap-2 text-white py-3.5 px-8 rounded-full font-bold transition-all shadow-lg hover:scale-105 active:scale-95 cursor-pointer"
+                                className="on-accent inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-3.5 font-bold shadow-lg transition-all hover:scale-105 active:scale-95"
                             >
                                 <span>{mounted ? (t('hero.project') || 'See my work') : 'See my work'}</span>
                                 <TbArrowDown size={18} />
@@ -165,16 +180,28 @@ export default function About() {
                                 href={socialLinks.linkedin}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 py-3.5 px-8 rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-xs cursor-pointer"
+                                className="inline-flex cursor-pointer items-center gap-2 rounded-full border-2 border-ink bg-card px-8 py-3.5 font-bold text-ink transition-all hover:scale-105 active:scale-95"
                             >
                                 <TbMessage size={18} />
                                 <span>Message me</span>
                             </a>
                         </motion.div>
+
+                        {/* What's in the cup today */}
+                        <div className="flex items-center gap-3 pt-2">
+                            <span className="tray flex h-12 w-12 items-center justify-center rounded-2xl">
+                                <SipIcon className="h-9 w-9" />
+                            </span>
+                            <p className="font-hand text-xl leading-tight text-ink-soft">
+                                {mounted ? t('hero.sip', 'Currently sipping') : 'Currently sipping'}
+                                <br />
+                                <span lang={culture.lang} className="text-2xl text-ink">{culture.sip}</span>
+                            </p>
+                        </div>
                     </motion.div>
 
                     {/* Right Column: Interactive Profile Sticker */}
-                    <div className="lg:col-span-5 flex justify-center lg:justify-end relative">
+                    <div className="relative flex justify-center lg:col-span-5 lg:justify-end">
                         {/* Playful Handwritten Arrow & Note */}
                         <motion.div
                             className="absolute -top-12 left-10 lg:-left-12 z-20 hidden sm:flex flex-col items-center pointer-events-none"
@@ -183,11 +210,8 @@ export default function About() {
                             transition={{ delay: 0.7 }}
                         >
                             <span
-                                className="text-lg -rotate-6 font-semibold"
-                                style={{
-                                    fontFamily: "'Caveat', cursive, sans-serif",
-                                    color: 'var(--bg-color-primary)'
-                                }}
+                                className="font-hand -rotate-6 text-lg font-semibold"
+                                style={{ color: 'var(--bg-color-primary)' }}
                             >
                                 move your cursor, I'll look at it!
                             </span>
@@ -202,34 +226,38 @@ export default function About() {
                             </svg>
                         </motion.div>
 
-                        {/* Profile Wrapper with Motion */}
-                        <motion.div
-                            className="relative"
-                            style={{ x: imageX, y: imageY, rotate: imageRotate }}
-                        >
-                            {/* Background Arch Shape */}
-                            <div className="absolute inset-0 bg-[#FFDCD3] dark:bg-orange-950/40 rounded-t-[10rem] rounded-b-[3rem] transform translate-y-4 scale-105" />
+                        {/* Profile wrapper: scene sits behind and around the arch */}
+                        <div className="relative">
+                            <CultureScene />
+                            <motion.div
+                                className="relative z-10"
+                                style={{ x: imageX, y: imageY, rotate: imageRotate }}
+                            >
+                                {/* Background Arch Shape */}
+                                <div className="absolute inset-0 translate-y-4 scale-105 rounded-b-[3rem] rounded-t-[10rem]" style={{ background: 'color-mix(in srgb, var(--bg-color-primary) 26%, var(--paper-2))' }} />
 
-                            {/* Cutout Image with White Sticker Border */}
-                            <div className="relative z-10 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.15)]">
-                                <div className="p-2 bg-white dark:bg-gray-900 rounded-t-[10rem] rounded-b-[3rem]">
-                                    <div className="relative w-72 h-96 sm:w-80 sm:h-[28rem] rounded-t-[9.5rem] rounded-b-[2.5rem] overflow-hidden">
-                                        <Image
-                                            src={images.profile}
-                                            alt={mounted ? (t('hero.imageAlt') || 'Profile photo') : 'Profile photo'}
-                                            fill
-                                            priority
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            className="object-cover object-top"
-                                        />
+                                {/* Cutout Image with White Sticker Border */}
+                                <div className="relative z-10 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.15)]">
+                                    <div className="rounded-b-[3rem] rounded-t-[10rem] bg-card p-2">
+                                        <div className="relative w-72 h-96 sm:w-80 sm:h-[28rem] rounded-t-[9.5rem] rounded-b-[2.5rem] overflow-hidden">
+                                            <Image
+                                                src={images.profile}
+                                                alt={mounted ? (t('hero.imageAlt') || 'Profile photo') : 'Profile photo'}
+                                                fill
+                                                priority
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                className="object-cover object-top"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        </div>
                     </div>
 
                 </div>
             </div>
+            <CultureStrip className="absolute bottom-0 left-0" />
         </section>
     );
 }

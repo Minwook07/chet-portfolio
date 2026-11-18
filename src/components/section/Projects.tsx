@@ -5,6 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { ScrollTrigger } from '../../lib/motion';
 import { images } from '../../assets';
 import { TbArrowBearRight2, TbGridScan } from 'react-icons/tb';
+import { useCulture } from '../../contexts/CultureContext';
+import { cultureArt } from '../culture/registry';
+import CultureStrip from '../culture/CultureStrip';
+import SectionHeading from '../SectionHeading';
 
 interface Project {
     title: string;
@@ -32,6 +36,8 @@ export default function Projects() {
     const { t } = useTranslation();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [mounted, setMounted] = useState(false);
+    const { culture } = useCulture();
+    const stopIcons = cultureArt[culture.id].motifs;
 
     useEffect(() => {
         setMounted(true);
@@ -144,42 +150,20 @@ export default function Projects() {
     }, [d]);
 
     return (
-        <section id="projects" className="journey section py-24 bg-[#FFF8F5] dark:bg-gray-950 relative overflow-hidden text-gray-900 dark:text-gray-100" ref={root}>
+        <section id="projects" className="journey section relative overflow-hidden bg-paper py-24 text-ink" ref={root}>
             <div className="container mx-auto px-6 max-w-6xl relative">
 
                 {/* Section Header */}
-                <div className="text-center mb-20">
-                    {/* <span className="inline-block px-4 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-bold shadow-xs mb-4">
-                        My journey
-                    </span> */}
-
-                    <h2 className="jr-title text-5xl sm:text-6xl font-black tracking-tight text-[#1A1A1A] dark:text-white">
-                        {mounted ? (t('projects.title') || 'Projects') : 'Projects'}{' '}
-                        <span
-                            className="relative inline-block"
-                            style={{ color: 'var(--bg-color-primary)' }}
-                        >
-                            {mounted ? (t('projects.sub_title') || 'Journey') : 'Journey'}
-                            <svg
-                                className="absolute -bottom-2 left-0 w-full h-3"
-                                style={{ color: 'var(--bg-color-primary)' }}
-                                viewBox="0 0 100 20"
-                                preserveAspectRatio="none"
-                            >
-                                <path d="M0,10 Q25,20 50,10 T100,10" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                            </svg>
-                        </span>
-                    </h2>
-
-                    <p
-                        className="text-xl mt-4 italic font-medium"
-                        style={{
-                            fontFamily: "'Caveat', cursive, sans-serif",
-                            color: 'var(--bg-color-primary)'
-                        }}
-                    >
-                        follow the road ↓
-                    </p>
+                <div className="jr-title mb-20">
+                    <SectionHeading
+                        title={
+                            <>
+                                {mounted ? (t('projects.title') || 'Projects') : 'Projects'}{' '}
+                                {mounted ? (t('projects.sub_title') || 'Journey') : 'Journey'}
+                            </>
+                        }
+                        note="follow the road ↓"
+                    />
                 </div>
 
                 {/* Road Container */}
@@ -188,7 +172,7 @@ export default function Projects() {
 
                         {/* Dynamic Road SVG */}
                         <svg className="jr-map absolute top-0 left-0 w-full h-full pointer-events-none z-0" width={box.w} height={box.h} viewBox={`0 0 ${box.w || 1} ${box.h || 1}`} aria-hidden="true">
-                            <path ref={road} d={d} className="jr-road stroke-orange-200 dark:stroke-gray-800" fill="none" strokeWidth="3" strokeDasharray="8 8" />
+                            <path ref={road} d={d} className="jr-road" style={{ stroke: 'var(--stitch)' }} fill="none" strokeWidth="3" strokeDasharray="8 8" />
                             <path
                                 ref={trail}
                                 d={d}
@@ -224,10 +208,10 @@ export default function Projects() {
                                 >
                                     {/* Photo Frame / Polaroid */}
                                     <div className="w-full md:w-1/2 flex justify-center relative group shrink-0">
-                                        <div className="absolute -top-3 z-20 w-24 h-6 bg-[#FFC5B8]/80 dark:bg-orange-950/60 backdrop-blur-xs rounded-xs transform -rotate-3 shadow-xs" />
+                                        <div className="tape absolute -top-3 z-20 h-6 w-24 -rotate-3" />
 
-                                        <figure className="polaroid bg-white dark:bg-gray-900 p-4 pb-6 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 max-w-sm w-full transition-transform duration-300">
-                                            <div className="relative h-60 sm:h-64 w-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+                                        <figure className="polaroid tray w-full max-w-sm rounded-md p-4 pb-6 transition-transform duration-300 odd:-rotate-1 even:rotate-1">
+                                            <div className="relative h-60 sm:h-64 w-full rounded-sm bg-paper-2 overflow-hidden">
                                                 <img
                                                     src={project.img}
                                                     alt={project.title}
@@ -237,8 +221,7 @@ export default function Projects() {
                                             </div>
                                             {project.caption && (
                                                 <figcaption
-                                                    className="text-center text-gray-600 dark:text-gray-400 text-base mt-3 font-semibold"
-                                                    style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
+                                                    className="font-hand mt-3 text-center text-xl text-ink-soft"
                                                 >
                                                     {project.caption}
                                                 </figcaption>
@@ -247,42 +230,46 @@ export default function Projects() {
                                     </div>
 
                                     {/* Road Node Dot */}
-                                    <span
-                                        className="jr-dot opacity-100 md:opacity-100 w-5 h-5 rounded-full bg-white dark:bg-gray-900 border-4 z-20 shadow-md shrink-0 my-[-1rem] md:my-0"
-                                        style={{ borderColor: 'var(--bg-color-primary)' }}
-                                    />
+                                    {(() => {
+                                        const StopIcon = stopIcons[idx % stopIcons.length];
+                                        return (
+                                            <span
+                                                className="jr-dot z-20 my-[-1rem] flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 bg-card p-1.5 shadow-md md:my-0"
+                                                style={{ borderColor: 'var(--bg-color-primary)' }}
+                                            >
+                                                <StopIcon className="h-full w-full" />
+                                            </span>
+                                        );
+                                    })()}
 
                                     {/* Full Content Card */}
                                     <div className="w-full md:w-1/2 flex justify-center shrink-0">
-                                        <div className="jr-card bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between max-w-md w-full">
+                                        <div className="jr-card tray flex w-full max-w-md flex-col justify-between rounded-[1.75rem] p-6 sm:p-8">
 
                                             <div>
                                                 <div className="flex justify-between items-start gap-3">
                                                     <div className="flex-1">
                                                         {project.year && (
                                                             <span
-                                                                className="text-xl font-bold italic block mb-1"
-                                                                style={{
-                                                                    fontFamily: "'Caveat', cursive, sans-serif",
-                                                                    color: 'var(--bg-color-primary)'
-                                                                }}
+                                                                className="font-hand mb-1 block text-2xl font-bold"
+                                                                style={{ color: 'var(--bg-color-primary)' }}
                                                             >
                                                                 {project.year}
                                                             </span>
                                                         )}
-                                                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white truncate">
+                                                        <h3 className="font-display truncate text-2xl font-semibold text-ink">
                                                             {project.title}
                                                         </h3>
-                                                        <p className="text-gray-500 dark:text-gray-400 text-xs mt-2 line-clamp-3">
+                                                        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-soft">
                                                             {descriptionText}
                                                         </p>
                                                         <button
                                                             onClick={() => setSelectedProject(project)}
-                                                            className="text-[10px] font-black mt-3 uppercase tracking-widest hover:opacity-70 transition-opacity cursor-pointer block"
+                                                            className="font-hand mt-3 block cursor-pointer text-xl font-bold transition-opacity hover:opacity-70"
                                                             style={{ color: 'var(--bg-color-primary)' }}
                                                             aria-label="see more"
                                                         >
-                                                            [ TRY IT OUT ]
+                                                            Try it out ✦
                                                         </button>
                                                     </div>
 
@@ -292,7 +279,7 @@ export default function Projects() {
                                                             href={project.demo_link}
                                                             target="_blank"
                                                             rel="noreferrer"
-                                                            className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3.5 rounded-xl hover:opacity-90 transition-all shadow-md shrink-0"
+                                                            className="shrink-0 rounded-xl bg-ink p-3.5 text-paper shadow-md transition-all hover:opacity-90"
                                                             aria-label={`View demo for ${project.title}`}
                                                         >
                                                             <TbArrowBearRight2 size={20} />
@@ -300,7 +287,7 @@ export default function Projects() {
                                                     ) : (
                                                         <button
                                                             disabled
-                                                            className="bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 p-3.5 rounded-xl cursor-not-allowed opacity-60 flex items-center justify-center shrink-0 border border-gray-200 dark:border-gray-700"
+                                                            className="flex shrink-0 cursor-not-allowed items-center justify-center rounded-xl border border-line bg-paper-2 p-3.5 text-ink-soft opacity-60"
                                                             aria-label="Demo unavailable"
                                                         >
                                                             <TbArrowBearRight2 size={20} />
@@ -310,11 +297,12 @@ export default function Projects() {
                                             </div>
 
                                             {/* Tech Badges Footer */}
-                                            <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-gray-100 dark:border-gray-800">
+                                            <div className="mt-6 flex flex-wrap gap-2 border-t-2 border-dashed pt-4"
+                                                style={{ borderColor: 'var(--stitch)' }}>
                                                 {project.tech.map((tag, i) => (
                                                     <span
                                                         key={i}
-                                                        className="px-2.5 py-1 text-[10px] font-bold bg-[#FFF3EE] dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-md uppercase"
+                                                        className="rounded-full bg-paper-2 px-3 py-1 text-xs font-semibold text-ink-soft"
                                                     >
                                                         {tag}
                                                     </span>
@@ -330,30 +318,31 @@ export default function Projects() {
                 </div>
 
             </div>
+            <CultureStrip className="absolute bottom-0 left-0" />
 
             {/* Slide-in Detail Drawer Modal */}
             <div className={`fixed inset-0 z-100 transition-opacity duration-300 ${selectedProject ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div className="absolute inset-0 bg-black/40 backdrop-blur-md" onClick={() => setSelectedProject(null)} />
-                <div className={`absolute top-0 right-0 h-full w-full max-w-lg bg-white dark:bg-gray-950 shadow-2xl transform transition-transform duration-500 ease-in-out ${selectedProject ? 'translate-x-0' : 'translate-x-full'}`}>
+                <div className={`absolute top-0 right-0 h-full w-full max-w-lg bg-paper shadow-2xl transform transition-transform duration-500 ease-in-out ${selectedProject ? 'translate-x-0' : 'translate-x-full'}`}>
                     {selectedProject && (
                         <div className="p-8 flex flex-col h-full overflow-y-auto">
                             <button
                                 onClick={() => setSelectedProject(null)}
-                                className="self-end p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-500 hover:opacity-80 transition-all cursor-pointer"
+                                className="self-end p-2 bg-paper-2 rounded-full text-ink-soft hover:opacity-80 transition-all cursor-pointer"
                                 aria-label="close"
                             >
                                 <TbGridScan size={24} />
                             </button>
                             <div className="mt-4">
                                 <img src={selectedProject.img} className="w-full h-64 object-cover object-top rounded-3xl shadow-xl mb-6" alt={selectedProject.title} />
-                                <h2 className="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tight">{selectedProject.title}</h2>
+                                <h2 className="font-display text-3xl font-semibold text-ink">{selectedProject.title}</h2>
                                 <div className="flex flex-wrap gap-2 my-4">
                                     {selectedProject.tech.map((tag, i) => (
                                         <span
                                             key={i}
                                             className="px-3 py-1 text-xs font-bold rounded-full"
                                             style={{
-                                                backgroundColor: 'rgba(255, 107, 86, 0.1)',
+                                                backgroundColor: 'color-mix(in srgb, var(--bg-color-primary) 16%, transparent)',
                                                 color: 'var(--bg-color-primary)'
                                             }}
                                         >
@@ -362,10 +351,10 @@ export default function Projects() {
                                     ))}
                                 </div>
                                 <div
-                                    className="p-6 bg-[#FFF8F5] dark:bg-gray-900/50 rounded-2xl border-l-4 mt-4"
+                                    className="tray mt-4 rounded-2xl border-l-4 p-6"
                                     style={{ borderColor: 'var(--bg-color-primary)' }}
                                 >
-                                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base font-medium">
+                                    <p className="text-base leading-relaxed text-ink">
                                         {(() => {
                                             const desc = mounted ? t(`projects.items.${selectedProject.key}.desc`) : '';
                                             return (desc && !desc.startsWith('projects.items')) ? desc : selectedProject.defaultDesc;
@@ -377,14 +366,14 @@ export default function Projects() {
                                 {isLinkValid(selectedProject.demo_link) ? (
                                     <a href={selectedProject.demo_link} target="_blank" rel="noreferrer" className="w-full block">
                                         <button
-                                            className="w-full text-white py-4 rounded-full font-bold text-sm transition-all shadow-lg cursor-pointer hover:opacity-90"
+                                            className="on-accent w-full cursor-pointer rounded-full py-4 text-sm font-bold shadow-lg transition-all hover:opacity-90"
                                             style={{ backgroundColor: 'var(--bg-color-primary)' }}
                                         >
                                             {mounted ? (t('projects.button.btn_demo') || 'Visit Demo') : 'Visit Demo'}
                                         </button>
                                     </a>
                                 ) : (
-                                    <button disabled className="w-full bg-gray-200 dark:bg-gray-800 text-gray-400 py-4 rounded-full font-bold text-sm cursor-not-allowed">
+                                    <button disabled className="w-full cursor-not-allowed rounded-full bg-paper-2 py-4 text-sm font-bold text-ink-soft">
                                         UNAVAILABLE
                                     </button>
                                 )}

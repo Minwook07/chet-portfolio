@@ -2,12 +2,15 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { TbPalette, TbCheck } from 'react-icons/tb';
+import { useTranslation } from 'react-i18next';
 import { useDarkMode } from '../contexts/DarkModeContext';
+import CulturePicker from './culture/CulturePicker';
 import { useColorTheme } from '../contexts/ColorThemeContext';
 
 export default function ColorThemePicker() {
     const [open, setOpen] = useState(false);
     const wrapRef = useRef<HTMLDivElement>(null);
+    const { t } = useTranslation();
     const { isDarkMode } = useDarkMode();
     const { colorPresetId, setColorPresetId, presets } = useColorTheme();
 
@@ -27,24 +30,15 @@ export default function ColorThemePicker() {
             {/* Panel */}
             <div
                 className={`absolute bottom-16 left-0 origin-bottom-left transition-all duration-300 ${open
-                        ? 'opacity-100 scale-100 pointer-events-auto'
-                        : 'opacity-0 scale-95 pointer-events-none'
+                    ? 'opacity-100 scale-100 pointer-events-auto'
+                    : 'opacity-0 scale-95 pointer-events-none'
                     }`}
             >
                 <div
-                    className="rounded-2xl p-4 w-56 shadow-xl border"
-                    style={{
-                        background: isDarkMode ? 'rgba(24,24,27,0.95)' : 'rgba(255,255,255,0.97)',
-                        borderColor: isDarkMode ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)',
-                        backdropFilter: 'blur(16px)',
-                    }}
+                    className="tray max-h-[75vh] w-72 overflow-y-auto rounded-3xl p-4"
+                    style={{ backdropFilter: 'blur(16px)' }}
                 >
-                    <p
-                        className="text-xs font-semibold mb-3 tracking-wide uppercase"
-                        style={{ color: isDarkMode ? '#9ca3af' : '#6b7280' }}
-                    >
-                        Accent Color
-                    </p>
+                    <p className="font-hand mb-2 text-xl text-ink">{t('theme.accent', 'Accent color')}</p>
                     <div className="grid grid-cols-5 gap-3">
                         {presets.map(preset => {
                             const active = preset.id === colorPresetId;
@@ -75,18 +69,20 @@ export default function ColorThemePicker() {
                             );
                         })}
                     </div>
+
+                    <p className="font-hand mb-2 mt-5 text-xl text-ink">{t('theme.culture', 'Culture style')}</p>
+                    <CulturePicker />
                 </div>
             </div>
 
             {/* Floating Toggle Button */}
             <button
                 onClick={() => setOpen(o => !o)}
-                aria-label="Choose accent color"
+                aria-label={t('theme.open', 'Customize the look')}
                 aria-expanded={open}
-                className="w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
+                className="on-accent sticker w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
                 style={{
                     background: 'var(--bg-color-primary, #FF6B56)',
-                    boxShadow: '0 4px 14px rgba(0,0,0,0.25)',
                 }}
             >
                 <TbPalette size={22} />

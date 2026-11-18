@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect } from 'react';
 import { colorPresets, DEFAULT_COLOR_PRESET_ID, type ColorPreset } from '../styles/colors';
 import { useDarkMode } from './DarkModeContext';
 import { useLocalStorage } from '../lib/useLocalStorage';
+import { readableOn } from '../lib/contrast';
 
 interface ColorThemeContextType {
     colorPresetId: string;
@@ -31,10 +32,10 @@ export function ColorThemeProvider({ children }: ColorThemeProviderProps) {
         root.style.setProperty('--accent-light-2', colorPreset.light2);
         root.style.setProperty('--accent-dark', colorPreset.dark);
         root.style.setProperty('--accent-dark-2', colorPreset.dark2);
-        root.style.setProperty(
-            '--bg-color-primary',
-            isDarkMode ? colorPreset.dark : colorPreset.light
-        );
+        const active = isDarkMode ? colorPreset.dark : colorPreset.light;
+        root.style.setProperty('--bg-color-primary', active);
+        // Text that sits on the accent (buttons, badges) stays readable on every preset.
+        root.style.setProperty('--on-accent', readableOn(active));
     }, [colorPreset, isDarkMode]);
 
     return (

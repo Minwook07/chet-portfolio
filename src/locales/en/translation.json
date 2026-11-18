@@ -11,7 +11,8 @@
 		"sub_title": "API Specialist",
 		"description": "Crafting beautiful websites with strong backend APIs. Frontend or Backend—let’s bring your vision to life!",
 		"project": "View My Work",
-		"imageAlt": "Profile Picture"
+		"imageAlt": "Profile Picture",
+		"sip": "Currently sipping"
 	},
 	"skills": {
 		"title": "Technical",
@@ -77,5 +78,10 @@
 			"symbol": "♥",
 			"location": "in the land of Tum Teav"
 		}
+	},
+	"theme": {
+		"open": "Customize the look",
+		"accent": "Accent color",
+		"culture": "Culture style"
 	}
 }

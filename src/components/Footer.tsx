@@ -13,12 +13,14 @@ import {
 import { motion } from 'framer-motion';
 import { socialLinks } from '../config/socialLinks';
 import Link from 'next/link';
+import { useCulture } from '../contexts/CultureContext';
+import { cultureArt } from './culture/registry';
+import CultureStrip from './culture/CultureStrip';
 
 interface SocialItem {
     icon: ReactNode;
     href: string;
     label: string;
-    colorClass: string;
 }
 
 interface NavLink {
@@ -30,6 +32,8 @@ interface NavLink {
 export default function Footer() {
     const { t } = useTranslation();
     const [mounted, setMounted] = useState(false);
+    const { culture } = useCulture();
+    const BrandIcon = cultureArt[culture.id].icon;
 
     // Prevent hydration mismatch by rendering translated text only after client mounts
     useEffect(() => {
@@ -41,25 +45,21 @@ export default function Footer() {
             icon: <TbBrandGithub size={20} />,
             href: socialLinks.github,
             label: 'GitHub',
-            colorClass: 'bg-gray-900 text-white dark:bg-gray-800'
         },
         {
             icon: <TbBrandLinkedin size={20} />,
             href: socialLinks.linkedin,
             label: 'LinkedIn',
-            colorClass: 'bg-[#0A66C2] text-white'
         },
         {
             icon: <TbBrandTelegram size={20} />,
             href: socialLinks.telegram,
             label: 'Telegram',
-            colorClass: 'bg-[#0088cc] text-white'
         },
         {
             icon: <TbBrandInstagram size={20} />,
             href: socialLinks.instagram,
             label: 'Instagram',
-            colorClass: 'bg-[#E1306C] text-white'
         },
     ];
 
@@ -71,26 +71,23 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="relative bg-[#FFF8F5] dark:bg-gray-950 text-gray-900 dark:text-gray-100 pt-16 pb-12 overflow-hidden border-t border-orange-100 dark:border-gray-800">
-            {/* Subtle background glow */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[30rem] h-32 bg-orange-200/30 dark:bg-orange-950/10 rounded-full blur-3xl pointer-events-none" />
+        <footer className="relative overflow-hidden bg-paper pb-12 pt-0 text-ink">
+            <CultureStrip className="mb-16" />
+            <div className="accent-blob-b pointer-events-none absolute bottom-0 left-1/2 h-48 w-[34rem] -translate-x-1/2" />
 
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
 
                 {/* Main Content Grid */}
-                <div className="bg-white dark:bg-gray-900 p-8 sm:p-12 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800 flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+                <div className="tray flex flex-col justify-between gap-10 rounded-[2rem] p-8 sm:p-12 lg:flex-row lg:items-center">
 
                     {/* Left Column: Brand & Status Sticker */}
                     <div className="space-y-4 max-w-md">
                         <div className="flex items-center gap-3">
                             {/* Sticker Brand Badge */}
-                            <div
-                                className="w-10 h-10 rounded-2xl flex items-center justify-center text-white font-extrabold text-sm shadow-md"
-                                style={{ backgroundColor: 'var(--bg-color-primary)' }}
-                            >
-                                osi
+                            <div className="sticker flex h-12 w-12 items-center justify-center rounded-2xl bg-card p-1">
+                                <BrandIcon className="h-full w-full" />
                             </div>
-                            <span className="text-xl font-black tracking-tight text-gray-900 dark:text-white">
+                            <span className="font-display text-xl font-semibold text-ink">
                                 Okawasakii
                             </span>
 
@@ -101,19 +98,16 @@ export default function Footer() {
                             </span>
                         </div>
 
-                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                        <p className="text-sm leading-relaxed text-ink-soft">
                             {mounted ? (t('footer.short_desc') || 'Building web applications with React, Next.js, and modern tools.') : 'Building web applications with React, Next.js, and modern tools.'}
                         </p>
 
                         {/* Playful Handwritten Tagline */}
                         <p
-                            className="text-base italic font-semibold"
-                            style={{
-                                fontFamily: "'Caveat', cursive, sans-serif",
-                                color: 'var(--bg-color-primary)'
-                            }}
+                            className="font-hand text-2xl"
+                            style={{ color: 'var(--bg-color-primary)' }}
                         >
-                            thanks for stopping by! ✨
+                            <span lang={culture.lang}>{culture.greeting}</span> · thanks for stopping by!
                         </p>
                     </div>
 
@@ -126,10 +120,10 @@ export default function Footer() {
                                 <li key={l.labelKey}>
                                     <Link
                                         href={l.href}
-                                        className="inline-flex items-center gap-1.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:opacity-80 transition-opacity group"
+                                        className="group inline-flex items-center gap-1.5 text-sm font-bold transition-opacity hover:opacity-80"
                                         style={{ color: 'var(--bg-color-primary)' }}
                                     >
-                                        <span className="text-gray-900 dark:text-white group-hover:underline">
+                                        <span className="text-ink group-hover:underline">
                                             {mounted ? (t(l.labelKey) || l.fallbackLabel) : l.fallbackLabel}
                                         </span>
                                         <TbArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -149,9 +143,9 @@ export default function Footer() {
                                     rel="noreferrer"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold shadow-xs transition-all ${s.colorClass}`}
+                                    className="flex items-center gap-2 rounded-2xl border-2 border-line bg-paper px-4 py-2.5 text-xs font-bold text-ink transition-all"
                                 >
-                                    {s.icon}
+                                    <span style={{ color: 'var(--bg-color-primary)' }}>{s.icon}</span>
                                     <span>{s.label}</span>
                                 </motion.a>
                             ))}
@@ -161,10 +155,10 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar: Copyright & Location */}
-                <div className="mt-8 px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-gray-500 dark:text-gray-400">
+                <div className="mt-8 px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-ink-soft">
                     <p>
                         © 2025–{new Date().getFullYear()}{' '}
-                        <span className="font-bold text-gray-800 dark:text-gray-200 uppercase">Okawasakii</span>.
+                        <span className="font-bold text-ink">Okawasakii</span>.
                         {' '}{mounted ? (t('footer.copyright') || 'All rights reserved.') : 'All rights reserved.'}
                     </p>
 

@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import { useTranslation } from 'react-i18next';
 import { DarkModeProvider } from '../contexts/DarkModeContext';
 import { ColorThemeProvider } from '../contexts/ColorThemeContext';
+import { CultureProvider } from '../contexts/CultureContext';
 import i18n, { LANGUAGE_STORAGE_KEY, isLanguageKey } from '../lib/i18n';
 
 interface ProvidersProps {
@@ -47,7 +48,9 @@ export default function Providers({ children }: ProvidersProps) {
     return (
         <div className={`${fontClass} transition-colors duration-300`}>
             <DarkModeProvider>
-                <ColorThemeProvider>{children}</ColorThemeProvider>
+                <ColorThemeProvider>
+                    <CultureProvider>{children}</CultureProvider>
+                </ColorThemeProvider>
             </DarkModeProvider>
         </div>
     );

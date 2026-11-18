@@ -85,7 +85,7 @@ export default function Navigation() {
     return (
         <header className="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300">
             <nav className="container mx-auto px-6 max-w-6xl">
-                <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gray-200/60 dark:border-gray-800/80 rounded-full px-6 py-3 shadow-lg shadow-black/5 flex items-center justify-between">
+                <div className="tray flex items-center justify-between rounded-full px-6 py-3 backdrop-blur-md">
                     
                     {/* Brand Logo */}
                     <Link href="/" className="flex items-center gap-2 group">
@@ -115,7 +115,7 @@ export default function Navigation() {
                                         className={`group relative py-2 text-sm font-bold tracking-wide transition-colors flex flex-col items-center gap-1 ${
                                             isActive
                                                 ? ''
-                                                : 'text-gray-700 dark:text-gray-300 hover:opacity-80'
+                                                : 'text-ink hover:opacity-80'
                                         }`}
                                     >
                                         <span>{t(`menu.${item}`)}</span>
@@ -141,7 +141,7 @@ export default function Navigation() {
                     <div className="flex items-center gap-4">
                         
                         {/* Language Switcher Badges */}
-                        <div className="hidden md:flex items-center bg-[#FFF8F5] dark:bg-gray-800/80 p-1 rounded-full border border-orange-100 dark:border-gray-700">
+                        <div className="hidden md:flex items-center bg-paper-2 p-1 rounded-full border border-line">
                             {(Object.keys(languages) as LanguageKey[]).map((lang) => {
                                 const isSelected = language === lang;
                                 return (
@@ -153,8 +153,8 @@ export default function Navigation() {
                                         }}
                                         className={`relative flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                                             isSelected
-                                                ? 'text-white shadow-xs'
-                                                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                                ? 'on-accent shadow-xs'
+                                                : 'text-ink-soft hover:text-ink'
                                         }`}
                                     >
                                         <img
@@ -172,7 +172,7 @@ export default function Navigation() {
 
                         {/* Mobile Hamburger Button */}
                         <button
-                            className="md:hidden p-2 text-gray-700 dark:text-gray-200 focus:outline-none cursor-pointer hover:opacity-80 transition-opacity"
+                            className="md:hidden p-2 text-ink focus:outline-none cursor-pointer hover:opacity-80 transition-opacity"
                             style={{ color: open ? 'var(--bg-color-primary)' : undefined }}
                             onClick={() => setOpen(!open)}
                             aria-label="Toggle Menu"
@@ -197,7 +197,7 @@ export default function Navigation() {
 
             {/* Mobile Drawer */}
             <div
-                className={`fixed top-20 left-6 right-6 z-50 md:hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl p-6 transition-all duration-300 transform ${
+                className={`fixed top-20 left-6 right-6 z-50 md:hidden tray rounded-3xl p-6 transition-all duration-300 transform ${
                     open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8 pointer-events-none'
                 }`}
             >
@@ -214,12 +214,12 @@ export default function Navigation() {
                                     }}
                                     style={{
                                         color: isActive ? 'var(--bg-color-primary)' : undefined,
-                                        backgroundColor: isActive ? 'rgba(255, 107, 86, 0.08)' : undefined
+                                        backgroundColor: isActive ? 'color-mix(in srgb, var(--bg-color-primary) 12%, transparent)' : undefined
                                     }}
                                     className={`group flex items-center justify-between p-3.5 rounded-2xl font-bold text-sm transition-all ${
                                         isActive
-                                            ? 'dark:bg-gray-800'
-                                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/50'
+                                            ? ''
+                                            : 'text-ink hover:bg-paper-2'
                                     }`}
                                 >
                                     <div className="flex items-center gap-3">
@@ -242,10 +242,10 @@ export default function Navigation() {
                     })}
                 </ul>
 
-                <div className="my-4 border-t border-gray-100 dark:border-gray-800" />
+                <div className="my-4 border-t border-line" />
 
                 {/* Mobile Language Controls */}
-                <div className="flex items-center justify-center gap-2 bg-[#FFF8F5] dark:bg-gray-800/80 p-1.5 rounded-2xl border border-orange-100 dark:border-gray-700">
+                <div className="flex items-center justify-center gap-2 bg-paper-2 p-1.5 rounded-2xl border border-line">
                     {(Object.keys(languages) as LanguageKey[]).map((langKey) => {
                         const isKhmer = langKey === 'km';
                         const isSelected = language === langKey;
@@ -261,7 +261,7 @@ export default function Navigation() {
                                 }}
                                 className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl font-bold text-xs transition-all ${
                                     isSelected
-                                        ? 'text-white shadow-xs'
+                                        ? 'on-accent shadow-xs'
                                         : 'text-gray-700 dark:text-gray-300'
                                 }`}
                             >
